@@ -1,0 +1,6 @@
+abstract class CloudSyncProvider {
+  Future<void> signIn();
+  Future<void> upload(String fileName, List<int> bytes);
+  Future<List<int>?> download(String fileName);
+  Future<List<String>> listFiles();
+}
