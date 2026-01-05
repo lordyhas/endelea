@@ -5,9 +5,9 @@
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, this.title});
 
-  final String title;
+  final String? title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -26,10 +26,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: (){},
+              icon: Icon(Icons.settings)
+          )
+        ],
 
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
 
-        title: Text(widget.title),
+        title: Text(widget.title ?? "Home Page"),
       ),
       body: Container(
         child: Column(
