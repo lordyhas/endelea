@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app/theme.dart';
-import 'home_page.dart';
+import 'screens/home_shell.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Endelea',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
-      home: const MyHomePage(),
+      home: const HomeShell(),
     );
   }
 }
