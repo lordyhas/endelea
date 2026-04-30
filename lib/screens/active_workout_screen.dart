@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app/store_scope.dart';
 import '../models/exercise.dart';
-import '../widgets/exercise_tile.dart';
+import '../widgets/workout_exercise_card.dart';
 import 'exercise_picker_screen.dart';
 
 class ActiveWorkoutScreen extends StatelessWidget {
@@ -20,9 +20,16 @@ class ActiveWorkoutScreen extends StatelessWidget {
       body: workout.exercises.isEmpty
           ? const Center(child: Text('Add your first exercise'))
           : ListView(
+              padding: const EdgeInsets.all(16),
               children: [
-                for (final entry in workout.exercises)
-                  ExerciseTile(exercise: entry.exercise),
+                for (final entry in workout.exercises) ...[
+                  WorkoutExerciseCard(
+                    key: ObjectKey(entry),
+                    entry: entry,
+                    onChanged: store.touch,
+                  ),
+                  const SizedBox(height: 12),
+                ],
                 const SizedBox(height: 88),
               ],
             ),
