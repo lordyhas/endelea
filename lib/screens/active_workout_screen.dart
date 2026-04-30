@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
 
 import '../app/store_scope.dart';
+import '../data/rest_timer.dart';
 import '../models/exercise.dart';
+import '../widgets/rest_timer_bar.dart';
 import '../widgets/workout_exercise_card.dart';
 import 'exercise_picker_screen.dart';
 
-class ActiveWorkoutScreen extends StatelessWidget {
+class ActiveWorkoutScreen extends StatefulWidget {
   const ActiveWorkoutScreen({super.key});
+
+  @override
+  State<ActiveWorkoutScreen> createState() => _ActiveWorkoutScreenState();
+}
+
+class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
+  final _restTimer = RestTimer();
+
+  @override
+  void dispose() {
+    _restTimer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +42,7 @@ class ActiveWorkoutScreen extends StatelessWidget {
                     key: ObjectKey(entry),
                     entry: entry,
                     onChanged: store.touch,
+                    onSetDone: _restTimer.start,
                     onRemove: () => store.removeExercise(entry),
                   ),
                   const SizedBox(height: 12),
@@ -34,6 +50,7 @@ class ActiveWorkoutScreen extends StatelessWidget {
                 const SizedBox(height: 88),
               ],
             ),
+      bottomNavigationBar: RestTimerBar(timer: _restTimer),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           final exercise = await Navigator.of(context).push<Exercise>(

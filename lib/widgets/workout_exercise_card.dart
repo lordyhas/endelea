@@ -11,11 +11,15 @@ class WorkoutExerciseCard extends StatelessWidget {
     required this.entry,
     required this.onChanged,
     required this.onRemove,
+    this.onSetDone,
   });
 
   final WorkoutExercise entry;
   final VoidCallback onChanged;
   final VoidCallback onRemove;
+
+  /// Called when a set gets checked, used to start the rest timer.
+  final VoidCallback? onSetDone;
 
   void _addSet() {
     final previous = entry.sets.isEmpty ? null : entry.sets.last;
@@ -72,6 +76,7 @@ class WorkoutExerciseCard extends StatelessWidget {
                   set: entry.sets[i],
                   tracking: tracking,
                   onChanged: onChanged,
+                  onDone: onSetDone,
                 ),
               ),
             TextButton.icon(
@@ -92,12 +97,14 @@ class _SetRow extends StatelessWidget {
     required this.set,
     required this.tracking,
     required this.onChanged,
+    this.onDone,
   });
 
   final int index;
   final WorkoutSet set;
   final TrackingType tracking;
   final VoidCallback onChanged;
+  final VoidCallback? onDone;
 
   @override
   Widget build(BuildContext context) {
@@ -159,6 +166,7 @@ class _SetRow extends StatelessWidget {
             onPressed: () {
               set.done = !set.done;
               onChanged();
+              if (set.done) onDone?.call();
             },
             icon: Icon(
               set.done ? Icons.check_circle : Icons.radio_button_unchecked,
