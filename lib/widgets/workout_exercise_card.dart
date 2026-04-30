@@ -10,10 +10,12 @@ class WorkoutExerciseCard extends StatelessWidget {
     super.key,
     required this.entry,
     required this.onChanged,
+    required this.onRemove,
   });
 
   final WorkoutExercise entry;
   final VoidCallback onChanged;
+  final VoidCallback onRemove;
 
   void _addSet() {
     final previous = entry.sets.isEmpty ? null : entry.sets.last;
@@ -33,15 +35,44 @@ class WorkoutExerciseCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(entry.exercise.name, style: theme.textTheme.titleMedium),
-            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    entry.exercise.name,
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ),
+                IconButton(
+                  tooltip: 'Remove exercise',
+                  onPressed: onRemove,
+                  icon: const Icon(Icons.delete_outline),
+                ),
+              ],
+            ),
             for (var i = 0; i < entry.sets.length; i++)
-              _SetRow(
+              Dismissible(
                 key: ObjectKey(entry.sets[i]),
-                index: i,
-                set: entry.sets[i],
-                tracking: tracking,
-                onChanged: onChanged,
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 16),
+                  color: theme.colorScheme.errorContainer,
+                  child: Icon(
+                    Icons.delete_outline,
+                    color: theme.colorScheme.onErrorContainer,
+                  ),
+                ),
+                onDismissed: (_) {
+                  entry.sets.removeAt(i);
+                  onChanged();
+                },
+                child: _SetRow(
+                  index: i,
+                  set: entry.sets[i],
+                  tracking: tracking,
+                  onChanged: onChanged,
+                ),
               ),
             TextButton.icon(
               onPressed: _addSet,
@@ -57,7 +88,6 @@ class WorkoutExerciseCard extends StatelessWidget {
 
 class _SetRow extends StatelessWidget {
   const _SetRow({
-    super.key,
     required this.index,
     required this.set,
     required this.tracking,

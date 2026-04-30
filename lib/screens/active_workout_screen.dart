@@ -27,6 +27,7 @@ class ActiveWorkoutScreen extends StatelessWidget {
                     key: ObjectKey(entry),
                     entry: entry,
                     onChanged: store.touch,
+                    onRemove: () => store.removeExercise(entry),
                   ),
                   const SizedBox(height: 12),
                 ],
