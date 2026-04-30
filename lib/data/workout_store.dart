@@ -41,6 +41,30 @@ class WorkoutStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Ends the active workout and saves it in the history.
+  ///
+  /// Sets that were not completed are dropped, as well as exercises left
+  /// without any completed set. Returns the saved workout.
+  Workout? finish() {
+    final workout = _active;
+    if (workout == null) return null;
+    for (final entry in workout.exercises) {
+      entry.sets.removeWhere((set) => !set.done);
+    }
+    workout.exercises.removeWhere((entry) => entry.sets.isEmpty);
+    workout.finishedAt = DateTime.now();
+    _history.add(workout);
+    _active = null;
+    notifyListeners();
+    return workout;
+  }
+
+  /// Drops the active workout without saving it.
+  void discard() {
+    _active = null;
+    notifyListeners();
+  }
+
   /// Call after mutating an exercise or a set of the active workout.
   void touch() => notifyListeners();
 }

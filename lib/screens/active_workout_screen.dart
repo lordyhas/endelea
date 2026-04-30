@@ -25,6 +25,52 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
     super.dispose();
   }
 
+  Future<void> _finish() async {
+    final store = StoreScope.of(context);
+    final navigator = Navigator.of(context);
+    final messenger = ScaffoldMessenger.of(context);
+    if (store.active!.completedSetCount == 0) {
+      messenger.showSnackBar(
+        const SnackBar(content: Text('Complete at least one set first')),
+      );
+      return;
+    }
+    _restTimer.stop();
+    final workout = store.finish()!;
+    navigator.pop();
+    messenger.showSnackBar(
+      SnackBar(
+        content: Text(
+          '${workout.name} saved · ${formatDuration(workout.duration)}',
+        ),
+      ),
+    );
+  }
+
+  Future<void> _discard() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Discard workout?'),
+        content: const Text('Everything logged in this workout will be lost.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Discard'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    _restTimer.stop();
+    StoreScope.of(context).discard();
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     final store = StoreScope.of(context);
@@ -44,6 +90,14 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
             ),
           ],
         ),
+        actions: [
+          TextButton(onPressed: _finish, child: const Text('Finish')),
+          PopupMenuButton<void>(
+            itemBuilder: (context) => [
+              PopupMenuItem(onTap: _discard, child: const Text('Discard')),
+            ],
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(24),
           child: Padding(
