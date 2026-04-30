@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../app/store_scope.dart';
 import '../data/rest_timer.dart';
 import '../models/exercise.dart';
+import '../utils/format.dart';
+import '../widgets/elapsed_time.dart';
 import '../widgets/rest_timer_bar.dart';
 import '../widgets/workout_exercise_card.dart';
 import 'exercise_picker_screen.dart';
@@ -31,7 +33,28 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       return const Scaffold(body: Center(child: Text('No active workout')));
     }
     return Scaffold(
-      appBar: AppBar(title: Text(workout.name)),
+      appBar: AppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(workout.name),
+            ElapsedTime(
+              since: workout.startedAt,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(24),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(
+              '${workout.completedSetCount} sets · '
+              '${formatWeight(workout.volume)} lifted',
+            ),
+          ),
+        ),
+      ),
       body: workout.exercises.isEmpty
           ? const Center(child: Text('Add your first exercise'))
           : ListView(
