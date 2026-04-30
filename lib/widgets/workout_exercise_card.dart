@@ -71,8 +71,14 @@ class _SetRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    final scheme = Theme.of(context).colorScheme;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       padding: const EdgeInsets.symmetric(vertical: 4),
+      decoration: BoxDecoration(
+        color: set.done ? scheme.primaryContainer.withValues(alpha: 0.5) : null,
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: Row(
         children: [
           SizedBox(
@@ -118,7 +124,17 @@ class _SetRow extends StatelessWidget {
                 },
               ),
             ),
-          const SizedBox(width: 8),
+          IconButton(
+            tooltip: set.done ? 'Undo' : 'Done',
+            onPressed: () {
+              set.done = !set.done;
+              onChanged();
+            },
+            icon: Icon(
+              set.done ? Icons.check_circle : Icons.radio_button_unchecked,
+              color: set.done ? scheme.primary : null,
+            ),
+          ),
         ],
       ),
     );
