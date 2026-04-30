@@ -14,9 +14,7 @@ class MyHomePage extends StatelessWidget {
         ],
         title: Text(title ?? 'Endelea'),
       ),
-      body: const Center(
-        child: Text('Sport Gymnasium Tracking'),
-      ),
+      body: const Center(child: Text('Sport Gymnasium Tracking')),
     );
   }
 }

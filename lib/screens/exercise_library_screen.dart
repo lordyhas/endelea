@@ -13,9 +13,20 @@ class ExerciseLibraryScreen extends StatefulWidget {
 
 class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
   TrainingPlace _place = TrainingPlace.both;
+  String _query = '';
 
-  List<Exercise> get _filtered =>
-      exerciseCatalog.where((e) => e.place.matches(_place)).toList();
+  List<Exercise> get _filtered {
+    final query = _query.trim().toLowerCase();
+    return exerciseCatalog
+        .where((e) => e.place.matches(_place))
+        .where(
+          (e) =>
+              query.isEmpty ||
+              e.name.toLowerCase().contains(query) ||
+              e.muscleGroup.label.toLowerCase().contains(query),
+        )
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +35,17 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
       appBar: AppBar(title: const Text('Exercises')),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: TextField(
+              decoration: const InputDecoration(
+                hintText: 'Search by name or muscle',
+                prefixIcon: Icon(Icons.search),
+                isDense: true,
+              ),
+              onChanged: (value) => setState(() => _query = value),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             child: SegmentedButton<TrainingPlace>(
@@ -46,11 +68,13 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: exercises.length,
-              itemBuilder: (context, index) =>
-                  ExerciseTile(exercise: exercises[index]),
-            ),
+            child: exercises.isEmpty
+                ? const Center(child: Text('No exercise found'))
+                : ListView.builder(
+                    itemCount: exercises.length,
+                    itemBuilder: (context, index) =>
+                        ExerciseTile(exercise: exercises[index]),
+                  ),
           ),
         ],
       ),

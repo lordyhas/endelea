@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import '../models/exercise.dart';
 
 class ExerciseTile extends StatelessWidget {
-  const ExerciseTile({super.key, required this.exercise, this.onTap, this.trailing});
+  const ExerciseTile({
+    super.key,
+    required this.exercise,
+    this.onTap,
+    this.trailing,
+  });
 
   final Exercise exercise;
   final VoidCallback? onTap;
@@ -20,7 +25,9 @@ class ExerciseTile extends StatelessWidget {
         child: Icon(iconForMuscleGroup(exercise.muscleGroup), size: 20),
       ),
       title: Text(exercise.name),
-      subtitle: Text('${exercise.muscleGroup.label} · ${exercise.equipment.label}'),
+      subtitle: Text(
+        '${exercise.muscleGroup.label} · ${exercise.equipment.label}',
+      ),
       trailing: trailing,
     );
   }

@@ -17,7 +17,8 @@ const List<Exercise> exerciseCatalog = [
     muscleGroup: MuscleGroup.legs,
     equipment: Equipment.barbell,
     place: TrainingPlace.gym,
-    description: 'Bar on the upper back, sit down between the hips and stand up.',
+    description:
+        'Bar on the upper back, sit down between the hips and stand up.',
   ),
   Exercise(
     id: 'deadlift',
@@ -33,7 +34,8 @@ const List<Exercise> exerciseCatalog = [
     muscleGroup: MuscleGroup.back,
     equipment: Equipment.cable,
     place: TrainingPlace.gym,
-    description: 'Pull the bar to the upper chest, squeezing the shoulder blades.',
+    description:
+        'Pull the bar to the upper chest, squeezing the shoulder blades.',
   ),
   Exercise(
     id: 'leg-press',
