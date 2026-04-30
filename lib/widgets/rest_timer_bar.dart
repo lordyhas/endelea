@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/rest_timer.dart';
+import '../utils/format.dart';
 
 class RestTimerBar extends StatelessWidget {
   const RestTimerBar({super.key, required this.timer});
@@ -14,9 +15,7 @@ class RestTimerBar extends StatelessWidget {
       builder: (context, _) {
         if (!timer.isRunning) return const SizedBox.shrink();
         final scheme = Theme.of(context).colorScheme;
-        final seconds = timer.remaining.inSeconds;
-        final label =
-            '${seconds ~/ 60}:${(seconds % 60).toString().padLeft(2, '0')}';
+        final label = formatDuration(timer.remaining, clock: true);
         return Material(
           color: scheme.secondaryContainer,
           child: SafeArea(
