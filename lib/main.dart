@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'app/store_scope.dart';
 import 'app/theme.dart';
+import 'data/demo_data.dart';
 import 'data/workout_store.dart';
 import 'screens/home_shell.dart';
 
 void main() {
-  runApp(MyApp(store: WorkoutStore()));
+  runApp(MyApp(store: WorkoutStore(history: demoHistory())));
 }
 
 class MyApp extends StatelessWidget {
