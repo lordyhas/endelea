@@ -4,6 +4,7 @@ import '../app/store_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
+import 'workout_detail_screen.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
@@ -19,8 +20,15 @@ class HistoryScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               itemCount: history.length,
               separatorBuilder: (_, _) => const SizedBox(height: 12),
-              itemBuilder: (context, index) =>
-                  WorkoutSummaryCard(workout: history[index]),
+              itemBuilder: (context, index) => WorkoutSummaryCard(
+                workout: history[index],
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        WorkoutDetailScreen(workout: history[index]),
+                  ),
+                ),
+              ),
             ),
     );
   }
