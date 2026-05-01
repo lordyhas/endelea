@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'app/store_scope.dart';
 import 'data/workout_stats.dart';
 import 'screens/active_workout_screen.dart';
+import 'screens/history_screen.dart';
 import 'screens/start_workout_sheet.dart';
+import 'screens/workout_detail_screen.dart';
 import 'utils/format.dart';
 import 'widgets/stat_card.dart';
 import 'widgets/week_strip.dart';
@@ -61,7 +63,24 @@ class MyHomePage extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 88),
+          const SizedBox(height: 24),
+          Text('Recent workouts', style: theme.textTheme.titleMedium),
+          const SizedBox(height: 8),
+          if (store.history.isEmpty)
+            const Text('Start your first workout with the button below.')
+          else
+            for (final workout in store.history.take(3)) ...[
+              WorkoutSummaryCard(
+                workout: workout,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => WorkoutDetailScreen(workout: workout),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+            ],
+          const SizedBox(height: 80),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
