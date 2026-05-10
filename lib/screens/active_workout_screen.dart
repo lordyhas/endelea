@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../data/rest_timer.dart';
 import '../models/exercise.dart';
@@ -74,6 +75,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
   @override
   Widget build(BuildContext context) {
     final store = StoreScope.of(context);
+    final settings = SettingsScope.of(context).settings;
     final workout = store.active;
     if (workout == null) {
       return const Scaffold(body: Center(child: Text('No active workout')));
@@ -119,7 +121,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                     key: ObjectKey(entry),
                     entry: entry,
                     onChanged: store.touch,
-                    onSetDone: _restTimer.start,
+                    onSetDone: () => _restTimer.start(settings.restDuration),
                     onRemove: () => store.removeExercise(entry),
                   ),
                   const SizedBox(height: 12),
