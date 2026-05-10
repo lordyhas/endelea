@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../app/settings_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
+import '../utils/format.dart';
 
 /// Card listing the sets of one exercise in the active workout.
 class WorkoutExerciseCard extends StatelessWidget {
@@ -109,6 +111,7 @@ class _SetRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final unit = SettingsScope.of(context).settings.weightUnit;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -128,11 +131,14 @@ class _SetRow extends StatelessWidget {
           if (tracking == TrackingType.weightReps) ...[
             Expanded(
               child: _NumberField(
-                label: 'kg',
-                initial: set.weight == 0 ? '' : _trim(set.weight),
+                key: ValueKey(unit),
+                label: unit.label,
+                initial: set.weight == 0
+                    ? ''
+                    : formatNumber(unit.fromKg(set.weight)),
                 decimal: true,
                 onChanged: (value) {
-                  set.weight = double.tryParse(value) ?? 0;
+                  set.weight = unit.toKg(double.tryParse(value) ?? 0);
                   onChanged();
                 },
               ),
@@ -177,13 +183,11 @@ class _SetRow extends StatelessWidget {
       ),
     );
   }
-
-  static String _trim(double value) =>
-      value == value.roundToDouble() ? value.toStringAsFixed(0) : '$value';
 }
 
 class _NumberField extends StatelessWidget {
   const _NumberField({
+    super.key,
     required this.label,
     required this.initial,
     required this.onChanged,

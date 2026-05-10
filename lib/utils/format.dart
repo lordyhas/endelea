@@ -1,3 +1,5 @@
+import '../models/settings.dart';
+
 /// Formats a duration as `1h 05m`, `12:04` or `0:45`.
 String formatDuration(Duration duration, {bool clock = false}) {
   final hours = duration.inHours;
@@ -13,13 +15,23 @@ String formatDuration(Duration duration, {bool clock = false}) {
   return '${seconds}s';
 }
 
-/// Formats a weight in kilograms without useless decimals.
-String formatWeight(double kg) {
-  if (kg >= 1000) return '${(kg / 1000).toStringAsFixed(1)} t';
-  final text = kg == kg.roundToDouble()
-      ? kg.toStringAsFixed(0)
-      : kg.toStringAsFixed(1);
-  return '$text kg';
+/// Formats a weight stored in kilograms in the given [unit], without
+/// useless decimals.
+String formatWeight(double kg, [WeightUnit unit = WeightUnit.kg]) {
+  final value = unit.fromKg(kg);
+  if (value >= 1000) {
+    final thousands = (value / 1000).toStringAsFixed(1);
+    return unit == WeightUnit.kg ? '$thousands t' : '${thousands}k lb';
+  }
+  return '${formatNumber(value)} ${unit.label}';
+}
+
+/// Formats a number with at most one decimal, dropping a trailing `.0`.
+String formatNumber(double value) {
+  final rounded = (value * 10).round() / 10;
+  return rounded == rounded.roundToDouble()
+      ? rounded.toStringAsFixed(0)
+      : rounded.toStringAsFixed(1);
 }
 
 const _months = [

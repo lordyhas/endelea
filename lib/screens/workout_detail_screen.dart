@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../app/settings_scope.dart';
 import '../models/exercise.dart';
+import '../models/settings.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
 
@@ -12,6 +14,7 @@ class WorkoutDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final unit = SettingsScope.of(context).settings.weightUnit;
     return Scaffold(
       appBar: AppBar(title: Text(workout.name)),
       body: ListView(
@@ -27,7 +30,7 @@ class WorkoutDetailScreen extends StatelessWidget {
             children: [
               _Metric('Duration', formatDuration(workout.duration)),
               _Metric('Sets', '${workout.completedSetCount}'),
-              _Metric('Volume', formatWeight(workout.volume)),
+              _Metric('Volume', formatWeight(workout.volume, unit)),
             ],
           ),
           const SizedBox(height: 24),
@@ -39,7 +42,7 @@ class WorkoutDetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Text(
                   'Set ${i + 1}   '
-                  '${_describe(entry.exercise.tracking, entry.sets[i])}',
+                  '${_describe(entry.exercise.tracking, entry.sets[i], unit)}',
                 ),
               ),
             const SizedBox(height: 16),
@@ -49,10 +52,14 @@ class WorkoutDetailScreen extends StatelessWidget {
     );
   }
 
-  static String _describe(TrackingType tracking, WorkoutSet set) {
+  static String _describe(
+    TrackingType tracking,
+    WorkoutSet set,
+    WeightUnit unit,
+  ) {
     switch (tracking) {
       case TrackingType.weightReps:
-        return '${formatWeight(set.weight)} × ${set.reps}';
+        return '${formatWeight(set.weight, unit)} × ${set.reps}';
       case TrackingType.reps:
         return '${set.reps} reps';
       case TrackingType.duration:

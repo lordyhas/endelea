@@ -106,7 +106,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(
               '${workout.completedSetCount} sets · '
-              '${formatWeight(workout.volume)} lifted',
+              '${formatWeight(workout.volume, settings.weightUnit)} lifted',
             ),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'app/settings_scope.dart';
 import 'app/store_scope.dart';
 import 'data/workout_stats.dart';
 import 'screens/active_workout_screen.dart';
@@ -21,6 +22,7 @@ class MyHomePage extends StatelessWidget {
     final store = StoreScope.of(context);
     final active = store.active;
     final stats = WorkoutStats(store.history);
+    final unit = SettingsScope.of(context).settings.weightUnit;
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +66,7 @@ class MyHomePage extends StatelessWidget {
               Expanded(
                 child: StatCard(
                   icon: Icons.scale_outlined,
-                  value: formatWeight(stats.volumeThisWeek),
+                  value: formatWeight(stats.volumeThisWeek, unit),
                   label: 'Volume',
                 ),
               ),
