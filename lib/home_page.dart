@@ -4,6 +4,7 @@ import 'app/store_scope.dart';
 import 'data/workout_stats.dart';
 import 'screens/active_workout_screen.dart';
 import 'screens/history_screen.dart';
+import 'screens/settings_screen.dart';
 import 'screens/start_workout_sheet.dart';
 import 'screens/workout_detail_screen.dart';
 import 'utils/format.dart';
@@ -24,7 +25,13 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+          IconButton(
+            tooltip: 'Settings',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const SettingsScreen()),
+            ),
+            icon: const Icon(Icons.settings),
+          ),
         ],
         title: Text(title ?? 'Endelea'),
       ),
