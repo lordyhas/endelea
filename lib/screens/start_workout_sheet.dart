@@ -62,6 +62,7 @@ class _StartWorkoutSheetState extends State<StartWorkoutSheet> {
           const SizedBox(height: 16),
           TextField(
             controller: _name,
+            textCapitalization: TextCapitalization.sentences,
             decoration: const InputDecoration(
               labelText: 'Name (optional)',
               hintText: 'Push day, Leg day...',
