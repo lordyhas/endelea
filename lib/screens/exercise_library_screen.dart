@@ -16,11 +16,13 @@ class ExerciseLibraryScreen extends StatefulWidget {
 class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
   TrainingPlace _place = TrainingPlace.both;
   String _query = '';
+  MuscleGroup? _muscleGroup;
 
   List<Exercise> _filter(List<Exercise> all) {
     final query = _query.trim().toLowerCase();
     return all
         .where((e) => e.place.matches(_place))
+        .where((e) => _muscleGroup == null || e.muscleGroup == _muscleGroup)
         .where(
           (e) =>
               query.isEmpty ||
@@ -78,6 +80,27 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
                   setState(() => _place = selection.first),
             ),
           ),
+          SizedBox(
+            height: 40,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              children: [
+                for (final group in MuscleGroup.values)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: FilterChip(
+                      label: Text(group.label),
+                      selected: _muscleGroup == group,
+                      onSelected: (selected) => setState(
+                        () => _muscleGroup = selected ? group : null,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
           Expanded(
             child: exercises.isEmpty
                 ? const Center(child: Text('No exercise found'))
