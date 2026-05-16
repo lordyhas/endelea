@@ -60,6 +60,7 @@ void main() {
     expect(find.text('Bench press'), findsOneWidget);
 
     await tester.tap(find.text('Home'));
+    await tester.enterText(find.byType(TextField), 'push');
     await tester.pumpAndSettle();
     expect(find.text('Bench press'), findsNothing);
     expect(find.text('Push-up'), findsOneWidget);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/exercise_catalog.dart';
+import '../app/exercise_scope.dart';
 import '../models/exercise.dart';
 import '../widgets/exercise_tile.dart';
 
@@ -20,7 +20,7 @@ class _ExercisePickerScreenState extends State<ExercisePickerScreen> {
   @override
   Widget build(BuildContext context) {
     final query = _query.trim().toLowerCase();
-    final exercises = exerciseCatalog
+    final exercises = ExerciseScope.of(context).all
         .where((e) => e.place.matches(widget.place))
         .where((e) => query.isEmpty || e.name.toLowerCase().contains(query))
         .toList();

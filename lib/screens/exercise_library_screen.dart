@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/exercise_catalog.dart';
+import '../app/exercise_scope.dart';
 import '../models/exercise.dart';
 import '../widgets/exercise_tile.dart';
 import 'exercise_detail_screen.dart';
@@ -16,9 +16,9 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
   TrainingPlace _place = TrainingPlace.both;
   String _query = '';
 
-  List<Exercise> get _filtered {
+  List<Exercise> _filter(List<Exercise> all) {
     final query = _query.trim().toLowerCase();
-    return exerciseCatalog
+    return all
         .where((e) => e.place.matches(_place))
         .where(
           (e) =>
@@ -31,7 +31,7 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final exercises = _filtered;
+    final exercises = _filter(ExerciseScope.of(context).all);
     return Scaffold(
       appBar: AppBar(title: const Text('Exercises')),
       body: Column(
