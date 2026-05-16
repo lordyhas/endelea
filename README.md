@@ -18,6 +18,7 @@ workouts.
   page per workout.
 - **Today**: weekly activity, training streak, weekly volume and recent
   workouts.
+- **Settings**: weights in kg or lb and default rest duration.
 
 ## Project structure
 
@@ -51,5 +52,4 @@ flutter test
 - Custom exercises
 - Workout templates
 - Progress charts per exercise
-- Settings (kg / lb, rest timer duration)
 - Backup and sync
