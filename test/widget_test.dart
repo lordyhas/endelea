@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:endelea/data/exercise_store.dart';
 import 'package:endelea/data/settings_store.dart';
 import 'package:endelea/data/workout_store.dart';
 import 'package:endelea/main.dart';
@@ -8,7 +9,11 @@ import 'package:endelea/main.dart';
 void main() {
   testWidgets('App starts on the today tab', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyApp(store: WorkoutStore(), settings: SettingsStore()),
+      MyApp(
+        store: WorkoutStore(),
+        settings: SettingsStore(),
+        exercises: ExerciseStore(),
+      ),
     );
 
     expect(find.text('Endelea'), findsOneWidget);
@@ -19,7 +24,13 @@ void main() {
     WidgetTester tester,
   ) async {
     final store = WorkoutStore();
-    await tester.pumpWidget(MyApp(store: store, settings: SettingsStore()));
+    await tester.pumpWidget(
+      MyApp(
+        store: store,
+        settings: SettingsStore(),
+        exercises: ExerciseStore(),
+      ),
+    );
 
     await tester.tap(find.text('Start workout'));
     await tester.pumpAndSettle();
@@ -37,7 +48,11 @@ void main() {
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(
-      MyApp(store: WorkoutStore(), settings: SettingsStore()),
+      MyApp(
+        store: WorkoutStore(),
+        settings: SettingsStore(),
+        exercises: ExerciseStore(),
+      ),
     );
 
     await tester.tap(find.byIcon(Icons.fitness_center_outlined));

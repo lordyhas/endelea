@@ -53,6 +53,7 @@ class Exercise {
     required this.place,
     this.tracking = TrackingType.weightReps,
     this.description = '',
+    this.custom = false,
   });
 
   final String id;
@@ -62,6 +63,9 @@ class Exercise {
   final TrainingPlace place;
   final TrackingType tracking;
   final String description;
+
+  /// Whether the user created this exercise.
+  final bool custom;
 
   @override
   bool operator ==(Object other) => other is Exercise && other.id == id;
