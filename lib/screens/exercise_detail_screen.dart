@@ -73,10 +73,12 @@ class ExerciseDetailScreen extends StatelessWidget {
               Chip(label: Text(exercise.place.label)),
             ],
           ),
-          const SizedBox(height: 24),
-          Text('How to', style: theme.textTheme.titleMedium),
-          const SizedBox(height: 8),
-          Text(exercise.description, style: theme.textTheme.bodyLarge),
+          if (exercise.description.isNotEmpty) ...[
+            const SizedBox(height: 24),
+            Text('How to', style: theme.textTheme.titleMedium),
+            const SizedBox(height: 8),
+            Text(exercise.description, style: theme.textTheme.bodyLarge),
+          ],
         ],
       ),
     );
