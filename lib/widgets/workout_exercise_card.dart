@@ -49,6 +49,16 @@ class WorkoutExerciseCard extends StatelessWidget {
                     style: theme.textTheme.titleMedium,
                   ),
                 ),
+                Text(
+                  '${entry.completedSets.length}/${entry.sets.length}',
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color:
+                        entry.sets.isNotEmpty &&
+                            entry.completedSets.length == entry.sets.length
+                        ? theme.colorScheme.primary
+                        : theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
                 IconButton(
                   tooltip: 'Remove exercise',
                   onPressed: onRemove,
