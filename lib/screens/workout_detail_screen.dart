@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../app/settings_scope.dart';
+import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/settings.dart';
 import '../models/workout.dart';
@@ -11,12 +12,31 @@ class WorkoutDetailScreen extends StatelessWidget {
 
   final Workout workout;
 
+  void _saveAsRoutine(BuildContext context) {
+    final template = TemplateScope.of(context).saveWorkout(workout);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Routine "${template.name}" created')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final unit = SettingsScope.of(context).settings.weightUnit;
     return Scaffold(
-      appBar: AppBar(title: Text(workout.name)),
+      appBar: AppBar(
+        title: Text(workout.name),
+        actions: [
+          PopupMenuButton<void>(
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                onTap: () => _saveAsRoutine(context),
+                child: const Text('Save as routine'),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
