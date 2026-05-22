@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app/exercise_scope.dart';
 import '../models/exercise.dart';
+import '../widgets/confirm_dialog.dart';
 import '../widgets/exercise_tile.dart';
 
 class ExerciseDetailScreen extends StatelessWidget {
@@ -10,27 +11,15 @@ class ExerciseDetailScreen extends StatelessWidget {
   final Exercise exercise;
 
   Future<void> _delete(BuildContext context) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Delete ${exercise.name}?'),
-        content: const Text(
+    final confirmed = await confirm(
+      context,
+      title: 'Delete ${exercise.name}?',
+      message:
           'It will no longer be offered when adding exercises. '
           'Past workouts are kept.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Delete'),
-          ),
-        ],
-      ),
+      action: 'Delete',
     );
-    if (confirmed != true || !context.mounted) return;
+    if (!confirmed || !context.mounted) return;
     ExerciseScope.of(context).remove(exercise);
     Navigator.of(context).pop();
   }

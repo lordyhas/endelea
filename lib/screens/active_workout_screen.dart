@@ -5,6 +5,7 @@ import '../app/store_scope.dart';
 import '../data/rest_timer.dart';
 import '../models/exercise.dart';
 import '../utils/format.dart';
+import '../widgets/confirm_dialog.dart';
 import '../widgets/elapsed_time.dart';
 import '../widgets/rest_timer_bar.dart';
 import '../widgets/workout_exercise_card.dart';
@@ -49,24 +50,13 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
   }
 
   Future<void> _discard() async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Discard workout?'),
-        content: const Text('Everything logged in this workout will be lost.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Discard'),
-          ),
-        ],
-      ),
+    final confirmed = await confirm(
+      context,
+      title: 'Discard workout?',
+      message: 'Everything logged in this workout will be lost.',
+      action: 'Discard',
     );
-    if (confirmed != true || !mounted) return;
+    if (!confirmed || !mounted) return;
     _restTimer.stop();
     StoreScope.of(context).discard();
     Navigator.of(context).pop();
