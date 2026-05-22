@@ -61,49 +61,56 @@ class TemplateCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Card.outlined(
       clipBehavior: Clip.antiAlias,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  template.place == TrainingPlace.home
-                      ? Icons.house_outlined
-                      : Icons.fitness_center,
-                  size: 20,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    template.name,
-                    style: theme.textTheme.titleMedium,
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (_) => TemplateEditorScreen(template: template),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    template.place == TrainingPlace.home
+                        ? Icons.house_outlined
+                        : Icons.fitness_center,
+                    size: 20,
                   ),
-                ),
-                Text(
-                  '${template.exercises.length} exercises · '
-                  '${template.setCount} sets',
-                  style: theme.textTheme.bodySmall,
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              template.exercises.map((e) => e.exercise.name).join(', '),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerRight,
-              child: FilledButton.tonalIcon(
-                onPressed: () => _start(context),
-                icon: const Icon(Icons.play_arrow),
-                label: const Text('Start'),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      template.name,
+                      style: theme.textTheme.titleMedium,
+                    ),
+                  ),
+                  Text(
+                    '${template.exercises.length} exercises · '
+                    '${template.setCount} sets',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 8),
+              Text(
+                template.exercises.map((e) => e.exercise.name).join(', '),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerRight,
+                child: FilledButton.tonalIcon(
+                  onPressed: () => _start(context),
+                  icon: const Icon(Icons.play_arrow),
+                  label: const Text('Start'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

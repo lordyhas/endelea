@@ -5,18 +5,25 @@ import '../models/exercise.dart';
 import '../models/workout_template.dart';
 import 'exercise_picker_screen.dart';
 
-/// Creates a workout template.
+/// Creates a workout template, or edits [template] when given.
 class TemplateEditorScreen extends StatefulWidget {
-  const TemplateEditorScreen({super.key});
+  const TemplateEditorScreen({super.key, this.template});
+
+  final WorkoutTemplate? template;
 
   @override
   State<TemplateEditorScreen> createState() => _TemplateEditorScreenState();
 }
 
 class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
-  final _name = TextEditingController();
-  TrainingPlace _place = TrainingPlace.gym;
-  final List<TemplateExercise> _exercises = [];
+  late final _name = TextEditingController(text: widget.template?.name);
+  late TrainingPlace _place = widget.template?.place ?? TrainingPlace.gym;
+
+  /// Copies, so that cancelling leaves the template untouched.
+  late final List<TemplateExercise> _exercises = [
+    for (final entry in widget.template?.exercises ?? <TemplateExercise>[])
+      TemplateExercise(exercise: entry.exercise, sets: entry.sets),
+  ];
 
   @override
   void dispose() {
@@ -41,8 +48,18 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
       );
       return;
     }
-    TemplateScope.of(context)
-        .create(name: name, place: _place, exercises: _exercises);
+    final store = TemplateScope.of(context);
+    final template = widget.template;
+    if (template == null) {
+      store.create(name: name, place: _place, exercises: _exercises);
+    } else {
+      template
+        ..name = name
+        ..place = _place
+        ..exercises.clear()
+        ..exercises.addAll(_exercises);
+      store.touch();
+    }
     Navigator.of(context).pop();
   }
 
@@ -50,7 +67,7 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New routine'),
+        title: Text(widget.template == null ? 'New routine' : 'Edit routine'),
         actions: [TextButton(onPressed: _save, child: const Text('Save'))],
       ),
       body: ListView(
