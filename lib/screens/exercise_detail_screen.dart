@@ -5,8 +5,10 @@ import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../data/exercise_progress.dart';
 import '../models/exercise.dart';
+import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/exercise_tile.dart';
+import '../widgets/line_chart.dart';
 import '../widgets/personal_records.dart';
 
 class ExerciseDetailScreen extends StatelessWidget {
@@ -78,6 +80,32 @@ class ExerciseDetailScreen extends StatelessWidget {
           Text('Personal records', style: theme.textTheme.titleMedium),
           const SizedBox(height: 8),
           PersonalRecords(progress: progress, unit: unit),
+          if (progress.points.length > 1) ...[
+            const SizedBox(height: 24),
+            Text('Progress', style: theme.textTheme.titleMedium),
+            const SizedBox(height: 8),
+            LineChart(
+              values: [
+                for (final point in progress.points)
+                  switch (exercise.tracking) {
+                    TrackingType.weightReps => unit.fromKg(point.bestWeight),
+                    TrackingType.reps => point.bestReps.toDouble(),
+                    TrackingType.duration => point.bestSeconds.toDouble(),
+                  },
+              ],
+              labels: [
+                for (final point in progress.points) formatDay(point.date),
+              ],
+              formatValue: (value) => switch (exercise.tracking) {
+                TrackingType.weightReps =>
+                  '${formatNumber(value)} ${unit.label}',
+                TrackingType.reps => '${value.round()} reps',
+                TrackingType.duration => formatDuration(
+                  Duration(seconds: value.round()),
+                ),
+              },
+            ),
+          ],
         ],
       ),
     );
