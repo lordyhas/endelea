@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../app/store_scope.dart';
 import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout_template.dart';
+import 'active_workout_screen.dart';
 
 class TemplatesScreen extends StatelessWidget {
   const TemplatesScreen({super.key});
@@ -29,6 +31,20 @@ class TemplateCard extends StatelessWidget {
   const TemplateCard({super.key, required this.template});
 
   final WorkoutTemplate template;
+
+  void _start(BuildContext context) {
+    final store = StoreScope.of(context);
+    if (store.active != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Finish your current workout first')),
+      );
+      return;
+    }
+    store.startFromTemplate(template);
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const ActiveWorkoutScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +83,15 @@ class TemplateCard extends StatelessWidget {
               template.exercises.map((e) => e.exercise.name).join(', '),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.centerRight,
+              child: FilledButton.tonalIcon(
+                onPressed: () => _start(context),
+                icon: const Icon(Icons.play_arrow),
+                label: const Text('Start'),
+              ),
             ),
           ],
         ),

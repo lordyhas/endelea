@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import '../models/exercise.dart';
 import '../models/workout.dart';
+import '../models/workout_template.dart';
 import 'rest_timer.dart';
 
 /// In-memory store for the active workout and the workout history.
@@ -32,6 +33,22 @@ class WorkoutStore extends ChangeNotifier {
     );
     notifyListeners();
     return _active!;
+  }
+
+  /// Starts a workout prefilled with the exercises and set count of
+  /// [template].
+  Workout startFromTemplate(WorkoutTemplate template) {
+    final workout = start(name: template.name, place: template.place);
+    for (final entry in template.exercises) {
+      workout.exercises.add(
+        WorkoutExercise(
+          exercise: entry.exercise,
+          sets: List.generate(entry.sets, (_) => WorkoutSet()),
+        ),
+      );
+    }
+    notifyListeners();
+    return workout;
   }
 
   void addExercise(Exercise exercise) {
