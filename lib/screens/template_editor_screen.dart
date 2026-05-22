@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout_template.dart';
+import '../widgets/confirm_dialog.dart';
 import 'exercise_picker_screen.dart';
 
 /// Creates a workout template, or edits [template] when given.
@@ -63,12 +64,33 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
     Navigator.of(context).pop();
   }
 
+  Future<void> _delete() async {
+    final template = widget.template!;
+    final confirmed = await confirm(
+      context,
+      title: 'Delete ${template.name}?',
+      message: 'Workouts done with this routine are kept.',
+      action: 'Delete',
+    );
+    if (!confirmed || !mounted) return;
+    TemplateScope.of(context).remove(template);
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.template == null ? 'New routine' : 'Edit routine'),
-        actions: [TextButton(onPressed: _save, child: const Text('Save'))],
+        actions: [
+          if (widget.template != null)
+            IconButton(
+              tooltip: 'Delete',
+              onPressed: _delete,
+              icon: const Icon(Icons.delete_outline),
+            ),
+          TextButton(onPressed: _save, child: const Text('Save')),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
