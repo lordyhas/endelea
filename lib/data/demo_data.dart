@@ -54,6 +54,28 @@ List<Workout> demoHistory({DateTime? now}) {
       entry('leg-press', sets(3, kg: 140, reps: 10)),
       entry('lunge', sets(3, reps: 12)),
     ]),
+    workout('Push day', TrainingPlace.gym, daysAgo(8, 18), 60, [
+      entry('bench-press', sets(4, kg: 57.5, reps: 8)),
+      entry('overhead-press', sets(3, kg: 32.5, reps: 8)),
+      entry('db-curl', sets(3, kg: 12, reps: 10)),
+    ]),
+    workout('Home circuit', TrainingPlace.home, daysAgo(9, 7), 25, [
+      entry('push-up', sets(3, reps: 16)),
+      entry('air-squat', sets(3, reps: 20)),
+      entry('plank', sets(3, sec: 45)),
+    ]),
+    workout('Leg day', TrainingPlace.gym, daysAgo(11, 18), 52, [
+      entry('back-squat', sets(5, kg: 75, reps: 5)),
+      entry('leg-press', sets(3, kg: 130, reps: 10)),
+    ]),
+    workout('Push day', TrainingPlace.gym, daysAgo(15, 18), 58, [
+      entry('bench-press', sets(4, kg: 55, reps: 8)),
+      entry('overhead-press', sets(3, kg: 30, reps: 8)),
+    ]),
+    workout('Leg day', TrainingPlace.gym, daysAgo(18, 18), 50, [
+      entry('back-squat', sets(5, kg: 70, reps: 5)),
+      entry('leg-press', sets(3, kg: 120, reps: 10)),
+    ]),
     workout('Pull day', TrainingPlace.gym, daysAgo(6, 19), 58, [
       entry('deadlift', sets(3, kg: 100, reps: 5)),
       entry('lat-pulldown', sets(3, kg: 50, reps: 10)),
