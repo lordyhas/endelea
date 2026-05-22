@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
-import '../data/rest_timer.dart';
 import '../models/exercise.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
@@ -19,14 +18,6 @@ class ActiveWorkoutScreen extends StatefulWidget {
 }
 
 class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
-  final _restTimer = RestTimer();
-
-  @override
-  void dispose() {
-    _restTimer.dispose();
-    super.dispose();
-  }
-
   Future<void> _finish() async {
     final store = StoreScope.of(context);
     final navigator = Navigator.of(context);
@@ -37,7 +28,6 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       );
       return;
     }
-    _restTimer.stop();
     final workout = store.finish()!;
     navigator.pop();
     messenger.showSnackBar(
@@ -57,7 +47,6 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       action: 'Discard',
     );
     if (!confirmed || !mounted) return;
-    _restTimer.stop();
     StoreScope.of(context).discard();
     Navigator.of(context).pop();
   }
@@ -111,7 +100,8 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                     key: ObjectKey(entry),
                     entry: entry,
                     onChanged: store.touch,
-                    onSetDone: () => _restTimer.start(settings.restDuration),
+                    onSetDone: () =>
+                        store.restTimer.start(settings.restDuration),
                     onRemove: () => store.removeExercise(entry),
                   ),
                   const SizedBox(height: 12),
@@ -119,7 +109,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                 const SizedBox(height: 88),
               ],
             ),
-      bottomNavigationBar: RestTimerBar(timer: _restTimer),
+      bottomNavigationBar: RestTimerBar(timer: store.restTimer),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           final exercise = await Navigator.of(context).push<Exercise>(
