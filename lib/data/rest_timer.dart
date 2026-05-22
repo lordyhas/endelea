@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 /// Countdown started between two sets.
 class RestTimer extends ChangeNotifier {
@@ -38,6 +39,7 @@ class RestTimer extends ChangeNotifier {
     _remaining -= const Duration(seconds: 1);
     if (_remaining <= Duration.zero) {
       stop();
+      HapticFeedback.heavyImpact();
     } else {
       notifyListeners();
     }
