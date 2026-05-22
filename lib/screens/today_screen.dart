@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'app/settings_scope.dart';
-import 'app/store_scope.dart';
-import 'data/workout_stats.dart';
-import 'screens/active_workout_screen.dart';
-import 'screens/settings_screen.dart';
-import 'screens/start_workout_sheet.dart';
-import 'screens/workout_detail_screen.dart';
-import 'utils/format.dart';
-import 'widgets/stat_card.dart';
-import 'widgets/week_strip.dart';
-import 'widgets/workout_summary_card.dart';
+import '../app/settings_scope.dart';
+import '../app/store_scope.dart';
+import '../data/workout_stats.dart';
+import 'active_workout_screen.dart';
+import 'settings_screen.dart';
+import 'start_workout_sheet.dart';
+import 'workout_detail_screen.dart';
+import '../utils/format.dart';
+import '../widgets/stat_card.dart';
+import '../widgets/week_strip.dart';
+import '../widgets/workout_summary_card.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, this.title});
-
-  final String? title;
+class TodayScreen extends StatelessWidget {
+  const TodayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,7 @@ class MyHomePage extends StatelessWidget {
             icon: const Icon(Icons.settings),
           ),
         ],
-        title: Text(title ?? 'Endelea'),
+        title: const Text('Endelea'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../home_page.dart';
 import 'exercise_library_screen.dart';
 import 'history_screen.dart';
+import 'today_screen.dart';
 
 /// Root screen holding the bottom navigation between the main tabs.
 class HomeShell extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomeShellState extends State<HomeShell> {
   int _index = 0;
 
   static const _tabs = <Widget>[
-    MyHomePage(),
+    TodayScreen(),
     ExerciseLibraryScreen(),
     HistoryScreen(),
   ];
