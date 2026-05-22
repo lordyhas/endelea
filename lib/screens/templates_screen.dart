@@ -5,6 +5,7 @@ import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout_template.dart';
 import 'active_workout_screen.dart';
+import 'template_editor_screen.dart';
 
 class TemplatesScreen extends StatelessWidget {
   const TemplatesScreen({super.key});
@@ -14,6 +15,15 @@ class TemplatesScreen extends StatelessWidget {
     final templates = TemplateScope.of(context).templates;
     return Scaffold(
       appBar: AppBar(title: const Text('Routines')),
+      floatingActionButton: FloatingActionButton(
+        // Tabs live in an IndexedStack with other floating buttons.
+        heroTag: null,
+        tooltip: 'New routine',
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(builder: (_) => const TemplateEditorScreen()),
+        ),
+        child: const Icon(Icons.add),
+      ),
       body: templates.isEmpty
           ? const Center(child: Text('No routine yet'))
           : ListView.separated(
