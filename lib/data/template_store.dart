@@ -1,0 +1,47 @@
+import 'package:flutter/foundation.dart';
+
+import '../models/exercise.dart';
+import '../models/workout.dart';
+import '../models/workout_template.dart';
+
+/// In-memory list of workout templates.
+class TemplateStore extends ChangeNotifier {
+  TemplateStore({List<WorkoutTemplate>? templates})
+    : _templates = templates ?? [];
+
+  final List<WorkoutTemplate> _templates;
+
+  List<WorkoutTemplate> get templates => List.unmodifiable(_templates);
+
+  static String _newId() => 'tpl-${DateTime.now().microsecondsSinceEpoch}';
+
+  WorkoutTemplate create({
+    required String name,
+    required TrainingPlace place,
+    List<TemplateExercise>? exercises,
+  }) {
+    final template = WorkoutTemplate(
+      id: _newId(),
+      name: name,
+      place: place,
+      exercises: exercises,
+    );
+    _templates.add(template);
+    notifyListeners();
+    return template;
+  }
+
+  WorkoutTemplate saveWorkout(Workout workout) {
+    final template = WorkoutTemplate.fromWorkout(workout, id: _newId());
+    _templates.add(template);
+    notifyListeners();
+    return template;
+  }
+
+  void remove(WorkoutTemplate template) {
+    if (_templates.remove(template)) notifyListeners();
+  }
+
+  /// Call after mutating a template.
+  void touch() => notifyListeners();
+}
