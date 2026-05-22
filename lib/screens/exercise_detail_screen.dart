@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../app/exercise_scope.dart';
+import '../app/settings_scope.dart';
+import '../app/store_scope.dart';
+import '../data/exercise_progress.dart';
 import '../models/exercise.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/exercise_tile.dart';
+import '../widgets/personal_records.dart';
 
 class ExerciseDetailScreen extends StatelessWidget {
   const ExerciseDetailScreen({super.key, required this.exercise});
@@ -27,6 +31,8 @@ class ExerciseDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final progress = ExerciseProgress(exercise, StoreScope.of(context).history);
+    final unit = SettingsScope.of(context).settings.weightUnit;
     return Scaffold(
       appBar: AppBar(
         title: Text(exercise.name),
@@ -68,6 +74,10 @@ class ExerciseDetailScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Text(exercise.description, style: theme.textTheme.bodyLarge),
           ],
+          const SizedBox(height: 24),
+          Text('Personal records', style: theme.textTheme.titleMedium),
+          const SizedBox(height: 8),
+          PersonalRecords(progress: progress, unit: unit),
         ],
       ),
     );
