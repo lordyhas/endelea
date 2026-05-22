@@ -1,8 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:endelea/data/workout_stats.dart';
 import 'package:endelea/models/exercise.dart';
 import 'package:endelea/models/workout.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 Workout _workoutOn(DateTime day) => Workout(
   id: day.toIso8601String(),

@@ -1,8 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:endelea/data/settings_store.dart';
 import 'package:endelea/models/settings.dart';
 import 'package:endelea/utils/format.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('WeightUnit', () {

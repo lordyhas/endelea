@@ -1,8 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:endelea/data/exercise_catalog.dart';
 import 'package:endelea/data/workout_store.dart';
 import 'package:endelea/models/exercise.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('WorkoutStore', () {
