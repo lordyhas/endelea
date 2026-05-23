@@ -19,6 +19,33 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
+          const _SectionTitle('Appearance'),
+          ListTile(
+            title: const Text('Theme'),
+            trailing: SegmentedButton<ThemeMode>(
+              showSelectedIcon: false,
+              segments: const [
+                ButtonSegment(
+                  value: ThemeMode.system,
+                  icon: Icon(Icons.brightness_auto_outlined),
+                  tooltip: 'System',
+                ),
+                ButtonSegment(
+                  value: ThemeMode.light,
+                  icon: Icon(Icons.light_mode_outlined),
+                  tooltip: 'Light',
+                ),
+                ButtonSegment(
+                  value: ThemeMode.dark,
+                  icon: Icon(Icons.dark_mode_outlined),
+                  tooltip: 'Dark',
+                ),
+              ],
+              selected: {settings.themeMode},
+              onSelectionChanged: (selection) =>
+                  store.themeMode = selection.first,
+            ),
+          ),
           const _SectionTitle('Units'),
           ListTile(
             title: const Text('Weight'),

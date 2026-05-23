@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart' show ThemeMode;
+
 enum WeightUnit {
   kg('kg', 1),
   lb('lb', 2.20462);
@@ -20,14 +22,20 @@ class AppSettings {
   const AppSettings({
     this.weightUnit = WeightUnit.kg,
     this.restDuration = const Duration(seconds: 90),
+    this.themeMode = ThemeMode.system,
   });
 
   final WeightUnit weightUnit;
   final Duration restDuration;
+  final ThemeMode themeMode;
 
-  AppSettings copyWith({WeightUnit? weightUnit, Duration? restDuration}) =>
-      AppSettings(
-        weightUnit: weightUnit ?? this.weightUnit,
-        restDuration: restDuration ?? this.restDuration,
-      );
+  AppSettings copyWith({
+    WeightUnit? weightUnit,
+    Duration? restDuration,
+    ThemeMode? themeMode,
+  }) => AppSettings(
+    weightUnit: weightUnit ?? this.weightUnit,
+    restDuration: restDuration ?? this.restDuration,
+    themeMode: themeMode ?? this.themeMode,
+  );
 }

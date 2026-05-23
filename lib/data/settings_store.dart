@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' show ChangeNotifier, ThemeMode;
 
 import '../models/settings.dart';
 
@@ -12,6 +12,11 @@ class SettingsStore extends ChangeNotifier {
 
   set weightUnit(WeightUnit unit) {
     _settings = _settings.copyWith(weightUnit: unit);
+    notifyListeners();
+  }
+
+  set themeMode(ThemeMode mode) {
+    _settings = _settings.copyWith(themeMode: mode);
     notifyListeners();
   }
 

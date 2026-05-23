@@ -48,12 +48,16 @@ class MyApp extends StatelessWidget {
           templates: templates,
           child: StoreScope(
             store: store,
-            child: MaterialApp(
-              title: 'Endelea',
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.light(),
-              darkTheme: AppTheme.dark(),
-              home: const HomeShell(),
+            child: ListenableBuilder(
+              listenable: settings,
+              builder: (context, _) => MaterialApp(
+                title: 'Endelea',
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.light(),
+                darkTheme: AppTheme.dark(),
+                themeMode: settings.settings.themeMode,
+                home: const HomeShell(),
+              ),
             ),
           ),
         ),
