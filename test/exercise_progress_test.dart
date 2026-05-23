@@ -40,6 +40,8 @@ void main() {
     expect(progress.points, hasLength(2));
     expect(progress.points.first.date, DateTime(2026, 5, 13));
     expect(progress.last!.bestWeight, 65);
+    expect(progress.last!.heaviestSetReps, 5);
+    expect(progress.last!.bestReps, 8);
     expect(progress.last!.volume, 60 * 8 + 65 * 5);
     expect(progress.heaviestWeight, 65);
     expect(progress.mostReps, 10);

@@ -61,7 +61,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
     if (point == null) return null;
     return switch (tracking) {
       TrackingType.weightReps =>
-        '${formatWeight(point.bestWeight, unit)} × ${point.bestReps}',
+        '${formatWeight(point.bestWeight, unit)} × ${point.heaviestSetReps}',
       TrackingType.reps => '${point.bestReps} reps',
       TrackingType.duration => formatDuration(
         Duration(seconds: point.bestSeconds),

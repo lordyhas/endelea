@@ -14,6 +14,7 @@ class ProgressPoint {
     required this.date,
     required this.bestWeight,
     required this.bestReps,
+    required this.heaviestSetReps,
     required this.bestSeconds,
     required this.oneRepMax,
     required this.volume,
@@ -22,6 +23,9 @@ class ProgressPoint {
   final DateTime date;
   final double bestWeight;
   final int bestReps;
+
+  /// Reps done with [bestWeight], the most if several sets share it.
+  final int heaviestSetReps;
   final int bestSeconds;
   final double oneRepMax;
   final double volume;
@@ -45,10 +49,17 @@ class ExerciseProgress {
           .expand((e) => e.completedSets)
           .toList();
       if (sets.isEmpty) continue;
+      final heaviest = sets.reduce(
+        (a, b) =>
+            b.weight > a.weight || (b.weight == a.weight && b.reps > a.reps)
+            ? b
+            : a,
+      );
       points.add(
         ProgressPoint(
           date: workout.startedAt,
-          bestWeight: sets.map((s) => s.weight).reduce(_max),
+          bestWeight: heaviest.weight,
+          heaviestSetReps: heaviest.reps,
           bestReps: sets.map((s) => s.reps).reduce(_maxInt),
           bestSeconds: sets.map((s) => s.seconds).reduce(_maxInt),
           oneRepMax: sets
