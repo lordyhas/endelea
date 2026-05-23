@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
               title: 'Endelea',
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light(),
+              darkTheme: AppTheme.dark(),
               home: const HomeShell(),
             ),
           ),

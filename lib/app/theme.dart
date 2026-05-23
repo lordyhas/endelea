@@ -5,8 +5,15 @@ class AppTheme {
 
   static const Color seed = Colors.deepOrange;
 
-  static ThemeData light() {
-    final scheme = ColorScheme.fromSeed(seedColor: seed);
+  static ThemeData light() => _build(Brightness.light);
+
+  static ThemeData dark() => _build(Brightness.dark);
+
+  static ThemeData _build(Brightness brightness) {
+    final scheme = ColorScheme.fromSeed(
+      seedColor: seed,
+      brightness: brightness,
+    );
     return ThemeData(
       colorScheme: scheme,
       appBarTheme: AppBarTheme(
