@@ -72,6 +72,22 @@ class WorkoutDetailScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
+          if (workout.notes.trim().isNotEmpty) ...[
+            Card.filled(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(Icons.notes, size: 20),
+                    const SizedBox(width: 8),
+                    Expanded(child: Text(workout.notes.trim())),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
           for (final entry in workout.exercises) ...[
             Text(entry.exercise.name, style: theme.textTheme.titleMedium),
             const SizedBox(height: 4),

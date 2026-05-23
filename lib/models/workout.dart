@@ -43,6 +43,7 @@ class Workout {
     required this.place,
     required this.startedAt,
     this.finishedAt,
+    this.notes = '',
     List<WorkoutExercise>? exercises,
   }) : exercises = exercises ?? [];
 
@@ -51,6 +52,7 @@ class Workout {
   final TrainingPlace place;
   final DateTime startedAt;
   DateTime? finishedAt;
+  String notes;
   final List<WorkoutExercise> exercises;
 
   bool get isFinished => finishedAt != null;

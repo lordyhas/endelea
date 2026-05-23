@@ -129,6 +129,16 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                   ),
                   const SizedBox(height: 12),
                 ],
+                TextFormField(
+                  initialValue: workout.notes,
+                  maxLines: null,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: const InputDecoration(
+                    labelText: 'Notes',
+                    hintText: 'How did it feel?',
+                  ),
+                  onChanged: (value) => workout.notes = value,
+                ),
                 const SizedBox(height: 88),
               ],
             ),
