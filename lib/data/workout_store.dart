@@ -89,6 +89,11 @@ class WorkoutStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Removes a finished workout from the history.
+  void delete(Workout workout) {
+    if (_history.remove(workout)) notifyListeners();
+  }
+
   /// Call after mutating an exercise or a set of the active workout.
   void touch() => notifyListeners();
 

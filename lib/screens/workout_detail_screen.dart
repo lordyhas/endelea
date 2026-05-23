@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../app/settings_scope.dart';
+import '../app/store_scope.dart';
 import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/settings.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
+import '../widgets/confirm_dialog.dart';
 
 class WorkoutDetailScreen extends StatelessWidget {
   const WorkoutDetailScreen({super.key, required this.workout});
@@ -17,6 +19,18 @@ class WorkoutDetailScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Routine "${template.name}" created')),
     );
+  }
+
+  Future<void> _delete(BuildContext context) async {
+    final confirmed = await confirm(
+      context,
+      title: 'Delete workout?',
+      message: 'It will be removed from your history and stats.',
+      action: 'Delete',
+    );
+    if (!confirmed || !context.mounted) return;
+    StoreScope.of(context).delete(workout);
+    Navigator.of(context).pop();
   }
 
   @override
@@ -32,6 +46,10 @@ class WorkoutDetailScreen extends StatelessWidget {
               PopupMenuItem(
                 onTap: () => _saveAsRoutine(context),
                 child: const Text('Save as routine'),
+              ),
+              PopupMenuItem(
+                onTap: () => _delete(context),
+                child: const Text('Delete'),
               ),
             ],
           ),

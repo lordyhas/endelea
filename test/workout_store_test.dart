@@ -1,6 +1,7 @@
 import 'package:endelea/data/exercise_catalog.dart';
 import 'package:endelea/data/workout_store.dart';
 import 'package:endelea/models/exercise.dart';
+import 'package:endelea/models/workout.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -33,6 +34,22 @@ void main() {
       expect(saved!.exercises, hasLength(1));
       expect(saved.volume, 500);
       expect(saved.isFinished, isTrue);
+    });
+
+    test('delete removes a workout from the history', () {
+      final store = WorkoutStore();
+      store.start(name: 'Test', place: TrainingPlace.home);
+      store.active!.exercises.add(
+        WorkoutExercise(
+          exercise: exerciseById('push-up')!,
+          sets: [WorkoutSet(reps: 10, done: true)],
+        ),
+      );
+      final saved = store.finish()!;
+
+      store.delete(saved);
+
+      expect(store.history, isEmpty);
     });
 
     test('discard drops the active workout', () {
