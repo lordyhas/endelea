@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
+import '../data/exercise_progress.dart';
 import '../models/exercise.dart';
+import '../models/settings.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/elapsed_time.dart';
@@ -49,6 +51,22 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
     if (!confirmed || !mounted) return;
     StoreScope.of(context).discard();
     Navigator.of(context).pop();
+  }
+
+  static String? _lastPerformance(
+    ProgressPoint? point,
+    TrackingType tracking,
+    WeightUnit unit,
+  ) {
+    if (point == null) return null;
+    return switch (tracking) {
+      TrackingType.weightReps =>
+        '${formatWeight(point.bestWeight, unit)} × ${point.bestReps}',
+      TrackingType.reps => '${point.bestReps} reps',
+      TrackingType.duration => formatDuration(
+        Duration(seconds: point.bestSeconds),
+      ),
+    };
   }
 
   @override
@@ -103,6 +121,11 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                     onSetDone: () =>
                         store.restTimer.start(settings.restDuration),
                     onRemove: () => store.removeExercise(entry),
+                    lastPerformance: _lastPerformance(
+                      ExerciseProgress(entry.exercise, store.history).last,
+                      entry.exercise.tracking,
+                      settings.weightUnit,
+                    ),
                   ),
                   const SizedBox(height: 12),
                 ],
