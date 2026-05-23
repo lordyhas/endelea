@@ -15,6 +15,12 @@ import 'workout_detail_screen.dart';
 class TodayScreen extends StatelessWidget {
   const TodayScreen({super.key});
 
+  static String _greeting(DateTime now) {
+    if (now.hour < 12) return 'Good morning';
+    if (now.hour < 18) return 'Good afternoon';
+    return 'Good evening';
+  }
+
   @override
   Widget build(BuildContext context) {
     final store = StoreScope.of(context);
@@ -39,7 +45,12 @@ class TodayScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           Text(formatDay(stats.now), style: theme.textTheme.labelLarge),
-          Text('Keep going!', style: theme.textTheme.headlineSmall),
+          Text(
+            stats.workoutsThisWeek == 0
+                ? '${_greeting(stats.now)}, ready to train?'
+                : '${_greeting(stats.now)}, keep going!',
+            style: theme.textTheme.headlineSmall,
+          ),
           const SizedBox(height: 16),
           WeekStrip(activity: stats.weekActivity, today: stats.now),
           const SizedBox(height: 16),
