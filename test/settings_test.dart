@@ -1,6 +1,7 @@
 import 'package:endelea/data/settings_store.dart';
 import 'package:endelea/models/settings.dart';
 import 'package:endelea/utils/format.dart';
+import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -38,6 +39,7 @@ void main() {
 
       expect(store.settings.weightUnit, WeightUnit.kg);
       expect(store.settings.restDuration, const Duration(seconds: 90));
+      expect(store.settings.themeMode, ThemeMode.system);
     });
 
     test('notifies listeners when a preference changes', () {
@@ -47,8 +49,10 @@ void main() {
 
       store.weightUnit = WeightUnit.lb;
       store.restDuration = const Duration(minutes: 2);
+      store.themeMode = ThemeMode.dark;
 
-      expect(notified, 2);
+      expect(notified, 3);
+      expect(store.settings.themeMode, ThemeMode.dark);
       expect(store.settings.weightUnit, WeightUnit.lb);
       expect(store.settings.restDuration, const Duration(minutes: 2));
     });
