@@ -8,6 +8,7 @@ import '../models/settings.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
+import 'active_workout_screen.dart';
 
 class WorkoutDetailScreen extends StatelessWidget {
   const WorkoutDetailScreen({super.key, required this.workout});
@@ -18,6 +19,20 @@ class WorkoutDetailScreen extends StatelessWidget {
     final template = TemplateScope.of(context).saveWorkout(workout);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Routine "${template.name}" created')),
+    );
+  }
+
+  void _repeat(BuildContext context) {
+    final store = StoreScope.of(context);
+    if (store.active != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Finish your current workout first')),
+      );
+      return;
+    }
+    store.repeat(workout);
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute<void>(builder: (_) => const ActiveWorkoutScreen()),
     );
   }
 
@@ -43,6 +58,10 @@ class WorkoutDetailScreen extends StatelessWidget {
         actions: [
           PopupMenuButton<void>(
             itemBuilder: (_) => [
+              PopupMenuItem(
+                onTap: () => _repeat(context),
+                child: const Text('Repeat workout'),
+              ),
               PopupMenuItem(
                 onTap: () => _saveAsRoutine(context),
                 child: const Text('Save as routine'),

@@ -51,6 +51,21 @@ class WorkoutStore extends ChangeNotifier {
     return workout;
   }
 
+  /// Starts a new workout with the same exercises and set values as [past].
+  Workout repeat(Workout past) {
+    final workout = start(name: past.name, place: past.place);
+    for (final entry in past.exercises) {
+      workout.exercises.add(
+        WorkoutExercise(
+          exercise: entry.exercise,
+          sets: [for (final set in entry.sets) set.copy()..done = false],
+        ),
+      );
+    }
+    notifyListeners();
+    return workout;
+  }
+
   void addExercise(Exercise exercise) {
     final workout = _active;
     if (workout == null) return;
