@@ -129,16 +129,11 @@ class WorkoutDetailScreen extends StatelessWidget {
     TrackingType tracking,
     WorkoutSet set,
     WeightUnit unit,
-  ) {
-    switch (tracking) {
-      case TrackingType.weightReps:
-        return '${formatWeight(set.weight, unit)} × ${set.reps}';
-      case TrackingType.reps:
-        return '${set.reps} reps';
-      case TrackingType.duration:
-        return formatDuration(Duration(seconds: set.seconds));
-    }
-  }
+  ) => switch (tracking) {
+    .weightReps => '${formatWeight(set.weight, unit)} × ${set.reps}',
+    .reps => '${set.reps} reps',
+    .duration => formatDuration(Duration(seconds: set.seconds)),
+  };
 }
 
 class _Metric extends StatelessWidget {
