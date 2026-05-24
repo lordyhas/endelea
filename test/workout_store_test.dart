@@ -36,6 +36,28 @@ void main() {
       expect(saved.isFinished, isTrue);
     });
 
+    test('repeat copies exercises and set values as not done', () {
+      final store = WorkoutStore();
+      store.start(name: 'Legs', place: TrainingPlace.gym);
+      store.addExercise(exerciseById('bench-press')!);
+      store.active!.exercises.first.sets.first
+        ..weight = 60
+        ..reps = 8
+        ..done = true;
+      final past = store.finish()!;
+
+      final repeated = store.repeat(past);
+
+      expect(store.active, same(repeated));
+      expect(repeated.name, 'Legs');
+      expect(repeated.place, TrainingPlace.gym);
+      final set = repeated.exercises.single.sets.single;
+      expect(set.weight, 60);
+      expect(set.reps, 8);
+      expect(set.done, isFalse);
+      expect(past.exercises.single.sets.single.done, isTrue);
+    });
+
     test('delete removes a workout from the history', () {
       final store = WorkoutStore();
       store.start(name: 'Test', place: TrainingPlace.home);
