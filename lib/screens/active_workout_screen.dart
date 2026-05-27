@@ -5,6 +5,7 @@ import '../app/store_scope.dart';
 import '../data/exercise_progress.dart';
 import '../models/exercise.dart';
 import '../models/settings.dart';
+import '../models/workout.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/elapsed_time.dart';
@@ -51,6 +52,19 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
     if (!confirmed || !mounted) return;
     StoreScope.of(context).discard();
     Navigator.of(context).pop();
+  }
+
+  Future<void> _remove(WorkoutExercise entry) async {
+    if (entry.completedSets.isNotEmpty) {
+      final confirmed = await confirm(
+        context,
+        title: 'Remove ${entry.exercise.name}?',
+        message: 'Its completed sets will be lost.',
+        action: 'Remove',
+      );
+      if (!confirmed || !mounted) return;
+    }
+    StoreScope.of(context).removeExercise(entry);
   }
 
   static String? _lastPerformance(
@@ -120,7 +134,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                     onChanged: store.touch,
                     onSetDone: () =>
                         store.restTimer.start(settings.restDuration),
-                    onRemove: () => store.removeExercise(entry),
+                    onRemove: () => _remove(entry),
                     lastPerformance: _lastPerformance(
                       ExerciseProgress(entry.exercise, store.history).last,
                       entry.exercise.tracking,
