@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../app/app_info.dart';
 import '../app/settings_scope.dart';
 import '../models/settings.dart';
 import '../utils/format.dart';
@@ -83,6 +84,18 @@ class SettingsScreen extends StatelessWidget {
                         store.restDuration = Duration(seconds: seconds),
                   ),
               ],
+            ),
+          ),
+          const _SectionTitle('About'),
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: const Text('About ${AppInfo.name}'),
+            subtitle: const Text('Version ${AppInfo.version}'),
+            onTap: () => showAboutDialog(
+              context: context,
+              applicationName: AppInfo.name,
+              applicationVersion: AppInfo.version,
+              applicationLegalese: 'Track your workouts at the gym or at home.',
             ),
           ),
         ],

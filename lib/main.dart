@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'app/app_info.dart';
 import 'app/exercise_scope.dart';
 import 'app/settings_scope.dart';
 import 'app/store_scope.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
             child: ListenableBuilder(
               listenable: settings,
               builder: (context, _) => MaterialApp(
-                title: 'Endelea',
+                title: AppInfo.name,
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.light(),
                 darkTheme: AppTheme.dark(),
