@@ -53,4 +53,17 @@ void main() {
     expect(stats.weekActivity, [1, 0, 0, 1, 0, 0, 0]);
     expect(stats.timeThisWeek, const Duration(hours: 1));
   });
+
+  test('totals cover the whole history', () {
+    final stats = WorkoutStats([
+      _workoutOn(DateTime(2026, 4, 30, 8)),
+      _workoutOn(DateTime(2026, 3, 2, 8)),
+      _workoutOn(DateTime(2025, 12, 24, 8)),
+    ], now: now);
+
+    expect(stats.totalWorkouts, 3);
+    expect(stats.totalTime, const Duration(minutes: 90));
+    expect(stats.totalVolume, 0);
+    expect(stats.workoutsThisWeek, 1);
+  });
 }
