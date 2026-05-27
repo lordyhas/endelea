@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
+import '../data/workout_stats.dart';
 import '../utils/format.dart';
 import '../widgets/workout_summary_card.dart';
 import 'workout_detail_screen.dart';
@@ -23,16 +25,36 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final history = StoreScope.of(context).history;
+    final unit = SettingsScope.of(context).settings.weightUnit;
     final now = DateTime.now();
-    final children = <Widget>[];
+    final stats = WorkoutStats(history, now: now);
+    final children = <Widget>[
+      if (history.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Card.filled(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Row(
+                children: [
+                  _Total('Workouts', '${stats.totalWorkouts}'),
+                  _Total('Time', formatDuration(stats.totalTime)),
+                  _Total('Volume', formatWeight(stats.totalVolume, unit)),
+                ],
+              ),
+            ),
+          ),
+        ),
+    ];
     DateTime? currentWeek;
     for (final workout in history) {
       final week = _weekOf(workout.startedAt);
       if (week != currentWeek) {
+        final first = currentWeek == null;
         currentWeek = week;
         children.add(
           Padding(
-            padding: EdgeInsets.only(top: children.isEmpty ? 0 : 12, bottom: 8),
+            padding: EdgeInsets.only(top: first ? 0 : 12, bottom: 8),
             child: Text(
               _weekLabel(week, now),
               style: Theme.of(context).textTheme.titleSmall,
@@ -75,6 +97,26 @@ class _EmptyHistory extends StatelessWidget {
           SizedBox(height: 8),
           Text('No workout yet'),
           Text('Finished workouts will show up here'),
+        ],
+      ),
+    );
+  }
+}
+
+class _Total extends StatelessWidget {
+  const _Total(this.label, this.value);
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Expanded(
+      child: Column(
+        children: [
+          Text(value, style: theme.textTheme.titleMedium),
+          Text(label, style: theme.textTheme.labelSmall),
         ],
       ),
     );
