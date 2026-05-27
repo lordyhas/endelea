@@ -35,6 +35,13 @@ class WorkoutStats {
     return counts;
   }
 
+  int get totalWorkouts => history.length;
+
+  double get totalVolume => history.fold(0, (total, w) => total + w.volume);
+
+  Duration get totalTime =>
+      history.fold(Duration.zero, (total, w) => total + w.duration);
+
   /// Consecutive days with at least one workout, ending today or yesterday.
   int get streak {
     final days = history.map((w) => _day(w.startedAt)).toSet();
