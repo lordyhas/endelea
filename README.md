@@ -19,8 +19,8 @@ workouts.
   a past workout.
 - **Rest timer**: starts automatically when a set is completed, with +15s and
   skip, and keeps running when leaving the workout screen.
-- **History**: finished workouts grouped by week, with a detail page per
-  workout.
+- **History**: all-time totals and finished workouts grouped by week, with a
+  detail page per workout to repeat it, save it as a routine or delete it.
 - **Today**: weekly activity, training streak, weekly volume and recent
   workouts.
 - **Settings**: light, dark or system theme, weights in kg or lb and default
