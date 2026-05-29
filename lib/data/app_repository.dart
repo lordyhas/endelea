@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import '../models/exercise.dart';
 import '../models/settings.dart';
+import '../models/workout.dart';
 import '../models/workout_template.dart';
 import 'storage/key_value_storage.dart';
 
@@ -14,6 +15,7 @@ class AppRepository {
   static const settingsKey = 'settings';
   static const exercisesKey = 'exercises';
   static const routinesKey = 'routines';
+  static const historyKey = 'history';
 
   Future<Object?> _readJson(String key) async {
     final text = await storage.read(key);
@@ -54,4 +56,14 @@ class AppRepository {
 
   Future<void> saveRoutines(List<WorkoutTemplate> routines) =>
       _writeJson(routinesKey, [for (final t in routines) t.toJson()]);
+
+  Future<List<Workout>?> loadHistory(ExerciseLookup lookup) async {
+    final json = await _readJson(historyKey) as List?;
+    return json
+        ?.map((w) => Workout.fromJson(w as Map<String, dynamic>, lookup))
+        .toList();
+  }
+
+  Future<void> saveHistory(List<Workout> history) =>
+      _writeJson(historyKey, [for (final w in history) w.toJson()]);
 }
