@@ -38,4 +38,26 @@ class AppSettings {
     restDuration: restDuration ?? this.restDuration,
     themeMode: themeMode ?? this.themeMode,
   );
+
+  /// Missing or unknown values fall back to the defaults.
+  factory AppSettings.fromJson(Map<String, dynamic> json) {
+    const defaults = AppSettings();
+    final rest = json['restSeconds'] as int?;
+    return AppSettings(
+      weightUnit:
+          WeightUnit.values.asNameMap()[json['weightUnit']] ??
+          defaults.weightUnit,
+      restDuration: rest == null
+          ? defaults.restDuration
+          : Duration(seconds: rest),
+      themeMode:
+          ThemeMode.values.asNameMap()[json['themeMode']] ?? defaults.themeMode,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'weightUnit': weightUnit.name,
+    'restSeconds': restDuration.inSeconds,
+    'themeMode': themeMode.name,
+  };
 }
