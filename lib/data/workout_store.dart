@@ -7,7 +7,8 @@ import 'rest_timer.dart';
 
 /// In-memory store for the active workout and the workout history.
 class WorkoutStore extends ChangeNotifier {
-  WorkoutStore({List<Workout>? history}) : _history = history ?? [];
+  WorkoutStore({List<Workout>? history, this._active})
+    : _history = history ?? [];
 
   final List<Workout> _history;
   Workout? _active;

@@ -16,6 +16,7 @@ class AppRepository {
   static const exercisesKey = 'exercises';
   static const routinesKey = 'routines';
   static const historyKey = 'history';
+  static const activeKey = 'active';
 
   Future<Object?> _readJson(String key) async {
     final text = await storage.read(key);
@@ -66,4 +67,16 @@ class AppRepository {
 
   Future<void> saveHistory(List<Workout> history) =>
       _writeJson(historyKey, [for (final w in history) w.toJson()]);
+
+  Future<Workout?> loadActive(ExerciseLookup lookup) async {
+    final json = await _readJson(activeKey);
+    return json == null
+        ? null
+        : Workout.fromJson(json as Map<String, dynamic>, lookup);
+  }
+
+  /// Saves the workout in progress, or forgets it when [workout] is null.
+  Future<void> saveActive(Workout? workout) => workout == null
+      ? storage.delete(activeKey)
+      : _writeJson(activeKey, workout.toJson());
 }
