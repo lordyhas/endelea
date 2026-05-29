@@ -70,6 +70,28 @@ class Exercise {
   /// Whether the user created this exercise.
   final bool custom;
 
+  factory Exercise.fromJson(Map<String, dynamic> json) => Exercise(
+    id: json['id'] as String,
+    name: json['name'] as String,
+    muscleGroup: MuscleGroup.values.byName(json['muscleGroup'] as String),
+    equipment: Equipment.values.byName(json['equipment'] as String),
+    place: TrainingPlace.values.byName(json['place'] as String),
+    tracking: TrackingType.values.byName(json['tracking'] as String),
+    description: json['description'] as String? ?? '',
+    custom: json['custom'] as bool? ?? true,
+  );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'muscleGroup': muscleGroup.name,
+    'equipment': equipment.name,
+    'place': place.name,
+    'tracking': tracking.name,
+    'description': description,
+    'custom': custom,
+  };
+
   @override
   bool operator ==(Object other) => other is Exercise && other.id == id;
 
