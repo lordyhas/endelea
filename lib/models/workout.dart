@@ -21,6 +21,20 @@ class WorkoutSet {
 
   WorkoutSet copy() =>
       WorkoutSet(reps: reps, weight: weight, seconds: seconds, done: done);
+
+  factory WorkoutSet.fromJson(Map<String, dynamic> json) => WorkoutSet(
+    reps: json['reps'] as int? ?? 0,
+    weight: (json['weight'] as num? ?? 0).toDouble(),
+    seconds: json['seconds'] as int? ?? 0,
+    done: json['done'] as bool? ?? false,
+  );
+
+  Map<String, dynamic> toJson() => {
+    'reps': reps,
+    'weight': weight,
+    'seconds': seconds,
+    'done': done,
+  };
 }
 
 class WorkoutExercise {
