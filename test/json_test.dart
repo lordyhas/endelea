@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:endelea/data/exercise_catalog.dart';
 import 'package:endelea/models/exercise.dart';
+import 'package:endelea/models/settings.dart';
 import 'package:endelea/models/workout.dart';
+import 'package:endelea/models/workout_template.dart';
+import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter_test/flutter_test.dart';
 
 /// Encodes and decodes like the files on disk do.
@@ -69,5 +72,66 @@ void main() {
 
       expect(copy.exercises.single.exercise.id, 'bench-press');
     });
+  });
+
+  test('routine round trips its exercises and set counts', () {
+    final template = WorkoutTemplate(
+      id: 't1',
+      name: 'Legs',
+      place: TrainingPlace.gym,
+      exercises: [
+        TemplateExercise(exercise: exerciseById('back-squat')!, sets: 5),
+        TemplateExercise(exercise: exerciseById('plank')!),
+      ],
+    );
+
+    final copy = WorkoutTemplate.fromJson(
+      _roundTrip(template.toJson()),
+      exerciseById,
+    );
+
+    expect(copy.name, 'Legs');
+    expect(copy.place, TrainingPlace.gym);
+    expect(copy.exercises.map((e) => e.sets), [5, 3]);
+  });
+
+  test('custom exercise round trips', () {
+    const exercise = Exercise(
+      id: 'custom-1',
+      name: 'Sled push',
+      muscleGroup: MuscleGroup.legs,
+      equipment: Equipment.machine,
+      place: TrainingPlace.gym,
+      tracking: TrackingType.duration,
+      description: 'Push hard',
+      custom: true,
+    );
+
+    final copy = Exercise.fromJson(_roundTrip(exercise.toJson()));
+
+    expect(copy, exercise);
+    expect(copy.name, 'Sled push');
+    expect(copy.muscleGroup, MuscleGroup.legs);
+    expect(copy.equipment, Equipment.machine);
+    expect(copy.tracking, TrackingType.duration);
+    expect(copy.description, 'Push hard');
+    expect(copy.custom, isTrue);
+  });
+
+  test('settings round trip and fall back to defaults', () {
+    const settings = AppSettings(
+      weightUnit: WeightUnit.lb,
+      restDuration: Duration(seconds: 120),
+      themeMode: ThemeMode.dark,
+    );
+
+    final copy = AppSettings.fromJson(_roundTrip(settings.toJson()));
+    final fallback = AppSettings.fromJson({'weightUnit': 'stone'});
+
+    expect(copy.weightUnit, WeightUnit.lb);
+    expect(copy.restDuration, const Duration(seconds: 120));
+    expect(copy.themeMode, ThemeMode.dark);
+    expect(fallback.weightUnit, WeightUnit.kg);
+    expect(fallback.restDuration, const Duration(seconds: 90));
   });
 }
