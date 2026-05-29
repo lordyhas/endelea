@@ -6,22 +6,46 @@ import 'app/settings_scope.dart';
 import 'app/store_scope.dart';
 import 'app/template_scope.dart';
 import 'app/theme.dart';
-import 'data/demo_data.dart';
+import 'data/app_loader.dart';
+import 'data/app_repository.dart';
+import 'data/auto_save.dart';
 import 'data/exercise_store.dart';
 import 'data/settings_store.dart';
+import 'data/storage/file_storage.dart';
+import 'data/storage/key_value_storage.dart';
 import 'data/template_store.dart';
 import 'data/workout_store.dart';
 import 'screens/home_shell.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final repository = AppRepository(await _openStorage());
+  final stores = await loadStores(repository);
+  AutoSave(
+    repository: repository,
+    workouts: stores.workouts,
+    settings: stores.settings,
+    exercises: stores.exercises,
+    templates: stores.templates,
+  );
   runApp(
     MyApp(
-      store: WorkoutStore(history: demoHistory()),
-      settings: SettingsStore(),
-      exercises: ExerciseStore(),
-      templates: TemplateStore(templates: demoTemplates()),
+      store: stores.workouts,
+      settings: stores.settings,
+      exercises: stores.exercises,
+      templates: stores.templates,
     ),
   );
+}
+
+/// Files in the documents folder, or memory where there is no file system.
+Future<KeyValueStorage> _openStorage() async {
+  try {
+    return await FileStorage.inDocuments();
+  } catch (error) {
+    debugPrint('Data will not be saved: $error');
+    return MemoryStorage();
+  }
 }
 
 class MyApp extends StatelessWidget {
