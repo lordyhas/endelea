@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../models/exercise.dart';
 import '../models/settings.dart';
 import 'storage/key_value_storage.dart';
 
@@ -10,6 +11,7 @@ class AppRepository {
   final KeyValueStorage storage;
 
   static const settingsKey = 'settings';
+  static const exercisesKey = 'exercises';
 
   Future<Object?> _readJson(String key) async {
     final text = await storage.read(key);
@@ -28,4 +30,14 @@ class AppRepository {
 
   Future<void> saveSettings(AppSettings settings) =>
       _writeJson(settingsKey, settings.toJson());
+
+  Future<List<Exercise>?> loadCustomExercises() async {
+    final json = await _readJson(exercisesKey) as List?;
+    return json
+        ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<void> saveCustomExercises(List<Exercise> exercises) =>
+      _writeJson(exercisesKey, [for (final e in exercises) e.toJson()]);
 }
