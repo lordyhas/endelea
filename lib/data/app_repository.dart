@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import '../models/exercise.dart';
 import '../models/settings.dart';
+import '../models/workout_template.dart';
 import 'storage/key_value_storage.dart';
 
 /// Reads and writes the app data as json documents.
@@ -12,6 +13,7 @@ class AppRepository {
 
   static const settingsKey = 'settings';
   static const exercisesKey = 'exercises';
+  static const routinesKey = 'routines';
 
   Future<Object?> _readJson(String key) async {
     final text = await storage.read(key);
@@ -40,4 +42,16 @@ class AppRepository {
 
   Future<void> saveCustomExercises(List<Exercise> exercises) =>
       _writeJson(exercisesKey, [for (final e in exercises) e.toJson()]);
+
+  Future<List<WorkoutTemplate>?> loadRoutines(ExerciseLookup lookup) async {
+    final json = await _readJson(routinesKey) as List?;
+    return json
+        ?.map(
+          (t) => WorkoutTemplate.fromJson(t as Map<String, dynamic>, lookup),
+        )
+        .toList();
+  }
+
+  Future<void> saveRoutines(List<WorkoutTemplate> routines) =>
+      _writeJson(routinesKey, [for (final t in routines) t.toJson()]);
 }
