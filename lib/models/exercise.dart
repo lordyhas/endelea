@@ -44,6 +44,9 @@ enum TrainingPlace {
 /// How a set of this exercise is measured.
 enum TrackingType { weightReps, reps, duration }
 
+/// Finds an exercise from its id, used when reading saved data.
+typedef ExerciseLookup = Exercise? Function(String id);
+
 class Exercise {
   const Exercise({
     required this.id,
