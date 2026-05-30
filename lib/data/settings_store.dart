@@ -32,6 +32,11 @@ class SettingsStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  set weeklyGoal(int goal) {
+    _settings = _settings.copyWith(weeklyGoal: goal.clamp(1, 7));
+    notifyListeners();
+  }
+
   set restDuration(Duration duration) {
     _settings = _settings.copyWith(restDuration: duration);
     notifyListeners();
