@@ -73,4 +73,17 @@ void main() {
     await repository.saveActive(null);
     expect(await repository.loadActive(exerciseById), isNull);
   });
+
+  test('keeps unreadable data aside and reads it as missing', () async {
+    final storage = MemoryStorage({
+      AppRepository.historyKey: '[{"id": 1',
+      AppRepository.settingsKey: '"not settings"',
+    });
+    final broken = AppRepository(storage);
+
+    expect(await broken.loadHistory(exerciseById), isNull);
+    expect(await broken.loadSettings(), isNull);
+    expect(storage.values['history-unreadable'], '[{"id": 1');
+    expect(storage.values['settings-unreadable'], '"not settings"');
+  });
 }
