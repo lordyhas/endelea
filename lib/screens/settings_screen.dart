@@ -10,6 +10,7 @@ import '../data/export.dart';
 import '../models/settings.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
+import '../widgets/show_message.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -25,8 +26,7 @@ class SettingsScreen extends StatelessWidget {
     );
     await Clipboard.setData(ClipboardData(text: json));
     if (!context.mounted) return;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('Data copied as JSON')));
+    showMessage(context, 'Data copied as JSON');
   }
 
   Future<void> _eraseAll(BuildContext context) async {
@@ -43,8 +43,7 @@ class SettingsScreen extends StatelessWidget {
     TemplateScope.of(context).clear();
     ExerciseScope.of(context).clear();
     SettingsScope.of(context).reset();
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('All data erased')));
+    showMessage(context, 'All data erased');
   }
 
   @override

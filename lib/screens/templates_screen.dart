@@ -4,6 +4,7 @@ import '../app/store_scope.dart';
 import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout_template.dart';
+import '../widgets/show_message.dart';
 import 'active_workout_screen.dart';
 import 'template_editor_screen.dart';
 
@@ -45,9 +46,7 @@ class TemplateCard extends StatelessWidget {
   void _start(BuildContext context) {
     final store = StoreScope.of(context);
     if (store.active != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Finish your current workout first')),
-      );
+      showMessage(context, 'Finish your current workout first');
       return;
     }
     store.startFromTemplate(template);
