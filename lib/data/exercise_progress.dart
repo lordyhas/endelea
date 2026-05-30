@@ -92,3 +92,24 @@ class ExerciseProgress {
 
   ProgressPoint? get last => points.isEmpty ? null : points.last;
 }
+
+/// Exercises of [workout] beating their best result in [previous] workouts.
+///
+/// The first time an exercise is done does not count as a record.
+List<Exercise> newRecords(Workout workout, List<Workout> previous) {
+  final records = <Exercise>[];
+  for (final entry in workout.exercises) {
+    final exercise = entry.exercise;
+    if (records.contains(exercise)) continue;
+    final before = ExerciseProgress(exercise, previous);
+    final now = ExerciseProgress(exercise, [workout]).last;
+    if (before.isEmpty || now == null) continue;
+    final beaten = switch (exercise.tracking) {
+      .weightReps => now.bestWeight > before.heaviestWeight,
+      .reps => now.bestReps > before.mostReps,
+      .duration => now.bestSeconds > before.longestSeconds,
+    };
+    if (beaten) records.add(exercise);
+  }
+  return records;
+}
