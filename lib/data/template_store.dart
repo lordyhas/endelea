@@ -41,6 +41,13 @@ class TemplateStore extends ChangeNotifier {
     if (_templates.remove(template)) notifyListeners();
   }
 
+  void replaceAll(List<WorkoutTemplate> templates) {
+    _templates
+      ..clear()
+      ..addAll(templates);
+    notifyListeners();
+  }
+
   void clear() {
     _templates.clear();
     notifyListeners();
