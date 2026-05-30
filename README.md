@@ -23,15 +23,19 @@ workouts.
   detail page per workout to repeat it, save it as a routine or delete it.
 - **Today**: weekly activity, training streak, weekly volume and recent
   workouts.
-- **Settings**: light, dark or system theme, weights in kg or lb and default
-  rest duration.
+- **Settings**: light, dark or system theme, weights in kg or lb, default
+  rest duration, copy all data as JSON and erase all data.
+- **Saved on the device**: workouts, the workout in progress, routines, custom
+  exercises and settings are kept as JSON files in the app documents folder.
+  The first launch starts with demo data.
 
 ## Project structure
 
 ```
 lib/
   app/        theme and the scopes exposing the stores
-  data/       stores, exercise catalog, stats, progress, demo data
+  data/       stores, saving and loading, exercise catalog, stats, progress,
+              demo data
   models/     exercise, workout, template and settings models
   screens/    app screens
   utils/      formatting helpers
@@ -54,5 +58,4 @@ flutter test
 
 ## Roadmap
 
-- Save workouts on the device
 - Backup and sync
