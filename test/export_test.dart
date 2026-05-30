@@ -67,4 +67,32 @@ void main() {
     expect(() => parseExport('{"app": "Other"}'), throwsFormatException);
     expect(() => parseExport('{"app": "Endelea"}'), throwsFormatException);
   });
+
+  test('restore replaces the data but keeps the workout in progress', () {
+    final source = parseExport(
+      exportData(
+        workouts: WorkoutStore(history: demoHistory()),
+        settings: SettingsStore(const AppSettings(weightUnit: WeightUnit.lb)),
+        exercises: ExerciseStore(),
+        templates: TemplateStore(templates: demoTemplates()),
+      ),
+    );
+    final workouts = WorkoutStore()
+      ..start(name: 'Now', place: TrainingPlace.home);
+    final settings = SettingsStore();
+    final templates = TemplateStore();
+
+    restoreData(
+      source,
+      workouts: workouts,
+      settings: settings,
+      exercises: ExerciseStore(),
+      templates: templates,
+    );
+
+    expect(workouts.history, hasLength(demoHistory().length));
+    expect(workouts.active?.name, 'Now');
+    expect(templates.templates, hasLength(demoTemplates().length));
+    expect(settings.settings.weightUnit, WeightUnit.lb);
+  });
 }
