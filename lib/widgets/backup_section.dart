@@ -70,6 +70,11 @@ class BackupSection extends StatelessWidget {
     final enabled = !backup.busy;
     return Column(
       children: [
+        if (backup.busy)
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: LinearProgressIndicator(),
+          ),
         ListTile(
           leading: const Icon(Icons.account_circle_outlined),
           title: Text(provider.account ?? 'Not signed in'),
