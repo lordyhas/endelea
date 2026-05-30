@@ -27,6 +27,11 @@ class SettingsStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  set lastBackupAt(DateTime date) {
+    _settings = _settings.copyWith(lastBackupAt: date);
+    notifyListeners();
+  }
+
   set restDuration(Duration duration) {
     _settings = _settings.copyWith(restDuration: duration);
     notifyListeners();
