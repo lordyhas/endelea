@@ -69,3 +69,19 @@ ExportedData parseExport(String text) {
     throw FormatException('Invalid export: $error');
   }
 }
+
+/// Puts [data] in the stores in place of their current content.
+///
+/// A workout in progress is kept.
+void restoreData(
+  ExportedData data, {
+  required WorkoutStore workouts,
+  required SettingsStore settings,
+  required ExerciseStore exercises,
+  required TemplateStore templates,
+}) {
+  exercises.replaceCustom(data.exercises);
+  templates.replaceAll(data.routines);
+  workouts.replaceHistory(data.history);
+  settings.settings = data.settings;
+}
