@@ -21,13 +21,15 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final repository = AppRepository(await _openStorage());
   final stores = await loadStores(repository);
-  AutoSave(
+  final autoSave = AutoSave(
     repository: repository,
     workouts: stores.workouts,
     settings: stores.settings,
     exercises: stores.exercises,
     templates: stores.templates,
   );
+  // The app can be killed while in the background, so save right away.
+  AppLifecycleListener(onHide: autoSave.flush);
   runApp(
     MyApp(
       store: stores.workouts,
