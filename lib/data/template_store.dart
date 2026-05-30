@@ -4,7 +4,7 @@ import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../models/workout_template.dart';
 
-/// In-memory list of workout templates.
+/// List of workout templates.
 class TemplateStore extends ChangeNotifier {
   TemplateStore({List<WorkoutTemplate>? templates})
     : _templates = templates ?? [];
@@ -40,6 +40,11 @@ class TemplateStore extends ChangeNotifier {
 
   void remove(WorkoutTemplate template) {
     if (_templates.remove(template)) notifyListeners();
+  }
+
+  void clear() {
+    _templates.clear();
+    notifyListeners();
   }
 
   /// Call after mutating a template.

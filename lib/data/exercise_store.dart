@@ -47,6 +47,12 @@ class ExerciseStore extends ChangeNotifier {
     return exercise;
   }
 
+  /// Removes every custom exercise.
+  void clear() {
+    _custom.clear();
+    notifyListeners();
+  }
+
   /// Removes a custom exercise. Built-in exercises cannot be removed.
   void remove(Exercise exercise) {
     if (_custom.remove(exercise)) notifyListeners();

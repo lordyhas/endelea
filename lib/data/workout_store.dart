@@ -5,7 +5,7 @@ import '../models/workout.dart';
 import '../models/workout_template.dart';
 import 'rest_timer.dart';
 
-/// In-memory store for the active workout and the workout history.
+/// Store for the active workout and the workout history.
 class WorkoutStore extends ChangeNotifier {
   WorkoutStore({List<Workout>? history, this._active})
     : _history = history ?? [];
@@ -108,6 +108,14 @@ class WorkoutStore extends ChangeNotifier {
   /// Removes a finished workout from the history.
   void delete(Workout workout) {
     if (_history.remove(workout)) notifyListeners();
+  }
+
+  /// Forgets the whole history and the active workout.
+  void clear() {
+    _history.clear();
+    _active = null;
+    restTimer.stop();
+    notifyListeners();
   }
 
   /// Call after mutating an exercise or a set of the active workout.
