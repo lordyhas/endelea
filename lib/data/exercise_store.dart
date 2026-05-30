@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../models/exercise.dart';
+import '../utils/ids.dart';
 import 'exercise_catalog.dart';
 
 /// Built-in exercises plus the ones created by the user.
@@ -33,7 +34,7 @@ class ExerciseStore extends ChangeNotifier {
     String description = '',
   }) {
     final exercise = Exercise(
-      id: 'custom-${DateTime.now().microsecondsSinceEpoch}',
+      id: newId('custom'),
       name: name,
       muscleGroup: muscleGroup,
       equipment: equipment,

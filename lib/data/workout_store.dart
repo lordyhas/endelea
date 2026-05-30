@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../models/workout_template.dart';
+import '../utils/ids.dart';
 import 'rest_timer.dart';
 
 /// Store for the active workout and the workout history.
@@ -27,7 +28,7 @@ class WorkoutStore extends ChangeNotifier {
   Workout start({required String name, required TrainingPlace place}) {
     final now = DateTime.now();
     _active = Workout(
-      id: now.microsecondsSinceEpoch.toString(),
+      id: newId('workout'),
       name: name,
       place: place,
       startedAt: now,

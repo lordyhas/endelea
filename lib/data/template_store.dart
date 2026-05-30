@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../models/workout_template.dart';
+import '../utils/ids.dart';
 
 /// List of workout templates.
 class TemplateStore extends ChangeNotifier {
@@ -13,15 +14,13 @@ class TemplateStore extends ChangeNotifier {
 
   List<WorkoutTemplate> get templates => List.unmodifiable(_templates);
 
-  static String _newId() => 'tpl-${DateTime.now().microsecondsSinceEpoch}';
-
   WorkoutTemplate create({
     required String name,
     required TrainingPlace place,
     List<TemplateExercise>? exercises,
   }) {
     final template = WorkoutTemplate(
-      id: _newId(),
+      id: newId('tpl'),
       name: name,
       place: place,
       exercises: exercises,
@@ -32,7 +31,7 @@ class TemplateStore extends ChangeNotifier {
   }
 
   WorkoutTemplate saveWorkout(Workout workout) {
-    final template = WorkoutTemplate.fromWorkout(workout, id: _newId());
+    final template = WorkoutTemplate.fromWorkout(workout, id: newId('tpl'));
     _templates.add(template);
     notifyListeners();
     return template;
