@@ -72,7 +72,7 @@ ExportedData parseExport(String text) {
 
 /// Puts [data] in the stores in place of their current content.
 ///
-/// A workout in progress is kept.
+/// A workout in progress and the date of the last backup are kept.
 void restoreData(
   ExportedData data, {
   required WorkoutStore workouts,
@@ -83,5 +83,6 @@ void restoreData(
   exercises.replaceCustom(data.exercises);
   templates.replaceAll(data.routines);
   workouts.replaceHistory(data.history);
-  settings.settings = data.settings;
+  final lastBackupAt = settings.settings.lastBackupAt;
+  settings.settings = data.settings.copyWith(lastBackupAt: lastBackupAt);
 }

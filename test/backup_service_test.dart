@@ -44,12 +44,14 @@ void main() {
       workouts: WorkoutStore(history: demoHistory()),
     ).backUp();
     final workouts = WorkoutStore();
-    final other = _service(provider, workouts: workouts);
+    final settings = SettingsStore()..lastBackupAt = DateTime(2026, 5, 30);
+    final other = _service(provider, workouts: workouts, settings: settings);
 
     final data = await other.download();
     other.restore(data!);
 
     expect(workouts.history, hasLength(demoHistory().length));
+    expect(settings.settings.lastBackupAt, DateTime(2026, 5, 30));
   });
 
   test('download returns null when there is no backup yet', () async {
