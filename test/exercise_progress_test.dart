@@ -67,4 +67,44 @@ void main() {
     expect(progress.last, isNull);
     expect(progress.heaviestWeight, 0);
   });
+
+  group('newRecords', () {
+    final before = [
+      _workout(DateTime(2026, 5, 20), 'bench-press', [_set(60, 8)]),
+    ];
+
+    test('finds an exercise lifted heavier than ever', () {
+      final today = _workout(DateTime(2026, 5, 30), 'bench-press', [
+        _set(62.5, 5),
+      ]);
+
+      expect(newRecords(today, before), [exerciseById('bench-press')]);
+    });
+
+    test('ignores an equal result and undone sets', () {
+      final today = _workout(DateTime(2026, 5, 30), 'bench-press', [
+        _set(60, 10),
+        _set(70, 3, done: false),
+      ]);
+
+      expect(newRecords(today, before), isEmpty);
+    });
+
+    test('does not count the first time as a record', () {
+      final today = _workout(DateTime(2026, 5, 30), 'back-squat', [
+        _set(100, 5),
+      ]);
+
+      expect(newRecords(today, before), isEmpty);
+    });
+
+    test('compares reps for bodyweight exercises', () {
+      final today = _workout(DateTime(2026, 5, 30), 'push-up', [_set(0, 25)]);
+      final previous = [
+        _workout(DateTime(2026, 5, 20), 'push-up', [_set(0, 20)]),
+      ];
+
+      expect(newRecords(today, previous), [exerciseById('push-up')]);
+    });
+  });
 }
