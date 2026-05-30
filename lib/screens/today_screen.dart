@@ -26,7 +26,10 @@ class TodayScreen extends StatelessWidget {
     final store = StoreScope.of(context);
     final active = store.active;
     final stats = WorkoutStats(store.history);
-    final unit = SettingsScope.of(context).settings.weightUnit;
+    final settings = SettingsScope.of(context).settings;
+    final unit = settings.weightUnit;
+    final goal = settings.weeklyGoal;
+    final goalReached = stats.workoutsThisWeek >= goal;
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -45,12 +48,11 @@ class TodayScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           Text(formatDay(stats.now), style: theme.textTheme.labelLarge),
-          Text(
-            stats.workoutsThisWeek == 0
-                ? '${_greeting(stats.now)}, ready to train?'
-                : '${_greeting(stats.now)}, keep going!',
-            style: theme.textTheme.headlineSmall,
-          ),
+          Text(switch (stats.workoutsThisWeek) {
+            0 => '${_greeting(stats.now)}, ready to train?',
+            _ when goalReached => '${_greeting(stats.now)}, goal reached!',
+            _ => '${_greeting(stats.now)}, keep going!',
+          }, style: theme.textTheme.headlineSmall),
           const SizedBox(height: 16),
           WeekStrip(activity: stats.weekActivity, today: stats.now),
           const SizedBox(height: 16),
@@ -58,9 +60,9 @@ class TodayScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: StatCard(
-                  icon: Icons.event_available,
-                  value: '${stats.workoutsThisWeek}',
-                  label: 'This week',
+                  icon: goalReached ? Icons.emoji_events : Icons.flag_outlined,
+                  value: '${stats.workoutsThisWeek}/$goal',
+                  label: 'Weekly goal',
                 ),
               ),
               const SizedBox(width: 8),
