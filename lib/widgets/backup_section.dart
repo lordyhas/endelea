@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app/backup_scope.dart';
 import '../app/settings_scope.dart';
+import '../data/export.dart';
 import '../data/sync/backup_service.dart';
 import '../utils/format.dart';
 import 'confirm_dialog.dart';
@@ -11,15 +12,38 @@ import 'show_message.dart';
 class BackupSection extends StatelessWidget {
   const BackupSection({super.key});
 
+  /// Runs [action] and tells the user when it fails, for example without
+  /// network or when the sign in is cancelled.
+  static Future<bool> _attempt(
+    BuildContext context,
+    String failure,
+    Future<void> Function() action,
+  ) async {
+    try {
+      await action();
+      return true;
+    } on Object catch (error) {
+      debugPrint('$failure: $error');
+      if (context.mounted) showMessage(context, failure);
+      return false;
+    }
+  }
+
   Future<void> _backUp(BuildContext context, BackupService backup) async {
-    await backup.backUp();
-    if (!context.mounted) return;
+    final done = await _attempt(context, 'Backup failed', backup.backUp);
+    if (!done || !context.mounted) return;
     showMessage(context, 'Backed up to ${backup.provider.name}');
   }
 
   Future<void> _restore(BuildContext context, BackupService backup) async {
-    final data = await backup.download();
-    if (!context.mounted) return;
+    ExportedData? downloaded;
+    final done = await _attempt(
+      context,
+      'Could not read the backup',
+      () async => downloaded = await backup.download(),
+    );
+    final data = downloaded;
+    if (!done || !context.mounted) return;
     if (data == null) {
       showMessage(context, 'No backup found');
       return;
@@ -52,11 +76,16 @@ class BackupSection extends StatelessWidget {
           subtitle: Text(provider.name),
           trailing: provider.isSignedIn
               ? TextButton(
-                  onPressed: enabled ? backup.signOut : null,
+                  onPressed: enabled
+                      ? () =>
+                            _attempt(context, 'Sign out failed', backup.signOut)
+                      : null,
                   child: const Text('Sign out'),
                 )
               : FilledButton.tonal(
-                  onPressed: enabled ? backup.signIn : null,
+                  onPressed: enabled
+                      ? () => _attempt(context, 'Sign in failed', backup.signIn)
+                      : null,
                   child: const Text('Sign in'),
                 ),
         ),
