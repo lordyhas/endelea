@@ -1,14 +1,36 @@
 import 'package:flutter/material.dart';
 
 import '../app/app_info.dart';
+import '../app/exercise_scope.dart';
 import '../app/settings_scope.dart';
+import '../app/store_scope.dart';
+import '../app/template_scope.dart';
 import '../models/settings.dart';
 import '../utils/format.dart';
+import '../widgets/confirm_dialog.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   static const _restOptions = [30, 60, 90, 120, 180];
+
+  Future<void> _eraseAll(BuildContext context) async {
+    final confirmed = await confirm(
+      context,
+      title: 'Erase all data?',
+      message:
+          'Your workouts, routines, custom exercises and settings will be '
+          'deleted. This cannot be undone.',
+      action: 'Erase',
+    );
+    if (!confirmed || !context.mounted) return;
+    StoreScope.of(context).clear();
+    TemplateScope.of(context).clear();
+    ExerciseScope.of(context).clear();
+    SettingsScope.of(context).reset();
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text('All data erased')));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +107,18 @@ class SettingsScreen extends StatelessWidget {
                   ),
               ],
             ),
+          ),
+          const _SectionTitle('Data'),
+          ListTile(
+            leading: Icon(
+              Icons.delete_forever_outlined,
+              color: theme.colorScheme.error,
+            ),
+            title: Text(
+              'Erase all data',
+              style: TextStyle(color: theme.colorScheme.error),
+            ),
+            onTap: () => _eraseAll(context),
           ),
           const _SectionTitle('About'),
           ListTile(
