@@ -41,6 +41,8 @@ void main() {
     expect(find.text('Not signed in'), findsOneWidget);
     expect(find.text('Never backed up'), findsOneWidget);
 
+    await tester.ensureVisible(find.text('Back up now'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Back up now'));
     await tester.pumpAndSettle();
 

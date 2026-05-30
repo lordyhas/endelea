@@ -114,6 +114,33 @@ class SettingsScreen extends StatelessWidget {
                   store.themeMode = selection.first,
             ),
           ),
+          const _SectionTitle('Goal'),
+          ListTile(
+            title: const Text('Workouts per week'),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  tooltip: 'Fewer',
+                  onPressed: settings.weeklyGoal > 1
+                      ? () => store.weeklyGoal = settings.weeklyGoal - 1
+                      : null,
+                  icon: const Icon(Icons.remove),
+                ),
+                Text(
+                  '${settings.weeklyGoal}',
+                  style: theme.textTheme.titleMedium,
+                ),
+                IconButton(
+                  tooltip: 'More',
+                  onPressed: settings.weeklyGoal < 7
+                      ? () => store.weeklyGoal = settings.weeklyGoal + 1
+                      : null,
+                  icon: const Icon(Icons.add),
+                ),
+              ],
+            ),
+          ),
           const _SectionTitle('Units'),
           ListTile(
             title: const Text('Weight'),
