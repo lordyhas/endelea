@@ -56,5 +56,25 @@ void main() {
       expect(store.settings.weightUnit, WeightUnit.lb);
       expect(store.settings.restDuration, const Duration(minutes: 2));
     });
+
+    test('keeps the weekly goal between 1 and 7', () {
+      final store = SettingsStore();
+      expect(store.settings.weeklyGoal, 3);
+
+      store.weeklyGoal = 10;
+      expect(store.settings.weeklyGoal, 7);
+
+      store.weeklyGoal = 0;
+      expect(store.settings.weeklyGoal, 1);
+    });
+
+    test('saves the weekly goal in json', () {
+      final settings = AppSettings.fromJson(
+        const AppSettings(weeklyGoal: 5).toJson(),
+      );
+
+      expect(settings.weeklyGoal, 5);
+      expect(AppSettings.fromJson({}).weeklyGoal, 3);
+    });
   });
 }
