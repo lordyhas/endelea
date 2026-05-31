@@ -5,6 +5,7 @@ import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../data/workout_stats.dart';
 import '../utils/format.dart';
+import '../widgets/muscle_summary.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/week_strip.dart';
 import '../widgets/workout_summary_card.dart';
@@ -84,6 +85,10 @@ class TodayScreen extends StatelessWidget {
               ),
             ],
           ),
+          if (stats.setsPerMuscleThisWeek.isNotEmpty) ...[
+            const SizedBox(height: 24),
+            MuscleSummary(sets: stats.setsPerMuscleThisWeek),
+          ],
           const SizedBox(height: 24),
           Text('Recent workouts', style: theme.textTheme.titleMedium),
           const SizedBox(height: 8),
