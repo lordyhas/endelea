@@ -36,17 +36,17 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
     final records = newRecords(workout, previous);
     navigator.pop();
     messenger.showSnackBar(
-      SnackBar(
-        content: Text(
-          '${workout.name} saved · ${formatDuration(workout.duration)}'
-          '${switch (records.length) {
-            0 => '',
-            1 => ' · New record on ${records.single.name}!',
-            final n => ' · $n new records!',
-          }}',
-        ),
-      ),
+      SnackBar(content: Text(_finishedMessage(workout, records))),
     );
+  }
+
+  static String _finishedMessage(Workout workout, List<Exercise> records) {
+    final saved = '${workout.name} saved · ${formatDuration(workout.duration)}';
+    return switch (records) {
+      [] => saved,
+      [final record] => '$saved · New record on ${record.name}!',
+      _ => '$saved · ${records.length} new records!',
+    };
   }
 
   Future<void> _discard() async {
