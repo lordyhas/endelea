@@ -64,4 +64,22 @@ void main() {
     expect(workout.exercises.map((e) => e.sets.length), [3, 2]);
     expect(workout.completedSetCount, 0);
   });
+
+  test('duplicates a routine right after the original', () {
+    final store = TemplateStore();
+    final legs = store.create(
+      name: 'Legs',
+      place: TrainingPlace.gym,
+      exercises: [entry('back-squat', 5)],
+    );
+    final arms = store.create(name: 'Arms', place: TrainingPlace.home);
+
+    final copy = store.duplicate(legs);
+    copy.exercises.first.sets = 2;
+
+    expect(store.templates, [legs, copy, arms]);
+    expect(copy.id, isNot(legs.id));
+    expect(copy.name, 'Legs (copy)');
+    expect(legs.exercises.first.sets, 5);
+  });
 }
