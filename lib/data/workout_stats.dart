@@ -1,3 +1,4 @@
+import '../models/exercise.dart';
 import '../models/workout.dart';
 
 /// Aggregated numbers computed from the workout history.
@@ -33,6 +34,25 @@ class WorkoutStats {
       counts[workout.startedAt.weekday - 1]++;
     }
     return counts;
+  }
+
+  /// Working sets done this week for each muscle group, most worked first.
+  Map<MuscleGroup, int> get setsPerMuscleThisWeek {
+    final counts = <MuscleGroup, int>{};
+    for (final workout in thisWeek) {
+      for (final entry in workout.exercises) {
+        final sets = entry.workingSets.length;
+        if (sets == 0) continue;
+        counts.update(
+          entry.exercise.muscleGroup,
+          (count) => count + sets,
+          ifAbsent: () => sets,
+        );
+      }
+    }
+    final sorted = counts.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    return Map.fromEntries(sorted);
   }
 
   int get totalWorkouts => history.length;
