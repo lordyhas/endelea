@@ -1,3 +1,4 @@
+import 'package:endelea/data/exercise_catalog.dart';
 import 'package:endelea/data/workout_stats.dart';
 import 'package:endelea/models/exercise.dart';
 import 'package:endelea/models/workout.dart';
@@ -65,5 +66,31 @@ void main() {
     expect(stats.totalTime, const Duration(minutes: 90));
     expect(stats.totalVolume, 0);
     expect(stats.workoutsThisWeek, 1);
+  });
+
+  test('counts working sets per muscle group this week', () {
+    WorkoutExercise entry(String id, int sets, {int warmUps = 0}) =>
+        WorkoutExercise(
+          exercise: exerciseById(id)!,
+          sets: [
+            for (var i = 0; i < warmUps; i++)
+              WorkoutSet(done: true, warmUp: true),
+            for (var i = 0; i < sets; i++) WorkoutSet(done: true),
+          ],
+        );
+    final monday = _workoutOn(DateTime(2026, 4, 27, 8))
+      ..exercises.addAll([entry('bench-press', 3, warmUps: 2)]);
+    final wednesday = _workoutOn(DateTime(2026, 4, 29, 8))
+      ..exercises.addAll([entry('back-squat', 5), entry('bench-press', 1)]);
+    final lastWeek = _workoutOn(DateTime(2026, 4, 22, 8))
+      ..exercises.addAll([entry('back-squat', 10)]);
+
+    final stats = WorkoutStats([monday, wednesday, lastWeek], now: now);
+
+    expect(stats.setsPerMuscleThisWeek, {
+      MuscleGroup.legs: 5,
+      MuscleGroup.chest: 4,
+    });
+    expect(stats.setsPerMuscleThisWeek.keys.first, MuscleGroup.legs);
   });
 }
