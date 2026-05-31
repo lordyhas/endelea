@@ -105,7 +105,23 @@ class WorkoutDetailScreen extends StatelessWidget {
             const SizedBox(height: 16),
           ],
           for (final entry in workout.exercises) ...[
-            Text(entry.exercise.name, style: theme.textTheme.titleMedium),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    entry.exercise.name,
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ),
+                if (entry.volume > 0)
+                  Text(
+                    formatWeight(entry.volume, unit),
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+              ],
+            ),
             const SizedBox(height: 4),
             for (var i = 0; i < entry.sets.length; i++)
               Padding(
