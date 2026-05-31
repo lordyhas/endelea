@@ -54,6 +54,19 @@ flutter pub get
 flutter run
 ```
 
+### Google Drive backup
+
+Backup needs an OAuth client in a Google Cloud project with the Drive API
+enabled. The app only asks for the `drive.appdata` scope, so it can only see
+its own backup file.
+
+- Android: add an Android OAuth client with the package name and the SHA-1 of
+  your signing key.
+- iOS: add an iOS OAuth client and its reversed client id as a URL scheme in
+  `ios/Runner/Info.plist`.
+
+Without this setup the app works as usual and only the backup fails.
+
 Run the tests with:
 
 ```sh
