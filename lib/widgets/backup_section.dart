@@ -66,7 +66,8 @@ class BackupSection extends StatelessWidget {
     final backup = BackupScope.maybeOf(context);
     if (backup == null) return const SizedBox.shrink();
     final provider = backup.provider;
-    final lastBackupAt = SettingsScope.of(context).settings.lastBackupAt;
+    final settings = SettingsScope.of(context).settings;
+    final lastBackupAt = settings.lastBackupAt;
     final enabled = !backup.busy;
     return Column(
       children: [
@@ -105,6 +106,17 @@ class BackupSection extends StatelessWidget {
           ),
           enabled: enabled,
           onTap: () => _backUp(context, backup),
+        ),
+        SwitchListTile(
+          secondary: const Icon(Icons.cloud_sync_outlined),
+          title: const Text('Back up after each workout'),
+          subtitle: provider.isSignedIn
+              ? null
+              : const Text('Sign in to turn it on'),
+          value: settings.autoBackup,
+          onChanged: provider.isSignedIn
+              ? (value) => SettingsScope.of(context).autoBackup = value
+              : null,
         ),
         ListTile(
           leading: const Icon(Icons.cloud_download_outlined),
