@@ -57,8 +57,10 @@ class WorkoutExercise {
 
   Iterable<WorkoutSet> get completedSets => sets.where((s) => s.done);
 
-  double get volume =>
-      completedSets.fold(0, (total, set) => total + set.volume);
+  /// Completed sets without the warm-ups.
+  Iterable<WorkoutSet> get workingSets => completedSets.where((s) => !s.warmUp);
+
+  double get volume => workingSets.fold(0, (total, set) => total + set.volume);
 
   /// Returns null when the exercise no longer exists.
   static WorkoutExercise? fromJson(

@@ -46,7 +46,7 @@ class ExerciseProgress {
     for (final workout in history) {
       final sets = workout.exercises
           .where((e) => e.exercise.id == exercise.id)
-          .expand((e) => e.completedSets)
+          .expand((e) => e.workingSets)
           .toList();
       if (sets.isEmpty) continue;
       final heaviest = sets.reduce(
