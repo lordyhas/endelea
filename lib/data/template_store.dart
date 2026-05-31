@@ -37,6 +37,23 @@ class TemplateStore extends ChangeNotifier {
     return template;
   }
 
+  /// Adds a copy of [template] right after it.
+  WorkoutTemplate duplicate(WorkoutTemplate template) {
+    final copy = WorkoutTemplate(
+      id: newId('tpl'),
+      name: '${template.name} (copy)',
+      place: template.place,
+      exercises: [
+        for (final entry in template.exercises)
+          TemplateExercise(exercise: entry.exercise, sets: entry.sets),
+      ],
+    );
+    final index = _templates.indexOf(template);
+    _templates.insert(index < 0 ? _templates.length : index + 1, copy);
+    notifyListeners();
+    return copy;
+  }
+
   void remove(WorkoutTemplate template) {
     if (_templates.remove(template)) notifyListeners();
   }
