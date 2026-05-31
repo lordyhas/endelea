@@ -6,6 +6,7 @@ class WorkoutSet {
     this.weight = 0,
     this.seconds = 0,
     this.done = false,
+    this.warmUp = false,
   });
 
   int reps;
@@ -17,16 +18,25 @@ class WorkoutSet {
   int seconds;
   bool done;
 
+  /// Warm-up sets are logged but do not count in volume and records.
+  bool warmUp;
+
   double get volume => weight * reps;
 
-  WorkoutSet copy() =>
-      WorkoutSet(reps: reps, weight: weight, seconds: seconds, done: done);
+  WorkoutSet copy() => WorkoutSet(
+    reps: reps,
+    weight: weight,
+    seconds: seconds,
+    done: done,
+    warmUp: warmUp,
+  );
 
   factory WorkoutSet.fromJson(Map<String, dynamic> json) => WorkoutSet(
     reps: json['reps'] as int? ?? 0,
     weight: (json['weight'] as num? ?? 0).toDouble(),
     seconds: json['seconds'] as int? ?? 0,
     done: json['done'] as bool? ?? false,
+    warmUp: json['warmUp'] as bool? ?? false,
   );
 
   Map<String, dynamic> toJson() => {
@@ -34,6 +44,7 @@ class WorkoutSet {
     'weight': weight,
     'seconds': seconds,
     'done': done,
+    if (warmUp) 'warmUp': true,
   };
 }
 
