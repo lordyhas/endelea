@@ -31,12 +31,19 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       );
       return;
     }
+    final previous = store.history;
     final workout = store.finish()!;
+    final records = newRecords(workout, previous);
     navigator.pop();
     messenger.showSnackBar(
       SnackBar(
         content: Text(
-          '${workout.name} saved · ${formatDuration(workout.duration)}',
+          '${workout.name} saved · ${formatDuration(workout.duration)}'
+          '${switch (records.length) {
+            0 => '',
+            1 => ' · New record on ${records.single.name}!',
+            final n => ' · $n new records!',
+          }}',
         ),
       ),
     );
