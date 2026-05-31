@@ -195,6 +195,7 @@ class _SetRow extends StatelessWidget {
             tooltip: set.done ? 'Undo' : 'Done',
             onPressed: () {
               set.done = !set.done;
+              if (set.done) HapticFeedback.lightImpact();
               onChanged();
               if (set.done) onDone?.call();
             },
