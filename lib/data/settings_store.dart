@@ -32,6 +32,11 @@ class SettingsStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  set autoBackup(bool enabled) {
+    _settings = _settings.copyWith(autoBackup: enabled);
+    notifyListeners();
+  }
+
   set weeklyGoal(int goal) {
     _settings = _settings.copyWith(weeklyGoal: goal.clamp(1, 7));
     notifyListeners();
