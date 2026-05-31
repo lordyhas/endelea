@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../app/app_info.dart';
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../data/workout_stats.dart';
@@ -42,7 +43,7 @@ class TodayScreen extends StatelessWidget {
             icon: const Icon(Icons.settings),
           ),
         ],
-        title: const Text('Endelea'),
+        title: const Text(AppInfo.name),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
