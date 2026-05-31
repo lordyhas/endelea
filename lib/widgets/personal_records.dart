@@ -36,22 +36,36 @@ class PersonalRecords extends StatelessWidget {
         ('Longest', formatDuration(Duration(seconds: progress.longestSeconds))),
       ],
     };
-    return Row(
+    final count = progress.points.length;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (final (label, value) in records)
-          Expanded(
-            child: Card.filled(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  children: [
-                    Text(value, style: theme.textTheme.titleLarge),
-                    Text(label, style: theme.textTheme.labelMedium),
-                  ],
+        Row(
+          children: [
+            for (final (label, value) in records)
+              Expanded(
+                child: Card.filled(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      children: [
+                        Text(value, style: theme.textTheme.titleLarge),
+                        Text(label, style: theme.textTheme.labelMedium),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'Done in $count workout${count == 1 ? '' : 's'}, '
+          'last on ${formatDay(progress.last!.date)}',
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
           ),
+        ),
       ],
     );
   }
