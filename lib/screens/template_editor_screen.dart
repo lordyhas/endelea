@@ -4,6 +4,7 @@ import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout_template.dart';
 import '../widgets/confirm_dialog.dart';
+import '../widgets/show_message.dart';
 import 'exercise_picker_screen.dart';
 
 /// Creates a workout template, or edits [template] when given.
@@ -42,11 +43,8 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
 
   void _save() {
     final name = _name.text.trim();
-    final messenger = ScaffoldMessenger.of(context);
     if (name.isEmpty || _exercises.isEmpty) {
-      messenger.showSnackBar(
-        const SnackBar(content: Text('Add a name and at least one exercise')),
-      );
+      showMessage(context, 'Add a name and at least one exercise');
       return;
     }
     final store = TemplateScope.of(context);
@@ -62,6 +60,16 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
       store.touch();
     }
     Navigator.of(context).pop();
+  }
+
+  /// Copies the saved routine and opens the copy instead.
+  void _duplicate() {
+    final copy = TemplateScope.of(context).duplicate(widget.template!);
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute<void>(
+        builder: (_) => TemplateEditorScreen(template: copy),
+      ),
+    );
   }
 
   Future<void> _delete() async {
@@ -83,12 +91,18 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
       appBar: AppBar(
         title: Text(widget.template == null ? 'New routine' : 'Edit routine'),
         actions: [
-          if (widget.template != null)
+          if (widget.template != null) ...[
+            IconButton(
+              tooltip: 'Duplicate',
+              onPressed: _duplicate,
+              icon: const Icon(Icons.copy_outlined),
+            ),
             IconButton(
               tooltip: 'Delete',
               onPressed: _delete,
               icon: const Icon(Icons.delete_outline),
             ),
+          ],
           TextButton(onPressed: _save, child: const Text('Save')),
         ],
       ),
