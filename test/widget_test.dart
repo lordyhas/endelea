@@ -22,6 +22,20 @@ void main() {
     expect(find.text('Start workout'), findsOneWidget);
   });
 
+  testWidgets('Today shows the weekly goal progress', (tester) async {
+    await tester.pumpWidget(
+      MyApp(
+        store: WorkoutStore(),
+        settings: SettingsStore()..weeklyGoal = 4,
+        exercises: ExerciseStore(),
+        templates: TemplateStore(),
+      ),
+    );
+
+    expect(find.text('Weekly goal'), findsOneWidget);
+    expect(find.text('0/4'), findsOneWidget);
+  });
+
   testWidgets('Starting a workout opens the active workout screen', (
     WidgetTester tester,
   ) async {
