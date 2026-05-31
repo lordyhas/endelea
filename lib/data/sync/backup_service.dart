@@ -17,7 +17,9 @@ class BackupService extends ChangeNotifier {
     required this.settings,
     required this.exercises,
     required this.templates,
-  });
+  }) : _finishedCount = workouts.history.length {
+    workouts.addListener(_workoutsChanged);
+  }
 
   static const fileName = 'endelea-backup.json';
 
@@ -28,6 +30,7 @@ class BackupService extends ChangeNotifier {
   final TemplateStore templates;
 
   bool _busy = false;
+  int _finishedCount;
 
   /// Whether a sign in, backup or restore is running.
   bool get busy => _busy;
@@ -41,6 +44,25 @@ class BackupService extends ChangeNotifier {
       _busy = false;
       notifyListeners();
     }
+  }
+
+  /// Backs up after a workout is finished, when the user asked for it and
+  /// is signed in. Failures are ignored, the next workout will try again.
+  void _workoutsChanged() {
+    final count = workouts.history.length;
+    final finished = count > _finishedCount;
+    _finishedCount = count;
+    if (!finished || busy) return;
+    if (!settings.settings.autoBackup || !provider.isSignedIn) return;
+    backUp().catchError(
+      (Object error) => debugPrint('Automatic backup failed: $error'),
+    );
+  }
+
+  @override
+  void dispose() {
+    workouts.removeListener(_workoutsChanged);
+    super.dispose();
   }
 
   Future<void> signIn() => _run(provider.signIn);
