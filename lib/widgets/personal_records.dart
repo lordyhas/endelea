@@ -60,7 +60,7 @@ class PersonalRecords extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          'Done in $count workout${count == 1 ? '' : 's'}, '
+          'Done in ${plural(count, 'workout')}, '
           'last on ${formatDay(progress.last!.date)}',
           style: theme.textTheme.bodySmall?.copyWith(
             color: theme.colorScheme.onSurfaceVariant,

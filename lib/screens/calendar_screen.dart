@@ -73,8 +73,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            '${calendar.workoutCount} workouts on '
-            '${calendar.activeDays} days',
+            '${plural(calendar.workoutCount, 'workout')} on '
+            '${plural(calendar.activeDays, 'day')}',
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium,
           ),

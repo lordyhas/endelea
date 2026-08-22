@@ -77,3 +77,6 @@ const _monthNames = [
 /// Formats a month as `August 2026`.
 String formatMonth(DateTime date) =>
     '${_monthNames[date.month - 1]} ${date.year}';
+
+/// Writes [count] followed by [word], adding an `s` unless count is 1.
+String plural(int count, String word) => '$count $word${count == 1 ? '' : 's'}';

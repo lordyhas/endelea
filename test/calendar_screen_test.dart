@@ -42,7 +42,7 @@ void main() {
     await tester.tap(find.byTooltip('Previous month'));
     await tester.pump();
     expect(find.text('July 2026'), findsOneWidget);
-    expect(find.text('1 workouts on 1 days'), findsOneWidget);
+    expect(find.text('1 workout on 1 day'), findsOneWidget);
 
     await tester.tap(find.text('14'));
     await tester.pump();
