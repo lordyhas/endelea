@@ -58,3 +58,22 @@ String formatDay(DateTime date) =>
 /// Formats a time as `14:05`.
 String formatTime(DateTime date) =>
     '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+
+const _monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+/// Formats a month as `August 2026`.
+String formatMonth(DateTime date) =>
+    '${_monthNames[date.month - 1]} ${date.year}';

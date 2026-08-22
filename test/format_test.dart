@@ -24,4 +24,9 @@ void main() {
     expect(formatDay(date), 'Thu 30 Apr');
     expect(formatTime(date), '09:05');
   });
+
+  test('formatMonth writes the full month name and year', () {
+    expect(formatMonth(DateTime(2026, 8, 22)), 'August 2026');
+    expect(formatMonth(DateTime(2027)), 'January 2027');
+  });
 }
