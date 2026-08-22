@@ -55,6 +55,23 @@ class WorkoutStats {
     return Map.fromEntries(sorted);
   }
 
+  /// Most consecutive days with a workout, at any time.
+  int get longestStreak {
+    final days = history.map((w) => _day(w.startedAt)).toSet().toList()..sort();
+    var best = 0;
+    var current = 0;
+    DateTime? previous;
+    for (final day in days) {
+      final next = previous == null
+          ? null
+          : DateTime(previous.year, previous.month, previous.day + 1);
+      current = day == next ? current + 1 : 1;
+      if (current > best) best = current;
+      previous = day;
+    }
+    return best;
+  }
+
   int get totalWorkouts => history.length;
 
   double get totalVolume => history.fold(0, (total, w) => total + w.volume);
