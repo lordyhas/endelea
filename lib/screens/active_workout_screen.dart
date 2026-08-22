@@ -134,10 +134,16 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
           : ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                for (final entry in workout.exercises) ...[
+                for (final (index, entry) in workout.exercises.indexed) ...[
                   WorkoutExerciseCard(
                     key: ObjectKey(entry),
                     entry: entry,
+                    onMoveUp: index == 0
+                        ? null
+                        : () => store.moveExercise(index, index - 1),
+                    onMoveDown: index == workout.exercises.length - 1
+                        ? null
+                        : () => store.moveExercise(index, index + 1),
                     onChanged: store.touch,
                     onSetDone: () =>
                         store.restTimer.start(settings.restDuration),

@@ -14,6 +14,8 @@ class WorkoutExerciseCard extends StatelessWidget {
     required this.onChanged,
     required this.onRemove,
     this.onSetDone,
+    this.onMoveUp,
+    this.onMoveDown,
     this.lastPerformance,
   });
 
@@ -23,6 +25,10 @@ class WorkoutExerciseCard extends StatelessWidget {
 
   /// Called when a set gets checked, used to start the rest timer.
   final VoidCallback? onSetDone;
+
+  /// Move the exercise in the workout; null when it cannot move that way.
+  final VoidCallback? onMoveUp;
+  final VoidCallback? onMoveDown;
 
   /// Short summary of the previous time this exercise was done.
   final String? lastPerformance;
@@ -63,10 +69,25 @@ class WorkoutExerciseCard extends StatelessWidget {
                         : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
-                IconButton(
-                  tooltip: 'Remove exercise',
-                  onPressed: onRemove,
-                  icon: const Icon(Icons.delete_outline),
+                PopupMenuButton<VoidCallback>(
+                  tooltip: 'Exercise options',
+                  onSelected: (action) => action(),
+                  itemBuilder: (_) => [
+                    PopupMenuItem(
+                      value: onMoveUp,
+                      enabled: onMoveUp != null,
+                      child: const Text('Move up'),
+                    ),
+                    PopupMenuItem(
+                      value: onMoveDown,
+                      enabled: onMoveDown != null,
+                      child: const Text('Move down'),
+                    ),
+                    PopupMenuItem(
+                      value: onRemove,
+                      child: const Text('Remove exercise'),
+                    ),
+                  ],
                 ),
               ],
             ),
