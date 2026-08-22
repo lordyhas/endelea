@@ -5,6 +5,7 @@ import '../app/store_scope.dart';
 import '../data/workout_stats.dart';
 import '../utils/format.dart';
 import '../widgets/workout_summary_card.dart';
+import 'calendar_screen.dart';
 import 'workout_detail_screen.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -76,7 +77,18 @@ class HistoryScreen extends StatelessWidget {
         ..add(const SizedBox(height: 12));
     }
     return Scaffold(
-      appBar: AppBar(title: const Text('History')),
+      appBar: AppBar(
+        title: const Text('History'),
+        actions: [
+          IconButton(
+            tooltip: 'Calendar',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const CalendarScreen()),
+            ),
+            icon: const Icon(Icons.calendar_month_outlined),
+          ),
+        ],
+      ),
       body: history.isEmpty
           ? const _EmptyHistory()
           : ListView(padding: const EdgeInsets.all(16), children: children),
