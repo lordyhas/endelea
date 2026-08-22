@@ -133,35 +133,50 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
                 setState(() => _place = selection.first),
           ),
           const SizedBox(height: 16),
-          for (final entry in _exercises)
-            ListTile(
-              key: ObjectKey(entry),
-              contentPadding: EdgeInsets.zero,
-              title: Text(entry.exercise.name),
-              subtitle: Text('${entry.sets} sets'),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    tooltip: 'Fewer sets',
-                    onPressed: entry.sets > 1
-                        ? () => setState(() => entry.sets--)
-                        : null,
-                    icon: const Icon(Icons.remove_circle_outline),
-                  ),
-                  IconButton(
-                    tooltip: 'More sets',
-                    onPressed: () => setState(() => entry.sets++),
-                    icon: const Icon(Icons.add_circle_outline),
-                  ),
-                  IconButton(
-                    tooltip: 'Remove',
-                    onPressed: () => setState(() => _exercises.remove(entry)),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+          ReorderableListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            buildDefaultDragHandles: false,
+            onReorderItem: (from, to) => setState(
+              () => _exercises.insert(to, _exercises.removeAt(from)),
             ),
+            children: [
+              for (final (index, entry) in _exercises.indexed)
+                ListTile(
+                  key: ObjectKey(entry),
+                  contentPadding: EdgeInsets.zero,
+                  leading: ReorderableDragStartListener(
+                    index: index,
+                    child: const Icon(Icons.drag_handle),
+                  ),
+                  title: Text(entry.exercise.name),
+                  subtitle: Text('${entry.sets} sets'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        tooltip: 'Fewer sets',
+                        onPressed: entry.sets > 1
+                            ? () => setState(() => entry.sets--)
+                            : null,
+                        icon: const Icon(Icons.remove_circle_outline),
+                      ),
+                      IconButton(
+                        tooltip: 'More sets',
+                        onPressed: () => setState(() => entry.sets++),
+                        icon: const Icon(Icons.add_circle_outline),
+                      ),
+                      IconButton(
+                        tooltip: 'Remove',
+                        onPressed: () =>
+                            setState(() => _exercises.remove(entry)),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
           const SizedBox(height: 8),
           OutlinedButton.icon(
             onPressed: _addExercise,
