@@ -1,3 +1,4 @@
+/// Main muscle group an exercise works.
 enum MuscleGroup {
   chest('Chest'),
   back('Back'),
@@ -13,6 +14,7 @@ enum MuscleGroup {
   final String label;
 }
 
+/// Equipment needed for an exercise.
 enum Equipment {
   none('Bodyweight'),
   dumbbell('Dumbbell'),
