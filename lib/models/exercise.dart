@@ -49,6 +49,7 @@ enum TrackingType { weightReps, reps, duration }
 /// Finds an exercise from its id, used when reading saved data.
 typedef ExerciseLookup = Exercise? Function(String id);
 
+/// An exercise from the catalog or created by the user.
 class Exercise {
   const Exercise({
     required this.id,
