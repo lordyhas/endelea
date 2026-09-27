@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Light and dark Material 3 themes built from one seed color.
 class AppTheme {
   AppTheme._();
 
