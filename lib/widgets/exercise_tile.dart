@@ -52,17 +52,10 @@ class ExerciseTile extends StatelessWidget {
   }
 }
 
-IconData iconForMuscleGroup(MuscleGroup group) {
-  switch (group) {
-    case MuscleGroup.cardio:
-      return Icons.directions_run;
-    case MuscleGroup.core:
-      return Icons.self_improvement;
-    case MuscleGroup.legs:
-      return Icons.directions_walk;
-    case MuscleGroup.fullBody:
-      return Icons.accessibility_new;
-    default:
-      return Icons.fitness_center;
-  }
-}
+IconData iconForMuscleGroup(MuscleGroup group) => switch (group) {
+  .cardio => Icons.directions_run,
+  .core => Icons.self_improvement,
+  .legs => Icons.directions_walk,
+  .fullBody => Icons.accessibility_new,
+  _ => Icons.fitness_center,
+};
