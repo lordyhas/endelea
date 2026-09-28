@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' show ThemeMode;
 
+/// Unit used to show and enter weights. Weights are stored in kg.
 enum WeightUnit {
   kg('kg', 1),
   lb('lb', 2.20462);
@@ -18,6 +19,7 @@ enum WeightUnit {
   double toKg(double value) => value / perKg;
 }
 
+/// User preferences, saved on the device.
 class AppSettings {
   const AppSettings({
     this.weightUnit = WeightUnit.kg,
