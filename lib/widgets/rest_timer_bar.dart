@@ -39,6 +39,10 @@ class RestTimerBar extends StatelessWidget {
                     onPressed: () => timer.add(const Duration(seconds: 15)),
                     child: const Text('+15s'),
                   ),
+                  TextButton(
+                    onPressed: () => timer.add(const Duration(seconds: 30)),
+                    child: const Text('+30s'),
+                  ),
                   TextButton(onPressed: timer.stop, child: const Text('Skip')),
                 ],
               ),
