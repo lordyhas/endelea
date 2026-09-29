@@ -61,6 +61,7 @@ Future<KeyValueStorage> _openStorage() async {
   }
 }
 
+/// Root widget providing the stores and the theme.
 class MyApp extends StatelessWidget {
   const MyApp({
     super.key,
