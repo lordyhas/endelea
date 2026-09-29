@@ -17,7 +17,7 @@ class StatCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Card.filled(
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
