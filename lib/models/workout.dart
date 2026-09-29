@@ -1,5 +1,6 @@
 import 'exercise.dart';
 
+/// One set of an exercise: weight and reps, or a duration.
 class WorkoutSet {
   WorkoutSet({
     this.reps = 0,
@@ -48,6 +49,7 @@ class WorkoutSet {
   };
 }
 
+/// An exercise done in a workout with its sets.
 class WorkoutExercise {
   WorkoutExercise({required this.exercise, List<WorkoutSet>? sets})
     : sets = sets ?? [WorkoutSet()];
@@ -84,6 +86,7 @@ class WorkoutExercise {
   };
 }
 
+/// A training session, in progress or finished.
 class Workout {
   Workout({
     required this.id,
