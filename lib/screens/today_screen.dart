@@ -93,7 +93,7 @@ class TodayScreen extends StatelessWidget {
           Text('Recent workouts', style: theme.textTheme.titleMedium),
           const SizedBox(height: 8),
           if (store.history.isEmpty)
-            const Text('Start your first workout with the button below.')
+            const Text('Tap Start workout below to log your first session.')
           else
             for (final workout in store.history.take(3)) ...[
               WorkoutSummaryCard(
