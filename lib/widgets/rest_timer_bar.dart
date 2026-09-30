@@ -25,7 +25,7 @@ class RestTimerBar extends StatelessWidget {
               child: Row(
                 children: [
                   Icon(
-                    Icons.timer_outlined,
+                    Icons.hourglass_bottom,
                     color: scheme.onSecondaryContainer,
                   ),
                   const SizedBox(width: 8),
