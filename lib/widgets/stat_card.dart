@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Small card with an icon, a value and a label.
 class StatCard extends StatelessWidget {
   const StatCard({
     super.key,

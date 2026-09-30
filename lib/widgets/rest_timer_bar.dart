@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/rest_timer.dart';
 import '../utils/format.dart';
 
+/// Bar at the bottom of the workout screen counting down the rest.
 class RestTimerBar extends StatelessWidget {
   const RestTimerBar({super.key, required this.timer});
 
