@@ -26,7 +26,7 @@ class AppTheme {
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
       ),
       inputDecorationTheme: const InputDecorationTheme(
