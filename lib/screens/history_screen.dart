@@ -8,6 +8,7 @@ import '../widgets/workout_summary_card.dart';
 import 'calendar_screen.dart';
 import 'workout_detail_screen.dart';
 
+/// Finished workouts grouped by week, with all-time totals.
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
 

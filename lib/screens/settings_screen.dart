@@ -14,6 +14,7 @@ import '../widgets/backup_section.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/show_message.dart';
 
+/// Preferences, backup and data management.
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 

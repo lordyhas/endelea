@@ -14,6 +14,7 @@ import 'settings_screen.dart';
 import 'start_workout_sheet.dart';
 import 'workout_detail_screen.dart';
 
+/// First tab: weekly progress and recent workouts.
 class TodayScreen extends StatelessWidget {
   const TodayScreen({super.key});
 
