@@ -65,7 +65,7 @@ class _StartWorkoutSheetState extends State<StartWorkoutSheet> {
             textCapitalization: TextCapitalization.sentences,
             decoration: const InputDecoration(
               labelText: 'Name (optional)',
-              hintText: 'Push day, Leg day...',
+              hintText: 'Push day, Leg day, Cardio...',
             ),
           ),
           const SizedBox(height: 16),
