@@ -91,14 +91,14 @@ class HistoryScreen extends StatelessWidget {
         ],
       ),
       body: history.isEmpty
-          ? const _EmptyHistory()
+          ? const _NoHistory()
           : ListView(padding: const EdgeInsets.all(16), children: children),
     );
   }
 }
 
-class _EmptyHistory extends StatelessWidget {
-  const _EmptyHistory();
+class _NoHistory extends StatelessWidget {
+  const _NoHistory();
 
   @override
   Widget build(BuildContext context) {
