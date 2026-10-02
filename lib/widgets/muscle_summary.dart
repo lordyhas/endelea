@@ -17,8 +17,8 @@ class MuscleSummary extends StatelessWidget {
         Text('Muscles this week', style: theme.textTheme.titleMedium),
         const SizedBox(height: 8),
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: 6,
+          runSpacing: 6,
           children: [
             for (final MapEntry(key: muscle, value: count) in sets.entries)
               Chip(
