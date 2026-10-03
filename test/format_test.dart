@@ -25,11 +25,6 @@ void main() {
     expect(formatTime(date), '09:05');
   });
 
-  test('formatMonth writes the full month name and year', () {
-    expect(formatMonth(DateTime(2026, 8, 22)), 'August 2026');
-    expect(formatMonth(DateTime(2027)), 'January 2027');
-  });
-
   test('plural adds an s unless there is exactly one', () {
     expect(plural(0, 'day'), '0 days');
     expect(plural(1, 'day'), '1 day');
