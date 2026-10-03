@@ -37,6 +37,11 @@ workouts.
   exercises and settings are kept as JSON files in the app documents folder.
   The first launch starts with demo data.
 
+## Tips
+
+- Tap a set number to turn it into a warm-up set.
+- A workout keeps running in the background, resume it from Today.
+
 ## Project structure
 
 ```
