@@ -48,13 +48,6 @@ class ExerciseStore extends ChangeNotifier {
     return exercise;
   }
 
-  void replaceCustom(List<Exercise> exercises) {
-    _custom
-      ..clear()
-      ..addAll(exercises);
-    notifyListeners();
-  }
-
   /// Removes every custom exercise.
   void clear() {
     _custom.clear();

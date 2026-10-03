@@ -10,12 +10,10 @@ class SettingsStore extends ChangeNotifier {
 
   AppSettings get settings => _settings;
 
-  set settings(AppSettings settings) {
-    _settings = settings;
+  void reset() {
+    _settings = const AppSettings();
     notifyListeners();
   }
-
-  void reset() => settings = const AppSettings();
 
   set weightUnit(WeightUnit unit) {
     _settings = _settings.copyWith(weightUnit: unit);

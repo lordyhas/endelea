@@ -122,14 +122,6 @@ class WorkoutStore extends ChangeNotifier {
     if (_history.remove(workout)) notifyListeners();
   }
 
-  /// Replaces the history, for example when restoring a backup.
-  void replaceHistory(List<Workout> history) {
-    _history
-      ..clear()
-      ..addAll(history);
-    notifyListeners();
-  }
-
   /// Forgets the whole history and the active workout.
   void clear() {
     _history.clear();
