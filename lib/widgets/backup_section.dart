@@ -107,17 +107,6 @@ class BackupSection extends StatelessWidget {
           enabled: enabled,
           onTap: () => _backUp(context, backup),
         ),
-        SwitchListTile(
-          secondary: const Icon(Icons.cloud_sync_outlined),
-          title: const Text('Back up after each workout'),
-          subtitle: provider.isSignedIn
-              ? null
-              : const Text('Sign in to turn it on'),
-          value: settings.autoBackup,
-          onChanged: provider.isSignedIn
-              ? (value) => SettingsScope.of(context).autoBackup = value
-              : null,
-        ),
         ListTile(
           leading: const Icon(Icons.cloud_download_outlined),
           title: Text('Restore from ${provider.name}'),
