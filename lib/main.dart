@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'app/app_info.dart';
-import 'app/backup_scope.dart';
 import 'app/exercise_scope.dart';
 import 'app/settings_scope.dart';
 import 'app/store_scope.dart';
@@ -14,8 +13,6 @@ import 'data/exercise_store.dart';
 import 'data/settings_store.dart';
 import 'data/storage/file_storage.dart';
 import 'data/storage/key_value_storage.dart';
-import 'data/sync/backup_service.dart';
-import 'data/sync/google_drive_sync_provider.dart';
 import 'data/template_store.dart';
 import 'data/workout_store.dart';
 import 'screens/home_shell.dart';
@@ -31,13 +28,6 @@ Future<void> main() async {
     exercises: stores.exercises,
     templates: stores.templates,
   );
-  final backup = BackupService(
-    provider: GoogleDriveSyncProvider(),
-    workouts: stores.workouts,
-    settings: stores.settings,
-    exercises: stores.exercises,
-    templates: stores.templates,
-  );
   // The app can be killed while in the background, so save right away.
   AppLifecycleListener(onHide: autoSave.flush);
   runApp(
@@ -46,7 +36,6 @@ Future<void> main() async {
       settings: stores.settings,
       exercises: stores.exercises,
       templates: stores.templates,
-      backup: backup,
     ),
   );
 }
@@ -69,14 +58,12 @@ class MyApp extends StatelessWidget {
     required this.settings,
     required this.exercises,
     required this.templates,
-    this.backup,
   });
 
   final WorkoutStore store;
   final SettingsStore settings;
   final ExerciseStore exercises;
   final TemplateStore templates;
-  final BackupService? backup;
 
   // This widget is the root of your application.
   @override
@@ -89,18 +76,15 @@ class MyApp extends StatelessWidget {
           templates: templates,
           child: StoreScope(
             store: store,
-            child: BackupScope(
-              backup: backup,
-              child: ListenableBuilder(
-                listenable: settings,
-                builder: (context, _) => MaterialApp(
-                  title: AppInfo.name,
-                  debugShowCheckedModeBanner: false,
-                  theme: AppTheme.light(),
-                  darkTheme: AppTheme.dark(),
-                  themeMode: settings.settings.themeMode,
-                  home: const HomeShell(),
-                ),
+            child: ListenableBuilder(
+              listenable: settings,
+              builder: (context, _) => MaterialApp(
+                title: AppInfo.name,
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.light(),
+                darkTheme: AppTheme.dark(),
+                themeMode: settings.settings.themeMode,
+                home: const HomeShell(),
               ),
             ),
           ),
