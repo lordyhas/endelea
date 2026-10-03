@@ -110,7 +110,7 @@ class _NoHistory extends StatelessWidget {
           Icon(Icons.history, size: 48),
           SizedBox(height: 8),
           Text('No workouts yet'),
-          Text('Finished workouts will show up here'),
+          Text('Finished workouts show up here'),
         ],
       ),
     );
