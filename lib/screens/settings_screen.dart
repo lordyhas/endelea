@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../app/app_info.dart';
 import '../app/exercise_scope.dart';
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../app/template_scope.dart';
-import '../data/export.dart';
 import '../models/settings.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
@@ -17,18 +15,6 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   static const _restOptions = [30, 60, 90, 120, 180];
-
-  Future<void> _copyData(BuildContext context) async {
-    final json = exportData(
-      workouts: StoreScope.of(context),
-      settings: SettingsScope.of(context),
-      exercises: ExerciseScope.of(context),
-      templates: TemplateScope.of(context),
-    );
-    await Clipboard.setData(ClipboardData(text: json));
-    if (!context.mounted) return;
-    showMessage(context, 'Data copied as JSON');
-  }
 
   Future<void> _eraseAll(BuildContext context) async {
     final confirmed = await confirm(
@@ -151,12 +137,6 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
           const _SectionTitle('Data'),
-          ListTile(
-            leading: const Icon(Icons.copy_all_outlined),
-            title: const Text('Copy data as JSON'),
-            subtitle: const Text('Workouts, routines, exercises and settings'),
-            onTap: () => _copyData(context),
-          ),
           ListTile(
             leading: Icon(
               Icons.delete_forever_outlined,
