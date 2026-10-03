@@ -27,11 +27,6 @@ class SettingsStore extends ChangeNotifier {
     notifyListeners();
   }
 
-  set lastBackupAt(DateTime date) {
-    _settings = _settings.copyWith(lastBackupAt: date);
-    notifyListeners();
-  }
-
   set weeklyGoal(int goal) {
     _settings = _settings.copyWith(weeklyGoal: goal.clamp(1, 7));
     notifyListeners();
