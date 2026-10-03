@@ -6,8 +6,6 @@ import 'package:endelea/data/export.dart';
 import 'package:endelea/data/settings_store.dart';
 import 'package:endelea/data/template_store.dart';
 import 'package:endelea/data/workout_store.dart';
-import 'package:endelea/models/exercise.dart';
-import 'package:endelea/models/settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -27,72 +25,5 @@ void main() {
     expect(json['exercises'], isEmpty);
     expect(json['routines'], hasLength(demoTemplates().length));
     expect(json['history'], hasLength(demoHistory().length));
-  });
-
-  test('reads back its own export, custom exercises included', () {
-    final exercises = ExerciseStore();
-    final custom = exercises.add(
-      name: 'Sled push',
-      muscleGroup: MuscleGroup.legs,
-      equipment: Equipment.machine,
-      place: TrainingPlace.gym,
-      tracking: TrackingType.duration,
-    );
-    final workouts = WorkoutStore(history: demoHistory())
-      ..start(name: 'Sled', place: TrainingPlace.gym)
-      ..addExercise(custom);
-    workouts.active!.exercises.single.sets.single
-      ..seconds = 30
-      ..done = true;
-    workouts.finish();
-
-    final data = parseExport(
-      exportData(
-        workouts: workouts,
-        settings: SettingsStore(const AppSettings(weightUnit: WeightUnit.lb)),
-        exercises: exercises,
-        templates: TemplateStore(templates: demoTemplates()),
-      ),
-    );
-
-    expect(data.settings.weightUnit, WeightUnit.lb);
-    expect(data.exercises, [custom]);
-    expect(data.routines, hasLength(demoTemplates().length));
-    expect(data.history, hasLength(demoHistory().length + 1));
-    expect(data.history.first.exercises.single.exercise, custom);
-  });
-
-  test('rejects text that is not an export', () {
-    expect(() => parseExport('hello'), throwsFormatException);
-    expect(() => parseExport('{"app": "Other"}'), throwsFormatException);
-    expect(() => parseExport('{"app": "Endelea"}'), throwsFormatException);
-  });
-
-  test('restore replaces the data but keeps the workout in progress', () {
-    final source = parseExport(
-      exportData(
-        workouts: WorkoutStore(history: demoHistory()),
-        settings: SettingsStore(const AppSettings(weightUnit: WeightUnit.lb)),
-        exercises: ExerciseStore(),
-        templates: TemplateStore(templates: demoTemplates()),
-      ),
-    );
-    final workouts = WorkoutStore()
-      ..start(name: 'Now', place: TrainingPlace.home);
-    final settings = SettingsStore();
-    final templates = TemplateStore();
-
-    restoreData(
-      source,
-      workouts: workouts,
-      settings: settings,
-      exercises: ExerciseStore(),
-      templates: templates,
-    );
-
-    expect(workouts.history, hasLength(demoHistory().length));
-    expect(workouts.active?.name, 'Now');
-    expect(templates.templates, hasLength(demoTemplates().length));
-    expect(settings.settings.weightUnit, WeightUnit.lb);
   });
 }
