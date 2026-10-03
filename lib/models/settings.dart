@@ -26,7 +26,6 @@ class AppSettings {
     this.restDuration = const Duration(seconds: 90),
     this.themeMode = ThemeMode.system,
     this.weeklyGoal = 3,
-    this.autoBackup = false,
     this.lastBackupAt,
   });
 
@@ -37,9 +36,6 @@ class AppSettings {
   /// Number of workouts the user aims for each week.
   final int weeklyGoal;
 
-  /// Whether to back up after each finished workout.
-  final bool autoBackup;
-
   /// When the data was last backed up to the cloud.
   final DateTime? lastBackupAt;
 
@@ -48,14 +44,12 @@ class AppSettings {
     Duration? restDuration,
     ThemeMode? themeMode,
     int? weeklyGoal,
-    bool? autoBackup,
     DateTime? lastBackupAt,
   }) => AppSettings(
     weightUnit: weightUnit ?? this.weightUnit,
     restDuration: restDuration ?? this.restDuration,
     themeMode: themeMode ?? this.themeMode,
     weeklyGoal: weeklyGoal ?? this.weeklyGoal,
-    autoBackup: autoBackup ?? this.autoBackup,
     lastBackupAt: lastBackupAt ?? this.lastBackupAt,
   );
 
@@ -74,7 +68,6 @@ class AppSettings {
       themeMode:
           ThemeMode.values.asNameMap()[json['themeMode']] ?? defaults.themeMode,
       weeklyGoal: json['weeklyGoal'] as int? ?? defaults.weeklyGoal,
-      autoBackup: json['autoBackup'] as bool? ?? defaults.autoBackup,
       lastBackupAt: lastBackupAt == null
           ? null
           : DateTime.tryParse(lastBackupAt),
@@ -86,7 +79,6 @@ class AppSettings {
     'restSeconds': restDuration.inSeconds,
     'themeMode': themeMode.name,
     'weeklyGoal': weeklyGoal,
-    'autoBackup': autoBackup,
     'lastBackupAt': lastBackupAt?.toIso8601String(),
   };
 }
