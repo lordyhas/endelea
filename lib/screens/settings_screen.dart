@@ -30,35 +30,6 @@ class SettingsScreen extends StatelessWidget {
     showMessage(context, 'Data copied as JSON');
   }
 
-  Future<void> _pasteData(BuildContext context) async {
-    final clip = await Clipboard.getData(Clipboard.kTextPlain);
-    if (!context.mounted) return;
-    final ExportedData data;
-    try {
-      data = parseExport(clip?.text ?? '');
-    } on FormatException {
-      showMessage(context, 'The clipboard does not hold Endelea data');
-      return;
-    }
-    final confirmed = await confirm(
-      context,
-      title: 'Restore data?',
-      message:
-          '${data.history.length} workouts and ${data.routines.length} '
-          'routines will replace your current data.',
-      action: 'Restore',
-    );
-    if (!confirmed || !context.mounted) return;
-    restoreData(
-      data,
-      workouts: StoreScope.of(context),
-      settings: SettingsScope.of(context),
-      exercises: ExerciseScope.of(context),
-      templates: TemplateScope.of(context),
-    );
-    showMessage(context, 'Data restored');
-  }
-
   Future<void> _eraseAll(BuildContext context) async {
     final confirmed = await confirm(
       context,
@@ -185,12 +156,6 @@ class SettingsScreen extends StatelessWidget {
             title: const Text('Copy data as JSON'),
             subtitle: const Text('Workouts, routines, exercises and settings'),
             onTap: () => _copyData(context),
-          ),
-          ListTile(
-            leading: const Icon(Icons.content_paste_go_outlined),
-            title: const Text('Restore from clipboard'),
-            subtitle: const Text('Paste data copied from Endelea'),
-            onTap: () => _pasteData(context),
           ),
           ListTile(
             leading: Icon(
