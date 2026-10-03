@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../app/app_info.dart';
-import '../app/backup_scope.dart';
 import '../app/exercise_scope.dart';
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
@@ -10,11 +9,10 @@ import '../app/template_scope.dart';
 import '../data/export.dart';
 import '../models/settings.dart';
 import '../utils/format.dart';
-import '../widgets/backup_section.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/show_message.dart';
 
-/// Preferences, backup and data management.
+/// Preferences and data management.
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
@@ -181,10 +179,6 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
-          if (BackupScope.maybeOf(context) != null) ...[
-            const _SectionTitle('Backup'),
-            const BackupSection(),
-          ],
           const _SectionTitle('Data'),
           ListTile(
             leading: const Icon(Icons.copy_all_outlined),
