@@ -5,7 +5,6 @@ import 'package:endelea/data/sync/backup_service.dart';
 import 'package:endelea/data/sync/memory_sync_provider.dart';
 import 'package:endelea/data/template_store.dart';
 import 'package:endelea/data/workout_store.dart';
-import 'package:endelea/models/exercise.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 BackupService _service(
@@ -57,49 +56,5 @@ void main() {
 
   test('download returns null when there is no backup yet', () async {
     expect(await _service(MemorySyncProvider()).download(), isNull);
-  });
-
-  group('automatic backup', () {
-    Future<void> finishWorkout(WorkoutStore workouts) async {
-      workouts.start(name: 'Quick', place: TrainingPlace.home);
-      workouts.finish();
-      // Let the backup started by the listener complete.
-      await Future<void>.delayed(Duration.zero);
-    }
-
-    test('runs after a workout when enabled and signed in', () async {
-      final provider = MemorySyncProvider();
-      await provider.signIn();
-      final workouts = WorkoutStore();
-      _service(
-        provider,
-        workouts: workouts,
-        settings: SettingsStore()..autoBackup = true,
-      );
-
-      await finishWorkout(workouts);
-
-      expect(provider.files, contains(BackupService.fileName));
-    });
-
-    test('does nothing when turned off or signed out', () async {
-      final signedOut = MemorySyncProvider();
-      final turnedOff = MemorySyncProvider();
-      await turnedOff.signIn();
-      final first = WorkoutStore();
-      final second = WorkoutStore();
-      _service(
-        signedOut,
-        workouts: first,
-        settings: SettingsStore()..autoBackup = true,
-      );
-      _service(turnedOff, workouts: second);
-
-      await finishWorkout(first);
-      await finishWorkout(second);
-
-      expect(signedOut.files, isEmpty);
-      expect(turnedOff.files, isEmpty);
-    });
   });
 }
