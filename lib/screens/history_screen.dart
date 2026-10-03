@@ -41,7 +41,6 @@ class HistoryScreen extends StatelessWidget {
                   _Total('Workouts', '${stats.totalWorkouts}'),
                   _Total('Time', formatDuration(stats.totalTime)),
                   _Total('Volume', formatWeight(stats.totalVolume, unit)),
-                  _Total('Best streak', plural(stats.longestStreak, 'day')),
                 ],
               ),
             ),
