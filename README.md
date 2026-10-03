@@ -31,8 +31,6 @@ workouts.
   muscles worked this week and recent workouts.
 - **Settings**: light, dark or system theme, weekly goal, weights in kg or lb,
   default rest duration, copy or restore all data as JSON and erase all data.
-- **Backup**: back up to the hidden app folder of Google Drive, by hand or
-  after each workout, and restore on another device.
 - **Saved on the device**: workouts, the workout in progress, routines, custom
   exercises and settings are kept as JSON files in the app documents folder.
   The first launch starts with demo data.
@@ -50,7 +48,6 @@ lib/
   data/       stores, saving and loading, exercise catalog, stats, progress,
               demo data
     storage/  json files on the device
-    sync/     cloud backup and the Google Drive provider
   models/     exercise, workout, template and settings models
   screens/    app screens
   utils/      formatting helpers
@@ -64,19 +61,6 @@ test/         unit and widget tests
 flutter pub get
 flutter run
 ```
-
-### Google Drive backup
-
-Backup needs an OAuth client in a Google Cloud project with the Drive API
-enabled. The app only asks for the `drive.appdata` scope, so it can only see
-its own backup file.
-
-- Android: add an Android OAuth client with the package name and the SHA-1 of
-  your signing key.
-- iOS: add an iOS OAuth client and its reversed client id as a URL scheme in
-  `ios/Runner/Info.plist`.
-
-Without this setup the app works as usual and only the backup fails.
 
 Run the tests with:
 
