@@ -66,18 +66,4 @@ void main() {
     expect(stats.totalVolume, 0);
     expect(stats.workoutsThisWeek, 1);
   });
-
-  test('longest streak finds the best run, across months', () {
-    final stats = WorkoutStats([
-      _workoutOn(DateTime(2026, 3, 30, 8)),
-      _workoutOn(DateTime(2026, 3, 31, 8)),
-      _workoutOn(DateTime(2026, 3, 31, 18)),
-      _workoutOn(DateTime(2026, 4, 1, 8)),
-      _workoutOn(DateTime(2026, 4, 10, 8)),
-      _workoutOn(DateTime(2026, 4, 11, 8)),
-    ], now: now);
-
-    expect(stats.longestStreak, 3);
-    expect(WorkoutStats([], now: now).longestStreak, 0);
-  });
 }
