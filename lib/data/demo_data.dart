@@ -1,6 +1,5 @@
 import '../models/exercise.dart';
 import '../models/workout.dart';
-import '../models/workout_template.dart';
 import 'exercise_catalog.dart';
 
 /// A few past workouts so the prototype does not start empty.
@@ -81,36 +80,5 @@ List<Workout> demoHistory({DateTime? now}) {
       entry('lat-pulldown', sets(3, kg: 50, reps: 10)),
       entry('seated-row', sets(3, kg: 45, reps: 10)),
     ]),
-  ];
-}
-
-/// Starter templates for the prototype.
-List<WorkoutTemplate> demoTemplates() {
-  TemplateExercise entry(String id, int sets) =>
-      TemplateExercise(exercise: exerciseById(id)!, sets: sets);
-
-  return [
-    WorkoutTemplate(
-      id: 'demo-full-body-gym',
-      name: 'Full body',
-      place: TrainingPlace.gym,
-      exercises: [
-        entry('back-squat', 4),
-        entry('bench-press', 4),
-        entry('seated-row', 3),
-        entry('overhead-press', 3),
-      ],
-    ),
-    WorkoutTemplate(
-      id: 'demo-home-20',
-      name: '20 min at home',
-      place: TrainingPlace.home,
-      exercises: [
-        entry('jumping-jacks', 2),
-        entry('push-up', 3),
-        entry('air-squat', 3),
-        entry('plank', 3),
-      ],
-    ),
   ];
 }
