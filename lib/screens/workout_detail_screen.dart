@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
-import '../app/template_scope.dart';
 import '../models/exercise.dart';
 import '../models/settings.dart';
 import '../models/workout.dart';
@@ -15,11 +14,6 @@ class WorkoutDetailScreen extends StatelessWidget {
   const WorkoutDetailScreen({super.key, required this.workout});
 
   final Workout workout;
-
-  void _saveAsRoutine(BuildContext context) {
-    final template = TemplateScope.of(context).saveWorkout(workout);
-    showMessage(context, 'Routine "${template.name}" created');
-  }
 
   void _repeat(BuildContext context) {
     final store = StoreScope.of(context);
@@ -59,10 +53,7 @@ class WorkoutDetailScreen extends StatelessWidget {
                 onTap: () => _repeat(context),
                 child: const Text('Repeat workout'),
               ),
-              PopupMenuItem(
-                onTap: () => _saveAsRoutine(context),
-                child: const Text('Save as routine'),
-              ),
+
               PopupMenuItem(
                 onTap: () => _delete(context),
                 child: const Text('Delete'),
