@@ -16,7 +16,6 @@ class WorkoutExerciseCard extends StatelessWidget {
     this.onSetDone,
     this.onMoveUp,
     this.onMoveDown,
-    this.lastPerformance,
   });
 
   final WorkoutExercise entry;
@@ -29,9 +28,6 @@ class WorkoutExerciseCard extends StatelessWidget {
   /// Move the exercise in the workout; null when it cannot move that way.
   final VoidCallback? onMoveUp;
   final VoidCallback? onMoveDown;
-
-  /// Short summary of the previous time this exercise was done.
-  final String? lastPerformance;
 
   void _addSet() {
     final previous = entry.sets.isEmpty ? null : entry.sets.last;
@@ -91,16 +87,7 @@ class WorkoutExerciseCard extends StatelessWidget {
                 ),
               ],
             ),
-            if (lastPerformance != null)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: Text(
-                  'Last time: $lastPerformance',
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ),
+
             for (var i = 0; i < entry.sets.length; i++)
               Dismissible(
                 key: ObjectKey(entry.sets[i]),

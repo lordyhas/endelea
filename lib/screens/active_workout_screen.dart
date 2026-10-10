@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
-import '../data/exercise_progress.dart';
 import '../models/exercise.dart';
-import '../models/settings.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
@@ -31,22 +29,15 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       );
       return;
     }
-    final previous = store.history;
     final workout = store.finish()!;
-    final records = newRecords(workout, previous);
     navigator.pop();
     messenger.showSnackBar(
-      SnackBar(content: Text(_finishedMessage(workout, records))),
+      SnackBar(
+        content: Text(
+          '${workout.name} saved · ${formatDuration(workout.duration)}',
+        ),
+      ),
     );
-  }
-
-  static String _finishedMessage(Workout workout, List<Exercise> records) {
-    final saved = '${workout.name} saved · ${formatDuration(workout.duration)}';
-    return switch (records) {
-      [] => saved,
-      [final record] => '$saved · New record on ${record.name}!',
-      _ => '$saved · ${records.length} new records!',
-    };
   }
 
   Future<void> _discard() async {
@@ -72,22 +63,6 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
       if (!confirmed || !mounted) return;
     }
     StoreScope.of(context).removeExercise(entry);
-  }
-
-  static String? _lastPerformance(
-    ProgressPoint? point,
-    TrackingType tracking,
-    WeightUnit unit,
-  ) {
-    if (point == null) return null;
-    return switch (tracking) {
-      TrackingType.weightReps =>
-        '${formatWeight(point.bestWeight, unit)} × ${point.heaviestSetReps}',
-      TrackingType.reps => '${point.bestReps} reps',
-      TrackingType.duration => formatDuration(
-        Duration(seconds: point.bestSeconds),
-      ),
-    };
   }
 
   @override
@@ -148,12 +123,8 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                     onSetDone: () =>
                         store.restTimer.start(settings.restDuration),
                     onRemove: () => _remove(entry),
-                    lastPerformance: _lastPerformance(
-                      ExerciseProgress(entry.exercise, store.history).last,
-                      entry.exercise.tracking,
-                      settings.weightUnit,
-                    ),
                   ),
+
                   const SizedBox(height: 12),
                 ],
                 TextFormField(
