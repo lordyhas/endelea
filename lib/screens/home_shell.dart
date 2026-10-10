@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'exercise_library_screen.dart';
 import 'history_screen.dart';
-import 'templates_screen.dart';
 import 'today_screen.dart';
 
 /// Root screen holding the bottom navigation between the main tabs.
@@ -18,7 +17,6 @@ class _HomeShellState extends State<HomeShell> {
 
   static const _tabs = <Widget>[
     TodayScreen(),
-    TemplatesScreen(),
     ExerciseLibraryScreen(),
     HistoryScreen(),
   ];
@@ -35,11 +33,6 @@ class _HomeShellState extends State<HomeShell> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: 'Today',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.list_alt_outlined),
-            selectedIcon: Icon(Icons.list_alt),
-            label: 'Routines',
           ),
           NavigationDestination(
             icon: Icon(Icons.fitness_center_outlined),

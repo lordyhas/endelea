@@ -1,4 +1,3 @@
-import 'package:endelea/data/demo_data.dart';
 import 'package:endelea/data/exercise_store.dart';
 import 'package:endelea/data/settings_store.dart';
 import 'package:endelea/data/template_store.dart';
@@ -82,31 +81,5 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Bench press'), findsNothing);
     expect(find.text('Push-up'), findsOneWidget);
-  });
-
-  testWidgets('Starting a routine prefills the workout', (
-    WidgetTester tester,
-  ) async {
-    final store = WorkoutStore();
-    await tester.pumpWidget(
-      MyApp(
-        store: store,
-        settings: SettingsStore(),
-        exercises: ExerciseStore(),
-        templates: TemplateStore(templates: demoTemplates()),
-      ),
-    );
-
-    await tester.tap(find.byIcon(Icons.list_alt_outlined));
-    await tester.pumpAndSettle();
-    expect(find.text('Full body'), findsOneWidget);
-
-    await tester.tap(find.text('Start').first);
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 500));
-
-    expect(store.active?.name, 'Full body');
-    expect(store.active!.exercises, hasLength(4));
-    expect(find.text('Back squat'), findsOneWidget);
   });
 }
