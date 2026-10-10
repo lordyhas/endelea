@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../app/exercise_scope.dart';
 import '../models/exercise.dart';
 import '../widgets/exercise_tile.dart';
-import 'exercise_detail_screen.dart';
 
 class ExerciseLibraryScreen extends StatefulWidget {
   const ExerciseLibraryScreen({super.key});
@@ -97,15 +96,8 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
                 ? const Center(child: Text('No exercise found'))
                 : ListView.builder(
                     itemCount: exercises.length,
-                    itemBuilder: (context, index) => ExerciseTile(
-                      exercise: exercises[index],
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) =>
-                              ExerciseDetailScreen(exercise: exercises[index]),
-                        ),
-                      ),
-                    ),
+                    itemBuilder: (context, index) =>
+                        ExerciseTile(exercise: exercises[index]),
                   ),
           ),
         ],
