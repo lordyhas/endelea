@@ -32,25 +32,4 @@ void main() {
       ['push-up', 'bench-press'],
     );
   });
-
-  testWidgets('tapping a set number makes it a warm-up', (tester) async {
-    final store = WorkoutStore()
-      ..start(name: 'Push', place: TrainingPlace.gym)
-      ..addExercise(exerciseById('bench-press')!);
-    await tester.pumpWidget(
-      MyApp(
-        store: store,
-        settings: SettingsStore(),
-        exercises: ExerciseStore(),
-      ),
-    );
-    await tester.tap(find.text('Resume workout'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('1'));
-    await tester.pump();
-
-    expect(find.text('W'), findsOneWidget);
-    expect(store.active!.exercises.single.sets.single.warmUp, isTrue);
-  });
 }

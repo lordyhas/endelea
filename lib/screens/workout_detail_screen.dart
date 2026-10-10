@@ -118,7 +118,7 @@ class WorkoutDetailScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Text(
-                  '${entry.sets[i].warmUp ? 'Warm-up' : 'Set ${i + 1}'}   '
+                  'Set ${i + 1}   '
                   '${_describe(entry.exercise.tracking, entry.sets[i], unit)}',
                 ),
               ),

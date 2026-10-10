@@ -7,7 +7,6 @@ class WorkoutSet {
     this.weight = 0,
     this.seconds = 0,
     this.done = false,
-    this.warmUp = false,
   });
 
   int reps;
@@ -19,18 +18,10 @@ class WorkoutSet {
   int seconds;
   bool done;
 
-  /// Warm-up sets are logged but do not count in volume and records.
-  bool warmUp;
-
   double get volume => weight * reps;
 
-  WorkoutSet copy() => WorkoutSet(
-    reps: reps,
-    weight: weight,
-    seconds: seconds,
-    done: done,
-    warmUp: warmUp,
-  );
+  WorkoutSet copy() =>
+      WorkoutSet(reps: reps, weight: weight, seconds: seconds, done: done);
 }
 
 /// An exercise done in a workout with its sets.
@@ -43,10 +34,8 @@ class WorkoutExercise {
 
   Iterable<WorkoutSet> get completedSets => sets.where((s) => s.done);
 
-  /// Completed sets without the warm-ups.
-  Iterable<WorkoutSet> get workingSets => completedSets.where((s) => !s.warmUp);
-
-  double get volume => workingSets.fold(0, (total, set) => total + set.volume);
+  double get volume =>
+      completedSets.fold(0, (total, set) => total + set.volume);
 }
 
 /// A training session, in progress or finished.

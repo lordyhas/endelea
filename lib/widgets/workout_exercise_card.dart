@@ -148,26 +148,13 @@ class _SetRow extends StatelessWidget {
         children: [
           SizedBox(
             width: 32,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(8),
-              onTap: () {
-                set.warmUp = !set.warmUp;
-                onChanged();
-              },
-              child: Tooltip(
-                message: set.warmUp ? 'Warm-up set' : 'Tap for a warm-up set',
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Text(
-                    set.warmUp ? 'W' : '${index + 1}',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.labelLarge
-                        ?.copyWith(color: set.warmUp ? scheme.tertiary : null),
-                  ),
-                ),
-              ),
+            child: Text(
+              '${index + 1}',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.labelLarge,
             ),
           ),
+
           if (tracking == TrackingType.weightReps) ...[
             Expanded(
               child: _NumberField(
