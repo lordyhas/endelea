@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../app/exercise_scope.dart';
 import '../models/exercise.dart';
 import '../widgets/exercise_tile.dart';
-import 'create_exercise_screen.dart';
 import 'exercise_detail_screen.dart';
 
 class ExerciseLibraryScreen extends StatefulWidget {
@@ -37,15 +36,7 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
     final exercises = _filter(ExerciseScope.of(context).all);
     return Scaffold(
       appBar: AppBar(title: const Text('Exercises')),
-      floatingActionButton: FloatingActionButton(
-        // Tabs live in an IndexedStack with the today tab's button.
-        heroTag: null,
-        tooltip: 'New exercise',
-        onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute<void>(builder: (_) => const CreateExerciseScreen()),
-        ),
-        child: const Icon(Icons.add),
-      ),
+
       body: Column(
         children: [
           Padding(
