@@ -7,7 +7,6 @@ import '../models/workout.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/elapsed_time.dart';
-import '../widgets/rest_timer_bar.dart';
 import '../widgets/workout_exercise_card.dart';
 import 'exercise_picker_screen.dart';
 
@@ -120,8 +119,6 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                         ? null
                         : () => store.moveExercise(index, index + 1),
                     onChanged: store.touch,
-                    onSetDone: () =>
-                        store.restTimer.start(settings.restDuration),
                     onRemove: () => _remove(entry),
                   ),
 
@@ -140,7 +137,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
                 const SizedBox(height: 88),
               ],
             ),
-      bottomNavigationBar: RestTimerBar(timer: store.restTimer),
+
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           final exercise = await Navigator.of(context).push<Exercise>(

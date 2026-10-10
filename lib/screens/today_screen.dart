@@ -118,16 +118,7 @@ class TodayScreen extends StatelessWidget {
           }
         },
         icon: Icon(active != null ? Icons.timer_outlined : Icons.play_arrow),
-        label: active == null
-            ? const Text('Start workout')
-            : ListenableBuilder(
-                listenable: store.restTimer,
-                builder: (context, _) => Text(
-                  store.restTimer.isRunning
-                      ? 'Rest ${formatDuration(store.restTimer.remaining, clock: true)}'
-                      : 'Resume workout',
-                ),
-              ),
+        label: Text(active == null ? 'Start workout' : 'Resume workout'),
       ),
     );
   }

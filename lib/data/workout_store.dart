@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../utils/ids.dart';
-import 'rest_timer.dart';
 
 /// Store for the active workout and the workout history.
 class WorkoutStore extends ChangeNotifier {
@@ -12,10 +11,6 @@ class WorkoutStore extends ChangeNotifier {
 
   final List<Workout> _history;
   Workout? _active;
-
-  /// Rest countdown of the active workout. It lives here so it keeps
-  /// running when the user leaves the workout screen.
-  final RestTimer restTimer = RestTimer();
 
   Workout? get active => _active;
 
@@ -86,7 +81,6 @@ class WorkoutStore extends ChangeNotifier {
     }
     workout.exercises.removeWhere((entry) => entry.sets.isEmpty);
     workout.finishedAt = DateTime.now();
-    restTimer.stop();
     _history.add(workout);
     _active = null;
     notifyListeners();
@@ -96,7 +90,6 @@ class WorkoutStore extends ChangeNotifier {
   /// Drops the active workout without saving it.
   void discard() {
     _active = null;
-    restTimer.stop();
     notifyListeners();
   }
 
@@ -109,16 +102,9 @@ class WorkoutStore extends ChangeNotifier {
   void clear() {
     _history.clear();
     _active = null;
-    restTimer.stop();
     notifyListeners();
   }
 
   /// Call after mutating an exercise or a set of the active workout.
   void touch() => notifyListeners();
-
-  @override
-  void dispose() {
-    restTimer.dispose();
-    super.dispose();
-  }
 }
