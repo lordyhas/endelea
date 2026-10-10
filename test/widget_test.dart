@@ -1,6 +1,5 @@
 import 'package:endelea/data/exercise_store.dart';
 import 'package:endelea/data/settings_store.dart';
-import 'package:endelea/data/template_store.dart';
 import 'package:endelea/data/workout_store.dart';
 import 'package:endelea/main.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ void main() {
         store: WorkoutStore(),
         settings: SettingsStore(),
         exercises: ExerciseStore(),
-        templates: TemplateStore(),
       ),
     );
 
@@ -27,7 +25,6 @@ void main() {
         store: WorkoutStore(),
         settings: SettingsStore()..weeklyGoal = 4,
         exercises: ExerciseStore(),
-        templates: TemplateStore(),
       ),
     );
 
@@ -44,7 +41,6 @@ void main() {
         store: store,
         settings: SettingsStore(),
         exercises: ExerciseStore(),
-        templates: TemplateStore(),
       ),
     );
 
@@ -68,7 +64,6 @@ void main() {
         store: WorkoutStore(),
         settings: SettingsStore(),
         exercises: ExerciseStore(),
-        templates: TemplateStore(),
       ),
     );
 

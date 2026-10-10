@@ -1,7 +1,6 @@
 import 'package:endelea/data/exercise_catalog.dart';
 import 'package:endelea/data/exercise_store.dart';
 import 'package:endelea/data/settings_store.dart';
-import 'package:endelea/data/template_store.dart';
 import 'package:endelea/data/workout_store.dart';
 import 'package:endelea/main.dart';
 import 'package:endelea/models/exercise.dart';
@@ -18,7 +17,6 @@ void main() {
         store: store,
         settings: SettingsStore(),
         exercises: ExerciseStore(),
-        templates: TemplateStore(),
       ),
     );
     await tester.tap(find.text('Resume workout'));
@@ -44,7 +42,6 @@ void main() {
         store: store,
         settings: SettingsStore(),
         exercises: ExerciseStore(),
-        templates: TemplateStore(),
       ),
     );
     await tester.tap(find.text('Resume workout'));
