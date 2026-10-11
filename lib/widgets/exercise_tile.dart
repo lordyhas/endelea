@@ -24,26 +24,7 @@ class ExerciseTile extends StatelessWidget {
         foregroundColor: scheme.onPrimaryContainer,
         child: Icon(iconForMuscleGroup(exercise.muscleGroup), size: 20),
       ),
-      title: Row(
-        children: [
-          Flexible(child: Text(exercise.name)),
-          if (exercise.custom) ...[
-            const SizedBox(width: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-              decoration: BoxDecoration(
-                color: scheme.tertiaryContainer,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                'Custom',
-                style: Theme.of(context).textTheme.labelSmall
-                    ?.copyWith(color: scheme.onTertiaryContainer),
-              ),
-            ),
-          ],
-        ],
-      ),
+      title: Text(exercise.name),
       subtitle: Text(
         '${exercise.muscleGroup.label} · ${exercise.equipment.label}',
       ),
