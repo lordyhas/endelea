@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../app/exercise_scope.dart';
+import '../data/exercise_catalog.dart';
 import '../models/exercise.dart';
 import '../widgets/exercise_tile.dart';
 
@@ -32,7 +32,7 @@ class _ExerciseLibraryScreenState extends State<ExerciseLibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final exercises = _filter(ExerciseScope.of(context).all);
+    final exercises = _filter(exerciseCatalog);
     return Scaffold(
       appBar: AppBar(title: const Text('Exercises')),
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../app/app_info.dart';
-import '../app/exercise_scope.dart';
 import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../models/settings.dart';
@@ -20,13 +19,12 @@ class SettingsScreen extends StatelessWidget {
       context,
       title: 'Erase all data?',
       message:
-          'Your workouts, custom exercises and settings will be '
+          'Your workouts and settings will be '
           'deleted. This cannot be undone.',
       action: 'Erase',
     );
     if (!confirmed || !context.mounted) return;
     StoreScope.of(context).clear();
-    ExerciseScope.of(context).clear();
     SettingsScope.of(context).reset();
     showMessage(context, 'All data erased');
   }
