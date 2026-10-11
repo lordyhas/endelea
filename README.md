@@ -2,53 +2,41 @@
 
 *Endelea* means "keep going" in Swahili.
 
-Endelea is a workout tracker for training at the gym or at home. This is an
-early prototype: data lives in memory and the app starts with a few demo
-workouts.
+Endelea is a simple mockup of a workout tracker for the gym or home. Nothing
+is saved: the app starts with a few demo workouts each time and everything
+lives in memory.
 
-## Features
+## Screens
 
-- **Exercise library**: built-in gym and home exercises, filter by place and
-  muscle group, search by name, and create your own exercises.
-- **Progress**: personal records, estimated one rep max and a progress chart
-  on each exercise. Finishing a workout tells you about new records.
-- **Workouts**: start a gym or home workout, add exercises, log weight, reps or
-  duration for each set, mark sets as done or as warm-ups, reorder exercises
-  and add notes. Each exercise shows what you did last time. Warm-up sets do
-  not count in volume and records.
-- **Routines**: reusable workout templates, created from scratch, saved from
-  a past workout or duplicated from another routine. Drag exercises to reorder
-  them.
-- **Rest timer**: starts automatically when a set is completed, with +15s and
-  skip, and keeps running when leaving the workout screen.
-- **History**: all-time totals and finished workouts grouped by week, with a detail page per workout to repeat it, save it as a routine or
-  delete it.
-- **Today**: weekly goal, weekly activity, training streak, weekly volume and
-  recent workouts.
-- **Settings**: light, dark or system theme, weekly goal, weights in kg or lb,
-  default rest duration and erase all data.
-- **Saved on the device**: workouts, the workout in progress, routines, custom
-  exercises and settings are kept as JSON files in the app documents folder.
-  The first launch starts with demo data.
+- **Today**: workouts this week against a goal of 3, streak, weekly volume
+  and the last workouts.
+- **Exercises**: the built-in exercise list, filtered by place, muscle group
+  or name.
+- **History**: finished workouts grouped by week, with a detail page to
+  repeat or delete a workout.
+- **Workout**: start a gym or home workout, add exercises, log weight, reps
+  or duration for each set and finish it.
 
-## Tips
+## Reading the code
 
-- Tap a set number to turn it into a warm-up set.
-- A workout keeps running in the background, resume it from Today.
+Start with `lib/main.dart`, then follow these files:
 
-## Project structure
+1. `models/`: `Exercise` and `Workout`, plain Dart classes.
+2. `data/workout_store.dart`: the only state of the app, the active workout
+   and the history. `app/store_scope.dart` makes it available to screens with
+   `StoreScope.of(context)`.
+3. `data/exercise_catalog.dart` and `data/demo_data.dart`: the fixed data.
+4. `screens/home_shell.dart`: the bottom navigation, then each screen.
 
 ```
 lib/
-  app/        theme and the scopes exposing the stores
-  data/       stores, saving and loading, exercise catalog, stats, progress,
-              demo data
-    storage/  json files on the device
-  models/     exercise, workout, template and settings models
+  app/        theme, app name and the store scope
+  data/       workout store, exercise catalog, demo data, weekly stats
+  models/     exercise and workout
   screens/    app screens
   utils/      formatting helpers
-  widgets/    reusable widgets
-test/         unit and widget tests
+  widgets/    small reusable widgets
+test/         a few unit and widget tests
 ```
 
 ## Getting started
@@ -63,8 +51,3 @@ Run the tests with:
 ```sh
 flutter test
 ```
-
-## Roadmap
-
-- Rest timer per exercise
-- Body weight tracking
