@@ -9,7 +9,6 @@ import '../widgets/stat_card.dart';
 import '../widgets/week_strip.dart';
 import '../widgets/workout_summary_card.dart';
 import 'active_workout_screen.dart';
-import 'settings_screen.dart';
 import 'start_workout_sheet.dart';
 import 'workout_detail_screen.dart';
 
@@ -34,18 +33,8 @@ class TodayScreen extends StatelessWidget {
     final goalReached = stats.workoutsThisWeek >= goal;
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            tooltip: 'Settings',
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(builder: (_) => const SettingsScreen()),
-            ),
-            icon: const Icon(Icons.settings),
-          ),
-        ],
-        title: const Text(AppInfo.name),
-      ),
+      appBar: AppBar(title: const Text(AppInfo.name)),
+
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
