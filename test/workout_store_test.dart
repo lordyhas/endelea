@@ -58,26 +58,6 @@ void main() {
       expect(past.exercises.single.sets.single.done, isTrue);
     });
 
-    test('moves exercises within the active workout', () {
-      final store = WorkoutStore();
-      store.start(name: 'Test', place: TrainingPlace.gym);
-      for (final id in ['bench-press', 'back-squat', 'plank']) {
-        store.addExercise(exerciseById(id)!);
-      }
-      List<String> order() => [
-        for (final e in store.active!.exercises) e.exercise.id,
-      ];
-
-      store.moveExercise(2, 0);
-      expect(order(), ['plank', 'bench-press', 'back-squat']);
-
-      store.moveExercise(0, 10);
-      expect(order(), ['bench-press', 'back-squat', 'plank']);
-
-      store.moveExercise(5, 0);
-      expect(order(), ['bench-press', 'back-squat', 'plank']);
-    });
-
     test('delete removes a workout from the history', () {
       final store = WorkoutStore();
       store.start(name: 'Test', place: TrainingPlace.home);

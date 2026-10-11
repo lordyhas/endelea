@@ -13,17 +13,11 @@ class WorkoutExerciseCard extends StatelessWidget {
     required this.entry,
     required this.onChanged,
     required this.onRemove,
-    this.onMoveUp,
-    this.onMoveDown,
   });
 
   final WorkoutExercise entry;
   final VoidCallback onChanged;
   final VoidCallback onRemove;
-
-  /// Move the exercise in the workout; null when it cannot move that way.
-  final VoidCallback? onMoveUp;
-  final VoidCallback? onMoveDown;
 
   void _addSet() {
     final previous = entry.sets.isEmpty ? null : entry.sets.last;
@@ -61,25 +55,10 @@ class WorkoutExerciseCard extends StatelessWidget {
                         : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
-                PopupMenuButton<VoidCallback>(
-                  tooltip: 'Exercise options',
-                  onSelected: (action) => action(),
-                  itemBuilder: (_) => [
-                    PopupMenuItem(
-                      value: onMoveUp,
-                      enabled: onMoveUp != null,
-                      child: const Text('Move up'),
-                    ),
-                    PopupMenuItem(
-                      value: onMoveDown,
-                      enabled: onMoveDown != null,
-                      child: const Text('Move down'),
-                    ),
-                    PopupMenuItem(
-                      value: onRemove,
-                      child: const Text('Remove exercise'),
-                    ),
-                  ],
+                IconButton(
+                  tooltip: 'Remove exercise',
+                  onPressed: onRemove,
+                  icon: const Icon(Icons.close),
                 ),
               ],
             ),

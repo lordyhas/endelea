@@ -58,17 +58,6 @@ class WorkoutStore extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Moves the exercise at [from] to the position [to] in the active workout.
-  void moveExercise(int from, int to) {
-    final exercises = _active?.exercises;
-    if (exercises == null) return;
-    if (from < 0 || from >= exercises.length) return;
-    final target = to.clamp(0, exercises.length - 1);
-    if (target == from) return;
-    exercises.insert(target, exercises.removeAt(from));
-    notifyListeners();
-  }
-
   /// Ends the active workout and saves it in the history.
   ///
   /// Sets that were not completed are dropped, as well as exercises left
