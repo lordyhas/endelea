@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../app/app_info.dart';
-import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../data/workout_stats.dart';
 import '../utils/format.dart';
@@ -27,9 +26,7 @@ class TodayScreen extends StatelessWidget {
     final store = StoreScope.of(context);
     final active = store.active;
     final stats = WorkoutStats(store.history);
-    final settings = SettingsScope.of(context).settings;
-    final unit = settings.weightUnit;
-    final goal = settings.weeklyGoal;
+    const goal = 3;
     final goalReached = stats.workoutsThisWeek >= goal;
     final theme = Theme.of(context);
     return Scaffold(
@@ -68,7 +65,7 @@ class TodayScreen extends StatelessWidget {
               Expanded(
                 child: StatCard(
                   icon: Icons.scale_outlined,
-                  value: formatWeight(stats.volumeThisWeek, unit),
+                  value: formatWeight(stats.volumeThisWeek),
                   label: 'Volume',
                 ),
               ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
@@ -67,7 +66,6 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
   @override
   Widget build(BuildContext context) {
     final store = StoreScope.of(context);
-    final settings = SettingsScope.of(context).settings;
     final workout = store.active;
     if (workout == null) {
       return const Scaffold(body: Center(child: Text('No active workout')));
@@ -98,7 +96,7 @@ class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(
               '${workout.completedSetCount} sets · '
-              '${formatWeight(workout.volume, settings.weightUnit)} lifted',
+              '${formatWeight(workout.volume)} lifted',
             ),
           ),
         ),

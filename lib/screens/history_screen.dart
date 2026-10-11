@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../data/workout_stats.dart';
 import '../utils/format.dart';
@@ -26,7 +25,6 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final history = StoreScope.of(context).history;
-    final unit = SettingsScope.of(context).settings.weightUnit;
     final now = DateTime.now();
     final stats = WorkoutStats(history, now: now);
     final children = <Widget>[
@@ -40,7 +38,7 @@ class HistoryScreen extends StatelessWidget {
                 children: [
                   _Total('Workouts', '${stats.totalWorkouts}'),
                   _Total('Time', formatDuration(stats.totalTime)),
-                  _Total('Volume', formatWeight(stats.totalVolume, unit)),
+                  _Total('Volume', formatWeight(stats.totalVolume)),
                 ],
               ),
             ),

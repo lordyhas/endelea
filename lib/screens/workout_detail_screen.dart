@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../app/settings_scope.dart';
 import '../app/store_scope.dart';
 import '../models/exercise.dart';
-import '../models/settings.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
 import '../widgets/confirm_dialog.dart';
@@ -42,7 +40,6 @@ class WorkoutDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final unit = SettingsScope.of(context).settings.weightUnit;
     return Scaffold(
       appBar: AppBar(
         title: Text(workout.name),
@@ -75,7 +72,7 @@ class WorkoutDetailScreen extends StatelessWidget {
             children: [
               _Metric('Duration', formatDuration(workout.duration)),
               _Metric('Sets', '${workout.completedSetCount}'),
-              _Metric('Volume', formatWeight(workout.volume, unit)),
+              _Metric('Volume', formatWeight(workout.volume)),
             ],
           ),
           const SizedBox(height: 24),
@@ -106,7 +103,7 @@ class WorkoutDetailScreen extends StatelessWidget {
                 ),
                 if (entry.volume > 0)
                   Text(
-                    formatWeight(entry.volume, unit),
+                    formatWeight(entry.volume),
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -119,7 +116,7 @@ class WorkoutDetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Text(
                   'Set ${i + 1}   '
-                  '${_describe(entry.exercise.tracking, entry.sets[i], unit)}',
+                  '${_describe(entry.exercise.tracking, entry.sets[i])}',
                 ),
               ),
             const SizedBox(height: 16),
@@ -129,15 +126,12 @@ class WorkoutDetailScreen extends StatelessWidget {
     );
   }
 
-  static String _describe(
-    TrackingType tracking,
-    WorkoutSet set,
-    WeightUnit unit,
-  ) => switch (tracking) {
-    .weightReps => '${formatWeight(set.weight, unit)} × ${set.reps}',
-    .reps => '${set.reps} reps',
-    .duration => formatDuration(Duration(seconds: set.seconds)),
-  };
+  static String _describe(TrackingType tracking, WorkoutSet set) =>
+      switch (tracking) {
+        .weightReps => '${formatWeight(set.weight)} × ${set.reps}',
+        .reps => '${set.reps} reps',
+        .duration => formatDuration(Duration(seconds: set.seconds)),
+      };
 }
 
 class _Metric extends StatelessWidget {

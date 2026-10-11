@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../app/settings_scope.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../utils/format.dart';
@@ -14,7 +13,6 @@ class WorkoutSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final unit = SettingsScope.of(context).settings.weightUnit;
     return Card.filled(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -58,10 +56,7 @@ class WorkoutSummaryCard extends StatelessWidget {
                   _Stat(Icons.schedule, formatDuration(workout.duration)),
                   _Stat(Icons.repeat, '${workout.completedSetCount} sets'),
                   if (workout.volume > 0)
-                    _Stat(
-                      Icons.scale_outlined,
-                      formatWeight(workout.volume, unit),
-                    ),
+                    _Stat(Icons.scale_outlined, formatWeight(workout.volume)),
                 ],
               ),
             ],
