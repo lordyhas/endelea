@@ -480,11 +480,11 @@ Quand `changes/` dépasse ~200 fichiers : un appareil écrit un `snapshot` compl
 Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne pas commencer une phase avant que la précédente soit acceptée.
 
 ### Phase 0 — Squelette
-- [ ] `flutter create` (org `com.kdynamics`, nom `endelea`), Android + iOS.
-- [ ] Dépendances §2, lint strict, `l10n.yaml`, polices embarquées.
-- [ ] Arborescence §3.2 vide avec fichiers stubs.
-- [ ] `app.dart` : `MaterialApp.router`, thème Savane sombre/clair, FR/EN.
-- [ ] Shell de navigation à 5 onglets (écrans « placeholder »).
+- [x] `flutter create` (org `com.kdynamics`, nom `endelea`), Android + iOS.
+- [x] Dépendances §2, lint strict, `l10n.yaml`, polices embarquées.
+- [x] Arborescence §3.2 vide avec fichiers stubs.
+- [x] `app.dart` : `MaterialApp.router`, thème Savane sombre/clair, FR/EN.
+- [x] Shell de navigation à 5 onglets (écrans « placeholder »).
 - **Acceptation** : l'app démarre en FR, mode sombre, 5 onglets avec icônes Phosphor (Fill sur l'onglet actif).
 
 ### Phase 1 — Données
