@@ -1,0 +1,10 @@
+{
+  "@@locale": "en",
+  "appTitle": "Endelea",
+  "navHome": "Home",
+  "navPrograms": "Programs",
+  "navSession": "Workout",
+  "navHistory": "History",
+  "navProgress": "Progress",
+  "comingSoon": "Coming soon"
+}

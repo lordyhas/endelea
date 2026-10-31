@@ -1,0 +1,24 @@
+name: phosphor_flutter
+description: Phosphor icons for Flutter (Regular, Fill, Duotone), patched for recent Flutter.
+version: 2.1.0+endelea.1
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  fonts:
+    - family: PhosphorRegular
+      fonts:
+        - asset: lib/fonts/Phosphor.ttf
+    - family: PhosphorFill
+      fonts:
+        - asset: lib/fonts/Phosphor-Fill.ttf
+    - family: PhosphorDuotone
+      fonts:
+        - asset: lib/fonts/Phosphor-Duotone.ttf
