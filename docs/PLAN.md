@@ -154,6 +154,10 @@ Le schéma de base est dans `lib/data/database.dart` (fourni). Tables :
 3. **Table locale `SyncMeta`** (NON synchronisée, PK `key` text) : `deviceId`, `lastPushAt`, `lastPullCursor` (JSON : dernier fichier lu par appareil distant), `provider`, `accountEmail`.
 4. **`WorkoutSessions.bodyWeightKg` (real, nullable)** : facultatif, pour les exercices au poids du corps.
 5. Index sur `updated_at` de chaque table synchronisée (requêtes de push).
+6. **État de séance persistant** (ajouté à l'implémentation) : `WorkoutSessions.restEndsAt`, `pausedAt`, `pausedSeconds`, pour que le repos et la pause survivent à un redémarrage (§5.1).
+7. **Cibles copiées dans la séance** (ajouté à l'implémentation) : `SessionExercises.targetRepsMin`, `targetRepsMax`, `restSeconds` (§4.2 : modifier le programme ne change pas l'historique).
+8. **Horodatages normalisés** : Drift stocke les dates en texte ISO-8601 (`store_date_time_values_as_text`) et les compare comme des chaînes ; toutes les dates écrites sont donc en UTC, à la milliseconde. Conversion `toLocal()` à l'affichage.
+9. **IDs des exercices intégrés** : UUID v5 dérivé de `builtInKey` et horodatage fixe (2000-01-01) : chaque appareil crée les mêmes lignes, toute modification de l'utilisateur gagne à la synchro.
 
 ### 4.2 Règles
 - PK = UUID v4 texte. Aucune suppression physique : `deleted = true`.
@@ -488,10 +492,10 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : l'app démarre en FR, mode sombre, 5 onglets avec icônes Phosphor (Fill sur l'onglet actif).
 
 ### Phase 1 — Données
-- [ ] Intégrer `database.dart` + ajouts §4.1 ; migration v1.
-- [ ] Repositories (CRUD, soft delete, `updatedAt` / `lastModifiedBy` automatiques).
-- [ ] `deviceId` généré au premier lancement (`SyncMeta`).
-- [ ] Seed des exercices + clés ARB.
+- [x] Intégrer `database.dart` + ajouts §4.1 ; migration v1.
+- [x] Repositories (CRUD, soft delete, `updatedAt` / `lastModifiedBy` automatiques).
+- [x] `deviceId` généré au premier lancement (`SyncMeta`).
+- [x] Seed des exercices + clés ARB.
 - **Acceptation** : tests de repositories verts ; seed idempotent.
 
 ### Phase 2 — Design system
