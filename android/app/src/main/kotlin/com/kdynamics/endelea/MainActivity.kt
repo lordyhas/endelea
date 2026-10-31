@@ -1,4 +1,4 @@
-package com.kdynamics.lab.endelea.endelea
+package com.kdynamics.endelea
 
 import io.flutter.embedding.android.FlutterActivity
 
