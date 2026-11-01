@@ -1,5 +1,9 @@
 import 'package:endelea/core/l10n/l10n.dart';
+import 'package:endelea/core/router/app_router.dart';
+import 'package:flutter/foundation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,7 +12,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.navHome)),
+      appBar: AppBar(
+        title: Text(l10n.navHome),
+        actions: [
+          if (kDebugMode)
+            IconButton(
+              tooltip: l10n.galleryTitle,
+              icon: const Icon(PhosphorIconsRegular.squaresFour),
+              onPressed: () => context.push(AppRoutes.gallery),
+            ),
+        ],
+      ),
       body: Center(child: Text(l10n.comingSoon)),
     );
   }

@@ -140,6 +140,438 @@ abstract class AppLocalizations {
   /// **'Bientôt ici'**
   String get comingSoon;
 
+  /// No description provided for @cancel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler'**
+  String get cancel;
+
+  /// No description provided for @confirm.
+  ///
+  /// In fr, this message translates to:
+  /// **'Confirmer'**
+  String get confirm;
+
+  /// No description provided for @delete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer'**
+  String get delete;
+
+  /// No description provided for @save.
+  ///
+  /// In fr, this message translates to:
+  /// **'Enregistrer'**
+  String get save;
+
+  /// No description provided for @ok.
+  ///
+  /// In fr, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @setColumnSet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Série'**
+  String get setColumnSet;
+
+  /// No description provided for @setColumnPrevious.
+  ///
+  /// In fr, this message translates to:
+  /// **'Précédent'**
+  String get setColumnPrevious;
+
+  /// No description provided for @setColumnReps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps'**
+  String get setColumnReps;
+
+  /// No description provided for @setColumnTime.
+  ///
+  /// In fr, this message translates to:
+  /// **'Durée'**
+  String get setColumnTime;
+
+  /// No description provided for @setColumnDistance.
+  ///
+  /// In fr, this message translates to:
+  /// **'km'**
+  String get setColumnDistance;
+
+  /// No description provided for @unitKg.
+  ///
+  /// In fr, this message translates to:
+  /// **'kg'**
+  String get unitKg;
+
+  /// No description provided for @unitLb.
+  ///
+  /// In fr, this message translates to:
+  /// **'lb'**
+  String get unitLb;
+
+  /// No description provided for @warmupShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'É'**
+  String get warmupShort;
+
+  /// No description provided for @warmupLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échauffement'**
+  String get warmupLabel;
+
+  /// No description provided for @setDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Validée'**
+  String get setDone;
+
+  /// No description provided for @setPending.
+  ///
+  /// In fr, this message translates to:
+  /// **'À faire'**
+  String get setPending;
+
+  /// No description provided for @setCurrent.
+  ///
+  /// In fr, this message translates to:
+  /// **'En cours'**
+  String get setCurrent;
+
+  /// No description provided for @restTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Repos'**
+  String get restTitle;
+
+  /// No description provided for @restSkip.
+  ///
+  /// In fr, this message translates to:
+  /// **'Passer'**
+  String get restSkip;
+
+  /// No description provided for @restMinus15.
+  ///
+  /// In fr, this message translates to:
+  /// **'−15 s'**
+  String get restMinus15;
+
+  /// No description provided for @restPlus15.
+  ///
+  /// In fr, this message translates to:
+  /// **'+15 s'**
+  String get restPlus15;
+
+  /// No description provided for @restRemaining.
+  ///
+  /// In fr, this message translates to:
+  /// **'Repos, {time} restant'**
+  String restRemaining(String time);
+
+  /// No description provided for @personalRecord.
+  ///
+  /// In fr, this message translates to:
+  /// **'Record'**
+  String get personalRecord;
+
+  /// No description provided for @syncUpToDate.
+  ///
+  /// In fr, this message translates to:
+  /// **'À jour'**
+  String get syncUpToDate;
+
+  /// No description provided for @syncInProgress.
+  ///
+  /// In fr, this message translates to:
+  /// **'Synchro…'**
+  String get syncInProgress;
+
+  /// No description provided for @syncError.
+  ///
+  /// In fr, this message translates to:
+  /// **'Erreur de synchro'**
+  String get syncError;
+
+  /// No description provided for @syncDisabled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Synchro désactivée'**
+  String get syncDisabled;
+
+  /// No description provided for @weightLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Charge'**
+  String get weightLabel;
+
+  /// No description provided for @repsLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Répétitions'**
+  String get repsLabel;
+
+  /// No description provided for @durationLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Durée'**
+  String get durationLabel;
+
+  /// No description provided for @distanceLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Distance'**
+  String get distanceLabel;
+
+  /// No description provided for @stepperSemantics.
+  ///
+  /// In fr, this message translates to:
+  /// **'{label}, {value} {unit}'**
+  String stepperSemantics(String label, String value, String unit);
+
+  /// No description provided for @stepperIncrease.
+  ///
+  /// In fr, this message translates to:
+  /// **'Augmenter'**
+  String get stepperIncrease;
+
+  /// No description provided for @stepperDecrease.
+  ///
+  /// In fr, this message translates to:
+  /// **'Diminuer'**
+  String get stepperDecrease;
+
+  /// No description provided for @unitKilos.
+  ///
+  /// In fr, this message translates to:
+  /// **'kilos'**
+  String get unitKilos;
+
+  /// No description provided for @unitPounds.
+  ///
+  /// In fr, this message translates to:
+  /// **'livres'**
+  String get unitPounds;
+
+  /// No description provided for @unitRepetitions.
+  ///
+  /// In fr, this message translates to:
+  /// **'répétitions'**
+  String get unitRepetitions;
+
+  /// No description provided for @unitSeconds.
+  ///
+  /// In fr, this message translates to:
+  /// **'secondes'**
+  String get unitSeconds;
+
+  /// No description provided for @unitMinutesShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'min'**
+  String get unitMinutesShort;
+
+  /// No description provided for @enterValue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Saisir une valeur'**
+  String get enterValue;
+
+  /// No description provided for @programDays.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucun jour} =1{1 jour} other{{count} jours}}'**
+  String programDays(int count);
+
+  /// No description provided for @programLastSession.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernière séance : {date}'**
+  String programLastSession(String date);
+
+  /// No description provided for @programNeverStarted.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore commencé'**
+  String get programNeverStarted;
+
+  /// No description provided for @programActive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Actif'**
+  String get programActive;
+
+  /// No description provided for @start.
+  ///
+  /// In fr, this message translates to:
+  /// **'Démarrer'**
+  String get start;
+
+  /// No description provided for @muscleChest.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pectoraux'**
+  String get muscleChest;
+
+  /// No description provided for @muscleBack.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dos'**
+  String get muscleBack;
+
+  /// No description provided for @muscleShoulders.
+  ///
+  /// In fr, this message translates to:
+  /// **'Épaules'**
+  String get muscleShoulders;
+
+  /// No description provided for @muscleBiceps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Biceps'**
+  String get muscleBiceps;
+
+  /// No description provided for @muscleTriceps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Triceps'**
+  String get muscleTriceps;
+
+  /// No description provided for @muscleLegs.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jambes'**
+  String get muscleLegs;
+
+  /// No description provided for @muscleGlutes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fessiers'**
+  String get muscleGlutes;
+
+  /// No description provided for @muscleCore.
+  ///
+  /// In fr, this message translates to:
+  /// **'Abdos'**
+  String get muscleCore;
+
+  /// No description provided for @muscleCardio.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cardio'**
+  String get muscleCardio;
+
+  /// No description provided for @muscleFullBody.
+  ///
+  /// In fr, this message translates to:
+  /// **'Corps entier'**
+  String get muscleFullBody;
+
+  /// No description provided for @equipmentBarbell.
+  ///
+  /// In fr, this message translates to:
+  /// **'Barre'**
+  String get equipmentBarbell;
+
+  /// No description provided for @equipmentDumbbell.
+  ///
+  /// In fr, this message translates to:
+  /// **'Haltères'**
+  String get equipmentDumbbell;
+
+  /// No description provided for @equipmentMachine.
+  ///
+  /// In fr, this message translates to:
+  /// **'Machine'**
+  String get equipmentMachine;
+
+  /// No description provided for @equipmentCable.
+  ///
+  /// In fr, this message translates to:
+  /// **'Poulie'**
+  String get equipmentCable;
+
+  /// No description provided for @equipmentBodyweight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Poids du corps'**
+  String get equipmentBodyweight;
+
+  /// No description provided for @equipmentKettlebell.
+  ///
+  /// In fr, this message translates to:
+  /// **'Kettlebell'**
+  String get equipmentKettlebell;
+
+  /// No description provided for @equipmentBand.
+  ///
+  /// In fr, this message translates to:
+  /// **'Élastique'**
+  String get equipmentBand;
+
+  /// No description provided for @equipmentOther.
+  ///
+  /// In fr, this message translates to:
+  /// **'Autre'**
+  String get equipmentOther;
+
+  /// No description provided for @trackingWeightReps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Charge et reps'**
+  String get trackingWeightReps;
+
+  /// No description provided for @trackingRepsOnly.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps seulement'**
+  String get trackingRepsOnly;
+
+  /// No description provided for @trackingDuration.
+  ///
+  /// In fr, this message translates to:
+  /// **'Durée'**
+  String get trackingDuration;
+
+  /// No description provided for @trackingDistance.
+  ///
+  /// In fr, this message translates to:
+  /// **'Distance et durée'**
+  String get trackingDistance;
+
+  /// No description provided for @exerciseCustom.
+  ///
+  /// In fr, this message translates to:
+  /// **'Personnalisé'**
+  String get exerciseCustom;
+
+  /// No description provided for @galleryTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Galerie'**
+  String get galleryTitle;
+
+  /// No description provided for @galleryToggleTheme.
+  ///
+  /// In fr, this message translates to:
+  /// **'Changer de thème'**
+  String get galleryToggleTheme;
+
+  /// No description provided for @emptyGalleryTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rien ici'**
+  String get emptyGalleryTitle;
+
+  /// No description provided for @emptyGalleryMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exemple d’état vide.'**
+  String get emptyGalleryMessage;
+
   /// No description provided for @exercise_bench_press.
   ///
   /// In fr, this message translates to:

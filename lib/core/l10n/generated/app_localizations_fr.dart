@@ -31,6 +31,237 @@ class AppLocalizationsFr extends AppLocalizations {
   String get comingSoon => 'Bientôt ici';
 
   @override
+  String get cancel => 'Annuler';
+
+  @override
+  String get confirm => 'Confirmer';
+
+  @override
+  String get delete => 'Supprimer';
+
+  @override
+  String get save => 'Enregistrer';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get setColumnSet => 'Série';
+
+  @override
+  String get setColumnPrevious => 'Précédent';
+
+  @override
+  String get setColumnReps => 'Reps';
+
+  @override
+  String get setColumnTime => 'Durée';
+
+  @override
+  String get setColumnDistance => 'km';
+
+  @override
+  String get unitKg => 'kg';
+
+  @override
+  String get unitLb => 'lb';
+
+  @override
+  String get warmupShort => 'É';
+
+  @override
+  String get warmupLabel => 'Échauffement';
+
+  @override
+  String get setDone => 'Validée';
+
+  @override
+  String get setPending => 'À faire';
+
+  @override
+  String get setCurrent => 'En cours';
+
+  @override
+  String get restTitle => 'Repos';
+
+  @override
+  String get restSkip => 'Passer';
+
+  @override
+  String get restMinus15 => '−15 s';
+
+  @override
+  String get restPlus15 => '+15 s';
+
+  @override
+  String restRemaining(String time) {
+    return 'Repos, $time restant';
+  }
+
+  @override
+  String get personalRecord => 'Record';
+
+  @override
+  String get syncUpToDate => 'À jour';
+
+  @override
+  String get syncInProgress => 'Synchro…';
+
+  @override
+  String get syncError => 'Erreur de synchro';
+
+  @override
+  String get syncDisabled => 'Synchro désactivée';
+
+  @override
+  String get weightLabel => 'Charge';
+
+  @override
+  String get repsLabel => 'Répétitions';
+
+  @override
+  String get durationLabel => 'Durée';
+
+  @override
+  String get distanceLabel => 'Distance';
+
+  @override
+  String stepperSemantics(String label, String value, String unit) {
+    return '$label, $value $unit';
+  }
+
+  @override
+  String get stepperIncrease => 'Augmenter';
+
+  @override
+  String get stepperDecrease => 'Diminuer';
+
+  @override
+  String get unitKilos => 'kilos';
+
+  @override
+  String get unitPounds => 'livres';
+
+  @override
+  String get unitRepetitions => 'répétitions';
+
+  @override
+  String get unitSeconds => 'secondes';
+
+  @override
+  String get unitMinutesShort => 'min';
+
+  @override
+  String get enterValue => 'Saisir une valeur';
+
+  @override
+  String programDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count jours',
+      one: '1 jour',
+      zero: 'Aucun jour',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String programLastSession(String date) {
+    return 'Dernière séance : $date';
+  }
+
+  @override
+  String get programNeverStarted => 'Pas encore commencé';
+
+  @override
+  String get programActive => 'Actif';
+
+  @override
+  String get start => 'Démarrer';
+
+  @override
+  String get muscleChest => 'Pectoraux';
+
+  @override
+  String get muscleBack => 'Dos';
+
+  @override
+  String get muscleShoulders => 'Épaules';
+
+  @override
+  String get muscleBiceps => 'Biceps';
+
+  @override
+  String get muscleTriceps => 'Triceps';
+
+  @override
+  String get muscleLegs => 'Jambes';
+
+  @override
+  String get muscleGlutes => 'Fessiers';
+
+  @override
+  String get muscleCore => 'Abdos';
+
+  @override
+  String get muscleCardio => 'Cardio';
+
+  @override
+  String get muscleFullBody => 'Corps entier';
+
+  @override
+  String get equipmentBarbell => 'Barre';
+
+  @override
+  String get equipmentDumbbell => 'Haltères';
+
+  @override
+  String get equipmentMachine => 'Machine';
+
+  @override
+  String get equipmentCable => 'Poulie';
+
+  @override
+  String get equipmentBodyweight => 'Poids du corps';
+
+  @override
+  String get equipmentKettlebell => 'Kettlebell';
+
+  @override
+  String get equipmentBand => 'Élastique';
+
+  @override
+  String get equipmentOther => 'Autre';
+
+  @override
+  String get trackingWeightReps => 'Charge et reps';
+
+  @override
+  String get trackingRepsOnly => 'Reps seulement';
+
+  @override
+  String get trackingDuration => 'Durée';
+
+  @override
+  String get trackingDistance => 'Distance et durée';
+
+  @override
+  String get exerciseCustom => 'Personnalisé';
+
+  @override
+  String get galleryTitle => 'Galerie';
+
+  @override
+  String get galleryToggleTheme => 'Changer de thème';
+
+  @override
+  String get emptyGalleryTitle => 'Rien ici';
+
+  @override
+  String get emptyGalleryMessage => 'Exemple d’état vide.';
+
+  @override
   String get exercise_bench_press => 'Développé couché';
 
   @override

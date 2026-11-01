@@ -7,6 +7,112 @@
   "navHistory": "Historique",
   "navProgress": "Progrès",
   "comingSoon": "Bientôt ici",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "delete": "Supprimer",
+  "save": "Enregistrer",
+  "ok": "OK",
+  "setColumnSet": "Série",
+  "setColumnPrevious": "Précédent",
+  "setColumnReps": "Reps",
+  "setColumnTime": "Durée",
+  "setColumnDistance": "km",
+  "unitKg": "kg",
+  "unitLb": "lb",
+  "warmupShort": "É",
+  "warmupLabel": "Échauffement",
+  "setDone": "Validée",
+  "setPending": "À faire",
+  "setCurrent": "En cours",
+  "restTitle": "Repos",
+  "restSkip": "Passer",
+  "restMinus15": "−15 s",
+  "restPlus15": "+15 s",
+  "restRemaining": "Repos, {time} restant",
+  "@restRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "personalRecord": "Record",
+  "syncUpToDate": "À jour",
+  "syncInProgress": "Synchro…",
+  "syncError": "Erreur de synchro",
+  "syncDisabled": "Synchro désactivée",
+  "weightLabel": "Charge",
+  "repsLabel": "Répétitions",
+  "durationLabel": "Durée",
+  "distanceLabel": "Distance",
+  "stepperSemantics": "{label}, {value} {unit}",
+  "@stepperSemantics": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "stepperIncrease": "Augmenter",
+  "stepperDecrease": "Diminuer",
+  "unitKilos": "kilos",
+  "unitPounds": "livres",
+  "unitRepetitions": "répétitions",
+  "unitSeconds": "secondes",
+  "unitMinutesShort": "min",
+  "enterValue": "Saisir une valeur",
+  "programDays": "{count, plural, =0{Aucun jour} =1{1 jour} other{{count} jours}}",
+  "@programDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "programLastSession": "Dernière séance : {date}",
+  "@programLastSession": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "programNeverStarted": "Pas encore commencé",
+  "programActive": "Actif",
+  "start": "Démarrer",
+  "muscleChest": "Pectoraux",
+  "muscleBack": "Dos",
+  "muscleShoulders": "Épaules",
+  "muscleBiceps": "Biceps",
+  "muscleTriceps": "Triceps",
+  "muscleLegs": "Jambes",
+  "muscleGlutes": "Fessiers",
+  "muscleCore": "Abdos",
+  "muscleCardio": "Cardio",
+  "muscleFullBody": "Corps entier",
+  "equipmentBarbell": "Barre",
+  "equipmentDumbbell": "Haltères",
+  "equipmentMachine": "Machine",
+  "equipmentCable": "Poulie",
+  "equipmentBodyweight": "Poids du corps",
+  "equipmentKettlebell": "Kettlebell",
+  "equipmentBand": "Élastique",
+  "equipmentOther": "Autre",
+  "trackingWeightReps": "Charge et reps",
+  "trackingRepsOnly": "Reps seulement",
+  "trackingDuration": "Durée",
+  "trackingDistance": "Distance et durée",
+  "exerciseCustom": "Personnalisé",
+  "galleryTitle": "Galerie",
+  "galleryToggleTheme": "Changer de thème",
+  "emptyGalleryTitle": "Rien ici",
+  "emptyGalleryMessage": "Exemple d’état vide.",
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",
