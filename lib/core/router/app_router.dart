@@ -1,9 +1,11 @@
 import 'package:endelea/core/widgets/app_shell.dart';
+import 'package:endelea/core/widgets/gallery_screen.dart';
 import 'package:endelea/features/history/view/history_screen.dart';
 import 'package:endelea/features/home/view/home_screen.dart';
 import 'package:endelea/features/programs/view/programs_screen.dart';
 import 'package:endelea/features/progress/view/progress_screen.dart';
 import 'package:endelea/features/session/view/session_tab_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,6 +15,7 @@ abstract final class AppRoutes {
   static const session = '/session';
   static const history = '/history';
   static const progress = '/progress';
+  static const gallery = '/_gallery';
 }
 
 GoRouter createRouter() {
@@ -29,6 +32,11 @@ GoRouter createRouter() {
           _branch(AppRoutes.progress, const ProgressScreen()),
         ],
       ),
+      if (kDebugMode)
+        GoRoute(
+          path: AppRoutes.gallery,
+          builder: (context, state) => const GalleryScreen(),
+        ),
     ],
   );
 }
