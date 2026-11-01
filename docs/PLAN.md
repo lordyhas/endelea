@@ -499,8 +499,8 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : tests de repositories verts ; seed idempotent.
 
 ### Phase 2 — Design system
-- [ ] `AppColors` (ThemeExtension), `app_theme.dart`, typographie, espacements.
-- [ ] Composants §7 + galerie `/_gallery`.
+- [x] `AppColors` (ThemeExtension), `app_theme.dart`, typographie, espacements.
+- [x] Composants §7 + galerie `/_gallery`.
 - **Acceptation** : galerie affichant chaque composant dans ses états, en sombre et en clair ; tests widget.
 
 ### Phase 3 — Exercices et programmes
