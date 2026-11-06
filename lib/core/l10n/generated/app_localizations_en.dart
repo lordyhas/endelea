@@ -262,6 +262,207 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emptyGalleryMessage => 'Empty state example.';
 
   @override
+  String get programsEmptyTitle => 'Create your first program';
+
+  @override
+  String get programsEmptyMessage =>
+      'A program groups your training days and their exercises.';
+
+  @override
+  String get programNew => 'New program';
+
+  @override
+  String get programName => 'Program name';
+
+  @override
+  String get programDescription => 'Description';
+
+  @override
+  String get programRename => 'Rename';
+
+  @override
+  String get programDuplicate => 'Duplicate';
+
+  @override
+  String get programActivate => 'Set as active';
+
+  @override
+  String get programDelete => 'Delete program';
+
+  @override
+  String programDeleteMessage(String name) {
+    return '“$name” and its days will be deleted. Your workout history is kept.';
+  }
+
+  @override
+  String programCopyName(String name) {
+    return '$name (copy)';
+  }
+
+  @override
+  String get programMenu => 'Program options';
+
+  @override
+  String get programEdit => 'Edit program';
+
+  @override
+  String get programDaysTitle => 'Days';
+
+  @override
+  String get dayAdd => 'Add a day';
+
+  @override
+  String get dayName => 'Day name';
+
+  @override
+  String dayDefaultName(String letter) {
+    return 'Day $letter';
+  }
+
+  @override
+  String get dayRename => 'Rename day';
+
+  @override
+  String get dayDelete => 'Delete day';
+
+  @override
+  String dayDeleteMessage(String name) {
+    return '“$name” and its exercises will be deleted.';
+  }
+
+  @override
+  String dayExercises(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count exercises',
+      one: '1 exercise',
+      zero: 'No exercises',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get daysEmptyTitle => 'Add a first day';
+
+  @override
+  String get daysEmptyMessage => 'For example “Push”, “Pull” and “Legs”.';
+
+  @override
+  String get dayEmptyTitle => 'No exercises yet';
+
+  @override
+  String get dayEmptyMessage => 'Add the exercises of this day.';
+
+  @override
+  String get reorder => 'Reorder';
+
+  @override
+  String get exerciseAdd => 'Add an exercise';
+
+  @override
+  String exerciseAddCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Add ($count)',
+      zero: 'Add',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get targetsTitle => 'Targets';
+
+  @override
+  String get targetSets => 'Sets';
+
+  @override
+  String get targetRepsMin => 'Min reps';
+
+  @override
+  String get targetRepsMax => 'Max reps';
+
+  @override
+  String get targetNoWeight => 'No weight';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
+  String setsTimesReps(int sets, String reps) {
+    return '$sets × $reps';
+  }
+
+  @override
+  String restShort(String time) {
+    return 'rest $time';
+  }
+
+  @override
+  String get removeFromDay => 'Remove from day';
+
+  @override
+  String get exercisesTitle => 'Exercises';
+
+  @override
+  String get exerciseSearch => 'Search exercises';
+
+  @override
+  String get exerciseCreate => 'Create an exercise';
+
+  @override
+  String get exerciseEdit => 'Edit exercise';
+
+  @override
+  String get exerciseNameLabel => 'Exercise name';
+
+  @override
+  String get exerciseMuscleGroup => 'Muscle group';
+
+  @override
+  String get exerciseEquipment => 'Equipment';
+
+  @override
+  String get exerciseTracking => 'Tracking';
+
+  @override
+  String get exercisesNoResultTitle => 'No exercise found';
+
+  @override
+  String get exercisesNoResultMessage =>
+      'Try another word, or create this exercise.';
+
+  @override
+  String get exerciseDelete => 'Delete exercise';
+
+  @override
+  String exerciseDeleteMessage(String name) {
+    return '“$name” will be removed from the library. Past workouts are kept.';
+  }
+
+  @override
+  String get clearFilters => 'Clear filters';
+
+  @override
+  String get nameRequired => 'Enter a name';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get more => 'More options';
+
+  @override
+  String get errorGeneric => 'Something went wrong.';
+
+  @override
+  String get notFound => 'Not found';
+
+  @override
   String get exercise_bench_press => 'Bench press';
 
   @override

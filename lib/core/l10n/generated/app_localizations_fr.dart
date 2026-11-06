@@ -262,6 +262,207 @@ class AppLocalizationsFr extends AppLocalizations {
   String get emptyGalleryMessage => 'Exemple d’état vide.';
 
   @override
+  String get programsEmptyTitle => 'Crée ton premier programme';
+
+  @override
+  String get programsEmptyMessage =>
+      'Un programme regroupe tes jours d’entraînement et leurs exercices.';
+
+  @override
+  String get programNew => 'Nouveau programme';
+
+  @override
+  String get programName => 'Nom du programme';
+
+  @override
+  String get programDescription => 'Description';
+
+  @override
+  String get programRename => 'Renommer';
+
+  @override
+  String get programDuplicate => 'Dupliquer';
+
+  @override
+  String get programActivate => 'Activer';
+
+  @override
+  String get programDelete => 'Supprimer le programme';
+
+  @override
+  String programDeleteMessage(String name) {
+    return '« $name » et ses jours seront supprimés. L’historique des séances est conservé.';
+  }
+
+  @override
+  String programCopyName(String name) {
+    return '$name (copie)';
+  }
+
+  @override
+  String get programMenu => 'Options du programme';
+
+  @override
+  String get programEdit => 'Modifier le programme';
+
+  @override
+  String get programDaysTitle => 'Jours';
+
+  @override
+  String get dayAdd => 'Ajouter un jour';
+
+  @override
+  String get dayName => 'Nom du jour';
+
+  @override
+  String dayDefaultName(String letter) {
+    return 'Jour $letter';
+  }
+
+  @override
+  String get dayRename => 'Renommer le jour';
+
+  @override
+  String get dayDelete => 'Supprimer le jour';
+
+  @override
+  String dayDeleteMessage(String name) {
+    return '« $name » et ses exercices seront supprimés.';
+  }
+
+  @override
+  String dayExercises(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count exercices',
+      one: '1 exercice',
+      zero: 'Aucun exercice',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get daysEmptyTitle => 'Ajoute un premier jour';
+
+  @override
+  String get daysEmptyMessage => 'Par exemple « Push », « Pull » et « Legs ».';
+
+  @override
+  String get dayEmptyTitle => 'Aucun exercice';
+
+  @override
+  String get dayEmptyMessage => 'Ajoute les exercices de ce jour.';
+
+  @override
+  String get reorder => 'Réordonner';
+
+  @override
+  String get exerciseAdd => 'Ajouter un exercice';
+
+  @override
+  String exerciseAddCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ajouter ($count)',
+      zero: 'Ajouter',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get targetsTitle => 'Cibles';
+
+  @override
+  String get targetSets => 'Séries';
+
+  @override
+  String get targetRepsMin => 'Reps min';
+
+  @override
+  String get targetRepsMax => 'Reps max';
+
+  @override
+  String get targetNoWeight => 'Sans charge';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
+  String setsTimesReps(int sets, String reps) {
+    return '$sets × $reps';
+  }
+
+  @override
+  String restShort(String time) {
+    return 'repos $time';
+  }
+
+  @override
+  String get removeFromDay => 'Retirer du jour';
+
+  @override
+  String get exercisesTitle => 'Exercices';
+
+  @override
+  String get exerciseSearch => 'Rechercher un exercice';
+
+  @override
+  String get exerciseCreate => 'Créer un exercice';
+
+  @override
+  String get exerciseEdit => 'Modifier l’exercice';
+
+  @override
+  String get exerciseNameLabel => 'Nom de l’exercice';
+
+  @override
+  String get exerciseMuscleGroup => 'Groupe musculaire';
+
+  @override
+  String get exerciseEquipment => 'Équipement';
+
+  @override
+  String get exerciseTracking => 'Type de suivi';
+
+  @override
+  String get exercisesNoResultTitle => 'Aucun exercice trouvé';
+
+  @override
+  String get exercisesNoResultMessage =>
+      'Essaie un autre mot, ou crée cet exercice.';
+
+  @override
+  String get exerciseDelete => 'Supprimer l’exercice';
+
+  @override
+  String exerciseDeleteMessage(String name) {
+    return '« $name » disparaîtra de la bibliothèque. Les séances passées sont conservées.';
+  }
+
+  @override
+  String get clearFilters => 'Effacer les filtres';
+
+  @override
+  String get nameRequired => 'Saisis un nom';
+
+  @override
+  String get create => 'Créer';
+
+  @override
+  String get edit => 'Modifier';
+
+  @override
+  String get more => 'Plus d’options';
+
+  @override
+  String get errorGeneric => 'Une erreur est survenue.';
+
+  @override
+  String get notFound => 'Introuvable';
+
+  @override
   String get exercise_bench_press => 'Développé couché';
 
   @override

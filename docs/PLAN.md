@@ -504,9 +504,9 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : galerie affichant chaque composant dans ses états, en sombre et en clair ; tests widget.
 
 ### Phase 3 — Exercices et programmes
-- [ ] Bibliothèque (recherche, filtres, création).
-- [ ] Programmes : liste, éditeur, jours, exercices planifiés (réordonnancement, cibles).
-- [ ] Activation d'un programme.
+- [x] Bibliothèque (recherche, filtres, création).
+- [x] Programmes : liste, éditeur, jours, exercices planifiés (réordonnancement, cibles).
+- [x] Activation d'un programme.
 - **Acceptation** : créer « PPL » avec 3 jours et 5 exercices chacun, entièrement au doigt, données persistées après redémarrage.
 
 ### Phase 4 — Séance guidée ★
