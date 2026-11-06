@@ -6,6 +6,8 @@ import 'package:endelea/data/repositories/program_repository.dart';
 import 'package:endelea/data/repositories/session_repository.dart';
 import 'package:endelea/data/repositories/sync_meta_repository.dart';
 import 'package:endelea/data/repositories/write_stamp.dart';
+import 'package:endelea/features/settings/bloc/settings_cubit.dart';
+import 'package:endelea/features/settings/data/settings_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -20,6 +22,7 @@ class AppDependencies {
     required this.programs,
     required this.sessions,
     required this.body,
+    required this.settings,
   });
 
   final AppDatabase database;
@@ -30,6 +33,7 @@ class AppDependencies {
   final ProgramRepository programs;
   final SessionRepository sessions;
   final BodyRepository body;
+  final SettingsRepository settings;
 
   /// Opens the repositories on [database]: device id, built-in seed.
   static Future<AppDependencies> create({
@@ -41,6 +45,7 @@ class AppDependencies {
     final stamp = WriteStamp(clock: clock, deviceId: deviceId);
     final exercises = ExerciseRepository(database, stamp);
     await exercises.seedBuiltIns();
+    final settings = await SettingsRepository.open();
     return AppDependencies._(
       database: database,
       clock: clock,
@@ -50,10 +55,11 @@ class AppDependencies {
       programs: ProgramRepository(database, stamp),
       sessions: SessionRepository(database, stamp),
       body: BodyRepository(database, stamp),
+      settings: settings,
     );
   }
 
-  /// Provides every repository to [child].
+  /// Provides every repository and the global cubits to [child].
   Widget provide({required Widget child}) {
     return MultiRepositoryProvider(
       providers: [
@@ -63,8 +69,12 @@ class AppDependencies {
         RepositoryProvider.value(value: programs),
         RepositoryProvider.value(value: sessions),
         RepositoryProvider.value(value: body),
+        RepositoryProvider.value(value: settings),
       ],
-      child: child,
+      child: MultiBlocProvider(
+        providers: [BlocProvider(create: (_) => SettingsCubit(settings))],
+        child: child,
+      ),
     );
   }
 }
