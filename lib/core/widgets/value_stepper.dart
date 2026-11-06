@@ -24,10 +24,14 @@ class ValueStepper extends StatefulWidget {
     this.min = 0,
     this.max = 9999,
     this.decimals = 0,
+    this.format,
     super.key,
   });
 
   final double value;
+
+  /// Custom display of the value (e.g. `1:30`); defaults to a decimal.
+  final String Function(double value)? format;
   final ValueChanged<double> onChanged;
   final double step;
   final double min;
@@ -104,7 +108,7 @@ class _ValueStepperState extends State<ValueStepper> {
           maxDecimals: widget.decimals,
         ),
         label: widget.label,
-        unitLabel: widget.unitLabel,
+        unitLabel: widget.semanticUnit,
         decimals: widget.decimals,
       ),
     );
@@ -118,11 +122,10 @@ class _ValueStepperState extends State<ValueStepper> {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     final locale = Localizations.localeOf(context).toString();
-    final text = formatDecimal(
-      widget.value,
-      locale,
-      maxDecimals: widget.decimals,
-    );
+    final format = widget.format;
+    final text = format != null
+        ? format(widget.value)
+        : formatDecimal(widget.value, locale, maxDecimals: widget.decimals);
 
     return Semantics(
       container: true,
@@ -346,12 +349,14 @@ class DurationStepper extends StatelessWidget {
     required this.seconds,
     required this.onChanged,
     this.step = 5,
+    this.label,
     super.key,
   });
 
   final int seconds;
   final ValueChanged<int> onChanged;
   final int step;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -360,9 +365,10 @@ class DurationStepper extends StatelessWidget {
       value: seconds.toDouble(),
       step: step.toDouble(),
       max: 24 * 3600,
-      label: l10n.durationLabel,
-      unitLabel: l10n.unitSeconds,
+      label: label ?? l10n.durationLabel,
+      unitLabel: l10n.unitMinutesShort,
       semanticUnit: l10n.unitSeconds,
+      format: (value) => formatClock(Duration(seconds: value.round())),
       onChanged: (value) => onChanged(value.round()),
     );
   }
