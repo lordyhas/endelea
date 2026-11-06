@@ -908,6 +908,348 @@ abstract class AppLocalizations {
   /// **'Introuvable'**
   String get notFound;
 
+  /// No description provided for @sessionFree.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séance libre'**
+  String get sessionFree;
+
+  /// No description provided for @sessionNextTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Prochaine séance'**
+  String get sessionNextTitle;
+
+  /// No description provided for @sessionChooseDay.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ou choisis un jour'**
+  String get sessionChooseDay;
+
+  /// No description provided for @sessionNoProgramTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun programme actif'**
+  String get sessionNoProgramTitle;
+
+  /// No description provided for @sessionNoProgramMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Crée un programme, ou lance une séance libre.'**
+  String get sessionNoProgramMessage;
+
+  /// No description provided for @sessionStartFree.
+  ///
+  /// In fr, this message translates to:
+  /// **'Démarrer une séance libre'**
+  String get sessionStartFree;
+
+  /// No description provided for @sessionStartDay.
+  ///
+  /// In fr, this message translates to:
+  /// **'Démarrer {day}'**
+  String sessionStartDay(String day);
+
+  /// No description provided for @sessionExerciseOf.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercice {index} sur {count}'**
+  String sessionExerciseOf(int index, int count);
+
+  /// No description provided for @sessionTarget.
+  ///
+  /// In fr, this message translates to:
+  /// **'cible {target}'**
+  String sessionTarget(String target);
+
+  /// No description provided for @setValidate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Valider la série'**
+  String get setValidate;
+
+  /// No description provided for @restSkipAction.
+  ///
+  /// In fr, this message translates to:
+  /// **'Passer le repos'**
+  String get restSkipAction;
+
+  /// No description provided for @nextExercise.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercice suivant'**
+  String get nextExercise;
+
+  /// No description provided for @previousExercise.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercice précédent'**
+  String get previousExercise;
+
+  /// No description provided for @finishSession.
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminer la séance'**
+  String get finishSession;
+
+  /// No description provided for @addSet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter une série'**
+  String get addSet;
+
+  /// No description provided for @removeSet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer la série'**
+  String get removeSet;
+
+  /// No description provided for @markWarmup.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échauffement'**
+  String get markWarmup;
+
+  /// No description provided for @sessionPause.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mettre en pause'**
+  String get sessionPause;
+
+  /// No description provided for @sessionResume.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reprendre'**
+  String get sessionResume;
+
+  /// No description provided for @sessionPaused.
+  ///
+  /// In fr, this message translates to:
+  /// **'En pause'**
+  String get sessionPaused;
+
+  /// No description provided for @sessionDiscard.
+  ///
+  /// In fr, this message translates to:
+  /// **'Abandonner la séance'**
+  String get sessionDiscard;
+
+  /// No description provided for @sessionDiscardMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'La séance et ses séries seront supprimées.'**
+  String get sessionDiscardMessage;
+
+  /// No description provided for @sessionDiscardConfirm.
+  ///
+  /// In fr, this message translates to:
+  /// **'Abandonner'**
+  String get sessionDiscardConfirm;
+
+  /// No description provided for @sessionFinishMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les séries non validées ne seront pas enregistrées.'**
+  String get sessionFinishMessage;
+
+  /// No description provided for @sessionMinimize.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réduire'**
+  String get sessionMinimize;
+
+  /// No description provided for @sessionMenu.
+  ///
+  /// In fr, this message translates to:
+  /// **'Options de la séance'**
+  String get sessionMenu;
+
+  /// No description provided for @sessionExercises.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercices de la séance'**
+  String get sessionExercises;
+
+  /// No description provided for @sessionEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séance vide'**
+  String get sessionEmptyTitle;
+
+  /// No description provided for @sessionEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoute un exercice pour commencer.'**
+  String get sessionEmptyMessage;
+
+  /// No description provided for @exerciseNotes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Notes de l’exercice'**
+  String get exerciseNotes;
+
+  /// No description provided for @resumeSession.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reprendre la séance'**
+  String get resumeSession;
+
+  /// No description provided for @sessionInProgress.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séance en cours'**
+  String get sessionInProgress;
+
+  /// No description provided for @nextSetLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Série {index} · {exercise}'**
+  String nextSetLabel(int index, String exercise);
+
+  /// No description provided for @exerciseDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercice terminé'**
+  String get exerciseDone;
+
+  /// No description provided for @sessionComplete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Toutes les séries sont faites.'**
+  String get sessionComplete;
+
+  /// No description provided for @restOverTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Repos terminé'**
+  String get restOverTitle;
+
+  /// No description provided for @restOverBody.
+  ///
+  /// In fr, this message translates to:
+  /// **'C’est reparti pour la série suivante.'**
+  String get restOverBody;
+
+  /// No description provided for @restChannelName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fin du repos'**
+  String get restChannelName;
+
+  /// No description provided for @restChannelDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sonne à la fin de chaque repos.'**
+  String get restChannelDescription;
+
+  /// No description provided for @summaryTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Résumé de la séance'**
+  String get summaryTitle;
+
+  /// No description provided for @summaryDuration.
+  ///
+  /// In fr, this message translates to:
+  /// **'Durée'**
+  String get summaryDuration;
+
+  /// No description provided for @summaryVolume.
+  ///
+  /// In fr, this message translates to:
+  /// **'Volume'**
+  String get summaryVolume;
+
+  /// No description provided for @summarySets.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séries'**
+  String get summarySets;
+
+  /// No description provided for @summaryRecords.
+  ///
+  /// In fr, this message translates to:
+  /// **'Records battus'**
+  String get summaryRecords;
+
+  /// No description provided for @summaryNoRecords.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas de record cette fois. Continue.'**
+  String get summaryNoRecords;
+
+  /// No description provided for @summaryVsPrevious.
+  ///
+  /// In fr, this message translates to:
+  /// **'Par rapport à la dernière fois'**
+  String get summaryVsPrevious;
+
+  /// No description provided for @summaryVolumeDelta.
+  ///
+  /// In fr, this message translates to:
+  /// **'{delta} de volume'**
+  String summaryVolumeDelta(String delta);
+
+  /// No description provided for @summaryDurationDelta.
+  ///
+  /// In fr, this message translates to:
+  /// **'{delta} de durée'**
+  String summaryDurationDelta(String delta);
+
+  /// No description provided for @summaryFirstTime.
+  ///
+  /// In fr, this message translates to:
+  /// **'Première fois pour cette séance.'**
+  String get summaryFirstTime;
+
+  /// No description provided for @summaryNote.
+  ///
+  /// In fr, this message translates to:
+  /// **'Note sur la séance'**
+  String get summaryNote;
+
+  /// No description provided for @summaryDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminer'**
+  String get summaryDone;
+
+  /// No description provided for @recordMaxWeight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Charge max'**
+  String get recordMaxWeight;
+
+  /// No description provided for @recordOneRepMax.
+  ///
+  /// In fr, this message translates to:
+  /// **'1RM estimé'**
+  String get recordOneRepMax;
+
+  /// No description provided for @recordRepsAtWeight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps à cette charge'**
+  String get recordRepsAtWeight;
+
+  /// No description provided for @recordSessionVolume.
+  ///
+  /// In fr, this message translates to:
+  /// **'Volume de la séance'**
+  String get recordSessionVolume;
+
+  /// No description provided for @durationMinutes.
+  ///
+  /// In fr, this message translates to:
+  /// **'{minutes} min'**
+  String durationMinutes(int minutes);
+
+  /// No description provided for @durationHoursMinutes.
+  ///
+  /// In fr, this message translates to:
+  /// **'{hours} h {minutes} min'**
+  String durationHoursMinutes(int hours, int minutes);
+
   /// No description provided for @exercise_bench_press.
   ///
   /// In fr, this message translates to:

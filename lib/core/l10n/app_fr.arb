@@ -235,6 +235,128 @@
   "more": "Plus d’options",
   "errorGeneric": "Une erreur est survenue.",
   "notFound": "Introuvable",
+  "sessionFree": "Séance libre",
+  "sessionNextTitle": "Prochaine séance",
+  "sessionChooseDay": "Ou choisis un jour",
+  "sessionNoProgramTitle": "Aucun programme actif",
+  "sessionNoProgramMessage": "Crée un programme, ou lance une séance libre.",
+  "sessionStartFree": "Démarrer une séance libre",
+  "sessionStartDay": "Démarrer {day}",
+  "@sessionStartDay": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "sessionExerciseOf": "Exercice {index} sur {count}",
+  "@sessionExerciseOf": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sessionTarget": "cible {target}",
+  "@sessionTarget": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "setValidate": "Valider la série",
+  "restSkipAction": "Passer le repos",
+  "nextExercise": "Exercice suivant",
+  "previousExercise": "Exercice précédent",
+  "finishSession": "Terminer la séance",
+  "addSet": "Ajouter une série",
+  "removeSet": "Supprimer la série",
+  "markWarmup": "Échauffement",
+  "sessionPause": "Mettre en pause",
+  "sessionResume": "Reprendre",
+  "sessionPaused": "En pause",
+  "sessionDiscard": "Abandonner la séance",
+  "sessionDiscardMessage": "La séance et ses séries seront supprimées.",
+  "sessionDiscardConfirm": "Abandonner",
+  "sessionFinishMessage": "Les séries non validées ne seront pas enregistrées.",
+  "sessionMinimize": "Réduire",
+  "sessionMenu": "Options de la séance",
+  "sessionExercises": "Exercices de la séance",
+  "sessionEmptyTitle": "Séance vide",
+  "sessionEmptyMessage": "Ajoute un exercice pour commencer.",
+  "exerciseNotes": "Notes de l’exercice",
+  "resumeSession": "Reprendre la séance",
+  "sessionInProgress": "Séance en cours",
+  "nextSetLabel": "Série {index} · {exercise}",
+  "@nextSetLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "exercise": {
+        "type": "String"
+      }
+    }
+  },
+  "exerciseDone": "Exercice terminé",
+  "sessionComplete": "Toutes les séries sont faites.",
+  "restOverTitle": "Repos terminé",
+  "restOverBody": "C’est reparti pour la série suivante.",
+  "restChannelName": "Fin du repos",
+  "restChannelDescription": "Sonne à la fin de chaque repos.",
+  "summaryTitle": "Résumé de la séance",
+  "summaryDuration": "Durée",
+  "summaryVolume": "Volume",
+  "summarySets": "Séries",
+  "summaryRecords": "Records battus",
+  "summaryNoRecords": "Pas de record cette fois. Continue.",
+  "summaryVsPrevious": "Par rapport à la dernière fois",
+  "summaryVolumeDelta": "{delta} de volume",
+  "@summaryVolumeDelta": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "summaryDurationDelta": "{delta} de durée",
+  "@summaryDurationDelta": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "summaryFirstTime": "Première fois pour cette séance.",
+  "summaryNote": "Note sur la séance",
+  "summaryDone": "Terminer",
+  "recordMaxWeight": "Charge max",
+  "recordOneRepMax": "1RM estimé",
+  "recordRepsAtWeight": "Reps à cette charge",
+  "recordSessionVolume": "Volume de la séance",
+  "durationMinutes": "{minutes} min",
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHoursMinutes": "{hours} h {minutes} min",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",
