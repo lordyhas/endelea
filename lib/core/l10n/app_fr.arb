@@ -113,6 +113,128 @@
   "galleryToggleTheme": "Changer de thème",
   "emptyGalleryTitle": "Rien ici",
   "emptyGalleryMessage": "Exemple d’état vide.",
+  "programsEmptyTitle": "Crée ton premier programme",
+  "programsEmptyMessage": "Un programme regroupe tes jours d’entraînement et leurs exercices.",
+  "programNew": "Nouveau programme",
+  "programName": "Nom du programme",
+  "programDescription": "Description",
+  "programRename": "Renommer",
+  "programDuplicate": "Dupliquer",
+  "programActivate": "Activer",
+  "programDelete": "Supprimer le programme",
+  "programDeleteMessage": "« {name} » et ses jours seront supprimés. L’historique des séances est conservé.",
+  "@programDeleteMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "programCopyName": "{name} (copie)",
+  "@programCopyName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "programMenu": "Options du programme",
+  "programEdit": "Modifier le programme",
+  "programDaysTitle": "Jours",
+  "dayAdd": "Ajouter un jour",
+  "dayName": "Nom du jour",
+  "dayDefaultName": "Jour {letter}",
+  "@dayDefaultName": {
+    "placeholders": {
+      "letter": {
+        "type": "String"
+      }
+    }
+  },
+  "dayRename": "Renommer le jour",
+  "dayDelete": "Supprimer le jour",
+  "dayDeleteMessage": "« {name} » et ses exercices seront supprimés.",
+  "@dayDeleteMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dayExercises": "{count, plural, =0{Aucun exercice} =1{1 exercice} other{{count} exercices}}",
+  "@dayExercises": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysEmptyTitle": "Ajoute un premier jour",
+  "daysEmptyMessage": "Par exemple « Push », « Pull » et « Legs ».",
+  "dayEmptyTitle": "Aucun exercice",
+  "dayEmptyMessage": "Ajoute les exercices de ce jour.",
+  "reorder": "Réordonner",
+  "exerciseAdd": "Ajouter un exercice",
+  "exerciseAddCount": "{count, plural, =0{Ajouter} other{Ajouter ({count})}}",
+  "@exerciseAddCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "targetsTitle": "Cibles",
+  "targetSets": "Séries",
+  "targetRepsMin": "Reps min",
+  "targetRepsMax": "Reps max",
+  "targetNoWeight": "Sans charge",
+  "notes": "Notes",
+  "setsTimesReps": "{sets} × {reps}",
+  "@setsTimesReps": {
+    "placeholders": {
+      "sets": {
+        "type": "int"
+      },
+      "reps": {
+        "type": "String"
+      }
+    }
+  },
+  "restShort": "repos {time}",
+  "@restShort": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "removeFromDay": "Retirer du jour",
+  "exercisesTitle": "Exercices",
+  "exerciseSearch": "Rechercher un exercice",
+  "exerciseCreate": "Créer un exercice",
+  "exerciseEdit": "Modifier l’exercice",
+  "exerciseNameLabel": "Nom de l’exercice",
+  "exerciseMuscleGroup": "Groupe musculaire",
+  "exerciseEquipment": "Équipement",
+  "exerciseTracking": "Type de suivi",
+  "exercisesNoResultTitle": "Aucun exercice trouvé",
+  "exercisesNoResultMessage": "Essaie un autre mot, ou crée cet exercice.",
+  "exerciseDelete": "Supprimer l’exercice",
+  "exerciseDeleteMessage": "« {name} » disparaîtra de la bibliothèque. Les séances passées sont conservées.",
+  "@exerciseDeleteMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "clearFilters": "Effacer les filtres",
+  "nameRequired": "Saisis un nom",
+  "create": "Créer",
+  "edit": "Modifier",
+  "more": "Plus d’options",
+  "errorGeneric": "Une erreur est survenue.",
+  "notFound": "Introuvable",
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",

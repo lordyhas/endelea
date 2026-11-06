@@ -572,6 +572,342 @@ abstract class AppLocalizations {
   /// **'Exemple d’état vide.'**
   String get emptyGalleryMessage;
 
+  /// No description provided for @programsEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Crée ton premier programme'**
+  String get programsEmptyTitle;
+
+  /// No description provided for @programsEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un programme regroupe tes jours d’entraînement et leurs exercices.'**
+  String get programsEmptyMessage;
+
+  /// No description provided for @programNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau programme'**
+  String get programNew;
+
+  /// No description provided for @programName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom du programme'**
+  String get programName;
+
+  /// No description provided for @programDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Description'**
+  String get programDescription;
+
+  /// No description provided for @programRename.
+  ///
+  /// In fr, this message translates to:
+  /// **'Renommer'**
+  String get programRename;
+
+  /// No description provided for @programDuplicate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dupliquer'**
+  String get programDuplicate;
+
+  /// No description provided for @programActivate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Activer'**
+  String get programActivate;
+
+  /// No description provided for @programDelete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer le programme'**
+  String get programDelete;
+
+  /// No description provided for @programDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'« {name} » et ses jours seront supprimés. L’historique des séances est conservé.'**
+  String programDeleteMessage(String name);
+
+  /// No description provided for @programCopyName.
+  ///
+  /// In fr, this message translates to:
+  /// **'{name} (copie)'**
+  String programCopyName(String name);
+
+  /// No description provided for @programMenu.
+  ///
+  /// In fr, this message translates to:
+  /// **'Options du programme'**
+  String get programMenu;
+
+  /// No description provided for @programEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le programme'**
+  String get programEdit;
+
+  /// No description provided for @programDaysTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jours'**
+  String get programDaysTitle;
+
+  /// No description provided for @dayAdd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un jour'**
+  String get dayAdd;
+
+  /// No description provided for @dayName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom du jour'**
+  String get dayName;
+
+  /// No description provided for @dayDefaultName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jour {letter}'**
+  String dayDefaultName(String letter);
+
+  /// No description provided for @dayRename.
+  ///
+  /// In fr, this message translates to:
+  /// **'Renommer le jour'**
+  String get dayRename;
+
+  /// No description provided for @dayDelete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer le jour'**
+  String get dayDelete;
+
+  /// No description provided for @dayDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'« {name} » et ses exercices seront supprimés.'**
+  String dayDeleteMessage(String name);
+
+  /// No description provided for @dayExercises.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucun exercice} =1{1 exercice} other{{count} exercices}}'**
+  String dayExercises(int count);
+
+  /// No description provided for @daysEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoute un premier jour'**
+  String get daysEmptyTitle;
+
+  /// No description provided for @daysEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Par exemple « Push », « Pull » et « Legs ».'**
+  String get daysEmptyMessage;
+
+  /// No description provided for @dayEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun exercice'**
+  String get dayEmptyTitle;
+
+  /// No description provided for @dayEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoute les exercices de ce jour.'**
+  String get dayEmptyMessage;
+
+  /// No description provided for @reorder.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réordonner'**
+  String get reorder;
+
+  /// No description provided for @exerciseAdd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un exercice'**
+  String get exerciseAdd;
+
+  /// No description provided for @exerciseAddCount.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Ajouter} other{Ajouter ({count})}}'**
+  String exerciseAddCount(int count);
+
+  /// No description provided for @targetsTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cibles'**
+  String get targetsTitle;
+
+  /// No description provided for @targetSets.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séries'**
+  String get targetSets;
+
+  /// No description provided for @targetRepsMin.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps min'**
+  String get targetRepsMin;
+
+  /// No description provided for @targetRepsMax.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps max'**
+  String get targetRepsMax;
+
+  /// No description provided for @targetNoWeight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans charge'**
+  String get targetNoWeight;
+
+  /// No description provided for @notes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Notes'**
+  String get notes;
+
+  /// No description provided for @setsTimesReps.
+  ///
+  /// In fr, this message translates to:
+  /// **'{sets} × {reps}'**
+  String setsTimesReps(int sets, String reps);
+
+  /// No description provided for @restShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'repos {time}'**
+  String restShort(String time);
+
+  /// No description provided for @removeFromDay.
+  ///
+  /// In fr, this message translates to:
+  /// **'Retirer du jour'**
+  String get removeFromDay;
+
+  /// No description provided for @exercisesTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercices'**
+  String get exercisesTitle;
+
+  /// No description provided for @exerciseSearch.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rechercher un exercice'**
+  String get exerciseSearch;
+
+  /// No description provided for @exerciseCreate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer un exercice'**
+  String get exerciseCreate;
+
+  /// No description provided for @exerciseEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier l’exercice'**
+  String get exerciseEdit;
+
+  /// No description provided for @exerciseNameLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom de l’exercice'**
+  String get exerciseNameLabel;
+
+  /// No description provided for @exerciseMuscleGroup.
+  ///
+  /// In fr, this message translates to:
+  /// **'Groupe musculaire'**
+  String get exerciseMuscleGroup;
+
+  /// No description provided for @exerciseEquipment.
+  ///
+  /// In fr, this message translates to:
+  /// **'Équipement'**
+  String get exerciseEquipment;
+
+  /// No description provided for @exerciseTracking.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type de suivi'**
+  String get exerciseTracking;
+
+  /// No description provided for @exercisesNoResultTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun exercice trouvé'**
+  String get exercisesNoResultTitle;
+
+  /// No description provided for @exercisesNoResultMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Essaie un autre mot, ou crée cet exercice.'**
+  String get exercisesNoResultMessage;
+
+  /// No description provided for @exerciseDelete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer l’exercice'**
+  String get exerciseDelete;
+
+  /// No description provided for @exerciseDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'« {name} » disparaîtra de la bibliothèque. Les séances passées sont conservées.'**
+  String exerciseDeleteMessage(String name);
+
+  /// No description provided for @clearFilters.
+  ///
+  /// In fr, this message translates to:
+  /// **'Effacer les filtres'**
+  String get clearFilters;
+
+  /// No description provided for @nameRequired.
+  ///
+  /// In fr, this message translates to:
+  /// **'Saisis un nom'**
+  String get nameRequired;
+
+  /// No description provided for @create.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer'**
+  String get create;
+
+  /// No description provided for @edit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier'**
+  String get edit;
+
+  /// No description provided for @more.
+  ///
+  /// In fr, this message translates to:
+  /// **'Plus d’options'**
+  String get more;
+
+  /// No description provided for @errorGeneric.
+  ///
+  /// In fr, this message translates to:
+  /// **'Une erreur est survenue.'**
+  String get errorGeneric;
+
+  /// No description provided for @notFound.
+  ///
+  /// In fr, this message translates to:
+  /// **'Introuvable'**
+  String get notFound;
+
   /// No description provided for @exercise_bench_press.
   ///
   /// In fr, this message translates to:
