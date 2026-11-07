@@ -128,6 +128,7 @@ test/                            # miroir de lib/
 - Pas de `get_it` : tout passe par l'arbre de widgets.
 - `main.dart` crée `AppDatabase`, `Clock` et les repositories, puis les fournit via `MultiRepositoryProvider` au-dessus de `MaterialApp.router`.
 - Les Cubits/Blocs globaux (`SettingsCubit`, `SyncBloc`, `ActiveSessionCubit` pour le mini-lecteur) sont fournis par un `MultiBlocProvider` sous les repositories.
+  *Implémentation :* `SessionBloc` est global (et non créé dans la route) : le repos continue de tourner et de vibrer hors de l'écran de séance, et le mini-lecteur lit directement son état ; `ActiveSessionCubit` n'est donc pas nécessaire.
 - Les Cubits d'écran sont créés dans la route (`BlocProvider(create: (context) => ProgramsCubit(context.read<ProgramRepository>()))`) et fermés automatiquement.
 - `Clock` (abstraction de `DateTime.now()`) est injecté dans les repositories et les Blocs pour des tests déterministes.
 
@@ -510,12 +511,12 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : créer « PPL » avec 3 jours et 5 exercices chacun, entièrement au doigt, données persistées après redémarrage.
 
 ### Phase 4 — Séance guidée ★
-- [ ] `SessionBloc` (§5.1) + règles pures + tests `bloc_test`.
-- [ ] Écran de séance (§8.6), steppers, `SetRow`, valeurs « Précédent », pré-remplissage.
-- [ ] Minuteur de repos par horodatage + notification locale + haptique.
-- [ ] Wakelock, mini-lecteur persistant, reprise de séance au démarrage.
-- [ ] Séance libre (sans programme).
-- [ ] Résumé de séance + détection des records.
+- [x] `SessionBloc` (§5.1) + règles pures + tests `bloc_test`.
+- [x] Écran de séance (§8.6), steppers, `SetRow`, valeurs « Précédent », pré-remplissage.
+- [x] Minuteur de repos par horodatage + notification locale + haptique.
+- [x] Wakelock, mini-lecteur persistant, reprise de séance au démarrage.
+- [x] Séance libre (sans programme).
+- [x] Résumé de séance + détection des records.
 - **Acceptation** : faire une séance complète de 5 exercices × 4 séries sans clavier ; tuer l'app pendant un repos, la rouvrir → séance et repos restants intacts ; notification reçue écran verrouillé.
 
 ### Phase 5 — Historique et progrès
