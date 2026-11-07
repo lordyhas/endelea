@@ -6,14 +6,15 @@ import 'package:endelea/data/repositories/write_stamp.dart';
 
 /// A clock tests move by hand.
 class FakeClock implements Clock {
-  FakeClock([DateTime? start]) : _now = start ?? DateTime(2026, 11, 2, 18);
+  FakeClock([DateTime? start]) : time = start ?? DateTime(2026, 11, 2, 18);
 
-  DateTime _now;
+  /// Current time, set by tests.
+  DateTime time;
 
   @override
-  DateTime now() => _now;
+  DateTime now() => time;
 
-  void advance(Duration duration) => _now = _now.add(duration);
+  void advance(Duration duration) => time = time.add(duration);
 }
 
 AppDatabase memoryDatabase() {
