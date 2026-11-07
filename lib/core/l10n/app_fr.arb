@@ -357,6 +357,96 @@
       }
     }
   },
+  "historyEmptyTitle": "Aucune séance pour l’instant",
+  "historyEmptyMessage": "Tes séances terminées apparaîtront ici.",
+  "historyThisWeek": "Cette semaine",
+  "historyWeekOf": "Semaine du {date}",
+  "@historyWeekOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "recordsCount": "{count, plural, =0{Aucun record} =1{1 record} other{{count} records}}",
+  "@recordsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setsCount": "{count, plural, =1{1 série} other{{count} séries}}",
+  "@setsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sessionsCount": "{count, plural, =0{Aucune séance} =1{1 séance} other{{count} séances}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sessionDelete": "Supprimer la séance",
+  "sessionDeleteMessage": "Cette séance sera supprimée de l’historique.",
+  "editSet": "Modifier la série",
+  "periodWeeks4": "4 sem.",
+  "periodMonths3": "3 mois",
+  "periodYear": "1 an",
+  "periodAll": "Tout",
+  "statSessions": "Séances",
+  "statTotalVolume": "Volume total",
+  "statRecords": "Records",
+  "weeklyVolumeTitle": "Volume par semaine",
+  "topExercisesTitle": "Exercices les plus faits",
+  "progressEmptyTitle": "Pas encore de progrès",
+  "progressEmptyMessage": "Termine une séance pour voir tes courbes.",
+  "bodyWeightTitle": "Poids corporel",
+  "bodyWeightLatest": "Dernière mesure : {weight}",
+  "@bodyWeightLatest": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyEmptyTitle": "Aucune mesure",
+  "bodyEmptyMessage": "Ajoute ta première pesée pour suivre ta courbe.",
+  "bodyAdd": "Ajouter une mesure",
+  "bodyFat": "Masse grasse",
+  "bodyFatShort": "{value} % de gras",
+  "@bodyFatShort": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMeasurementDelete": "Supprimer la mesure",
+  "chartMaxWeight": "Charge max",
+  "chartOneRepMax": "1RM estimé",
+  "chartVolume": "Volume",
+  "chartReps": "Reps max",
+  "exerciseRecords": "Records",
+  "exerciseHistory": "Historique",
+  "exerciseNoHistoryTitle": "Pas encore fait",
+  "exerciseNoHistoryMessage": "Ses records et sa courbe apparaîtront après ta première séance.",
+  "recordMaxReps": "Reps max",
+  "greetingMorning": "Bonjour",
+  "greetingAfternoon": "Bon après-midi",
+  "greetingEvening": "Bonsoir",
+  "settingsTitle": "Réglages",
+  "statSessionsWeek": "Séances cette semaine",
+  "statVolumeWeek": "Volume de la semaine",
+  "statStreak": "Semaines actives d’affilée",
+  "homeLastRecords": "Derniers records",
+  "homeEmptyMessage": "Ou lance une séance libre tout de suite.",
+  "homeCreateProgram": "Créer un programme",
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",

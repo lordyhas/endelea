@@ -520,10 +520,10 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : faire une séance complète de 5 exercices × 4 séries sans clavier ; tuer l'app pendant un repos, la rouvrir → séance et repos restants intacts ; notification reçue écran verrouillé.
 
 ### Phase 5 — Historique et progrès
-- [ ] Historique groupé, détail, édition a posteriori.
-- [ ] Calculs §5.2 + tests.
-- [ ] Écran Progrès, détail exercice (courbes `fl_chart`), poids corporel.
-- [ ] Accueil complet (§8.1).
+- [x] Historique groupé, détail, édition a posteriori.
+- [x] Calculs §5.2 + tests.
+- [x] Écran Progrès, détail exercice (courbes `fl_chart`), poids corporel.
+- [x] Accueil complet (§8.1).
 - **Acceptation** : avec 10 séances de test, les courbes et les records sont corrects (comparés à un calcul manuel dans les tests).
 
 ### Phase 6 — Réglages et export

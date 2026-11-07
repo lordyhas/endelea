@@ -1250,6 +1250,294 @@ abstract class AppLocalizations {
   /// **'{hours} h {minutes} min'**
   String durationHoursMinutes(int hours, int minutes);
 
+  /// No description provided for @historyEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune séance pour l’instant'**
+  String get historyEmptyTitle;
+
+  /// No description provided for @historyEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tes séances terminées apparaîtront ici.'**
+  String get historyEmptyMessage;
+
+  /// No description provided for @historyThisWeek.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cette semaine'**
+  String get historyThisWeek;
+
+  /// No description provided for @historyWeekOf.
+  ///
+  /// In fr, this message translates to:
+  /// **'Semaine du {date}'**
+  String historyWeekOf(String date);
+
+  /// No description provided for @recordsCount.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucun record} =1{1 record} other{{count} records}}'**
+  String recordsCount(int count);
+
+  /// No description provided for @setsCount.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 série} other{{count} séries}}'**
+  String setsCount(int count);
+
+  /// No description provided for @sessionsCount.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucune séance} =1{1 séance} other{{count} séances}}'**
+  String sessionsCount(int count);
+
+  /// No description provided for @sessionDelete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer la séance'**
+  String get sessionDelete;
+
+  /// No description provided for @sessionDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cette séance sera supprimée de l’historique.'**
+  String get sessionDeleteMessage;
+
+  /// No description provided for @editSet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier la série'**
+  String get editSet;
+
+  /// No description provided for @periodWeeks4.
+  ///
+  /// In fr, this message translates to:
+  /// **'4 sem.'**
+  String get periodWeeks4;
+
+  /// No description provided for @periodMonths3.
+  ///
+  /// In fr, this message translates to:
+  /// **'3 mois'**
+  String get periodMonths3;
+
+  /// No description provided for @periodYear.
+  ///
+  /// In fr, this message translates to:
+  /// **'1 an'**
+  String get periodYear;
+
+  /// No description provided for @periodAll.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tout'**
+  String get periodAll;
+
+  /// No description provided for @statSessions.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séances'**
+  String get statSessions;
+
+  /// No description provided for @statTotalVolume.
+  ///
+  /// In fr, this message translates to:
+  /// **'Volume total'**
+  String get statTotalVolume;
+
+  /// No description provided for @statRecords.
+  ///
+  /// In fr, this message translates to:
+  /// **'Records'**
+  String get statRecords;
+
+  /// No description provided for @weeklyVolumeTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Volume par semaine'**
+  String get weeklyVolumeTitle;
+
+  /// No description provided for @topExercisesTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exercices les plus faits'**
+  String get topExercisesTitle;
+
+  /// No description provided for @progressEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore de progrès'**
+  String get progressEmptyTitle;
+
+  /// No description provided for @progressEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Termine une séance pour voir tes courbes.'**
+  String get progressEmptyMessage;
+
+  /// No description provided for @bodyWeightTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Poids corporel'**
+  String get bodyWeightTitle;
+
+  /// No description provided for @bodyWeightLatest.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernière mesure : {weight}'**
+  String bodyWeightLatest(String weight);
+
+  /// No description provided for @bodyEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune mesure'**
+  String get bodyEmptyTitle;
+
+  /// No description provided for @bodyEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoute ta première pesée pour suivre ta courbe.'**
+  String get bodyEmptyMessage;
+
+  /// No description provided for @bodyAdd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter une mesure'**
+  String get bodyAdd;
+
+  /// No description provided for @bodyFat.
+  ///
+  /// In fr, this message translates to:
+  /// **'Masse grasse'**
+  String get bodyFat;
+
+  /// No description provided for @bodyFatShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'{value} % de gras'**
+  String bodyFatShort(String value);
+
+  /// No description provided for @bodyMeasurementDelete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer la mesure'**
+  String get bodyMeasurementDelete;
+
+  /// No description provided for @chartMaxWeight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Charge max'**
+  String get chartMaxWeight;
+
+  /// No description provided for @chartOneRepMax.
+  ///
+  /// In fr, this message translates to:
+  /// **'1RM estimé'**
+  String get chartOneRepMax;
+
+  /// No description provided for @chartVolume.
+  ///
+  /// In fr, this message translates to:
+  /// **'Volume'**
+  String get chartVolume;
+
+  /// No description provided for @chartReps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps max'**
+  String get chartReps;
+
+  /// No description provided for @exerciseRecords.
+  ///
+  /// In fr, this message translates to:
+  /// **'Records'**
+  String get exerciseRecords;
+
+  /// No description provided for @exerciseHistory.
+  ///
+  /// In fr, this message translates to:
+  /// **'Historique'**
+  String get exerciseHistory;
+
+  /// No description provided for @exerciseNoHistoryTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore fait'**
+  String get exerciseNoHistoryTitle;
+
+  /// No description provided for @exerciseNoHistoryMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ses records et sa courbe apparaîtront après ta première séance.'**
+  String get exerciseNoHistoryMessage;
+
+  /// No description provided for @recordMaxReps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reps max'**
+  String get recordMaxReps;
+
+  /// No description provided for @greetingMorning.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bonjour'**
+  String get greetingMorning;
+
+  /// No description provided for @greetingAfternoon.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bon après-midi'**
+  String get greetingAfternoon;
+
+  /// No description provided for @greetingEvening.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bonsoir'**
+  String get greetingEvening;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réglages'**
+  String get settingsTitle;
+
+  /// No description provided for @statSessionsWeek.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séances cette semaine'**
+  String get statSessionsWeek;
+
+  /// No description provided for @statVolumeWeek.
+  ///
+  /// In fr, this message translates to:
+  /// **'Volume de la semaine'**
+  String get statVolumeWeek;
+
+  /// No description provided for @statStreak.
+  ///
+  /// In fr, this message translates to:
+  /// **'Semaines actives d’affilée'**
+  String get statStreak;
+
+  /// No description provided for @homeLastRecords.
+  ///
+  /// In fr, this message translates to:
+  /// **'Derniers records'**
+  String get homeLastRecords;
+
+  /// No description provided for @homeEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ou lance une séance libre tout de suite.'**
+  String get homeEmptyMessage;
+
+  /// No description provided for @homeCreateProgram.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer un programme'**
+  String get homeCreateProgram;
+
   /// No description provided for @exercise_bench_press.
   ///
   /// In fr, this message translates to:

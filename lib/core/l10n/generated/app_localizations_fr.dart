@@ -653,6 +653,186 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get historyEmptyTitle => 'Aucune séance pour l’instant';
+
+  @override
+  String get historyEmptyMessage => 'Tes séances terminées apparaîtront ici.';
+
+  @override
+  String get historyThisWeek => 'Cette semaine';
+
+  @override
+  String historyWeekOf(String date) {
+    return 'Semaine du $date';
+  }
+
+  @override
+  String recordsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count records',
+      one: '1 record',
+      zero: 'Aucun record',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String setsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count séries',
+      one: '1 série',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sessionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count séances',
+      one: '1 séance',
+      zero: 'Aucune séance',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get sessionDelete => 'Supprimer la séance';
+
+  @override
+  String get sessionDeleteMessage =>
+      'Cette séance sera supprimée de l’historique.';
+
+  @override
+  String get editSet => 'Modifier la série';
+
+  @override
+  String get periodWeeks4 => '4 sem.';
+
+  @override
+  String get periodMonths3 => '3 mois';
+
+  @override
+  String get periodYear => '1 an';
+
+  @override
+  String get periodAll => 'Tout';
+
+  @override
+  String get statSessions => 'Séances';
+
+  @override
+  String get statTotalVolume => 'Volume total';
+
+  @override
+  String get statRecords => 'Records';
+
+  @override
+  String get weeklyVolumeTitle => 'Volume par semaine';
+
+  @override
+  String get topExercisesTitle => 'Exercices les plus faits';
+
+  @override
+  String get progressEmptyTitle => 'Pas encore de progrès';
+
+  @override
+  String get progressEmptyMessage =>
+      'Termine une séance pour voir tes courbes.';
+
+  @override
+  String get bodyWeightTitle => 'Poids corporel';
+
+  @override
+  String bodyWeightLatest(String weight) {
+    return 'Dernière mesure : $weight';
+  }
+
+  @override
+  String get bodyEmptyTitle => 'Aucune mesure';
+
+  @override
+  String get bodyEmptyMessage =>
+      'Ajoute ta première pesée pour suivre ta courbe.';
+
+  @override
+  String get bodyAdd => 'Ajouter une mesure';
+
+  @override
+  String get bodyFat => 'Masse grasse';
+
+  @override
+  String bodyFatShort(String value) {
+    return '$value % de gras';
+  }
+
+  @override
+  String get bodyMeasurementDelete => 'Supprimer la mesure';
+
+  @override
+  String get chartMaxWeight => 'Charge max';
+
+  @override
+  String get chartOneRepMax => '1RM estimé';
+
+  @override
+  String get chartVolume => 'Volume';
+
+  @override
+  String get chartReps => 'Reps max';
+
+  @override
+  String get exerciseRecords => 'Records';
+
+  @override
+  String get exerciseHistory => 'Historique';
+
+  @override
+  String get exerciseNoHistoryTitle => 'Pas encore fait';
+
+  @override
+  String get exerciseNoHistoryMessage =>
+      'Ses records et sa courbe apparaîtront après ta première séance.';
+
+  @override
+  String get recordMaxReps => 'Reps max';
+
+  @override
+  String get greetingMorning => 'Bonjour';
+
+  @override
+  String get greetingAfternoon => 'Bon après-midi';
+
+  @override
+  String get greetingEvening => 'Bonsoir';
+
+  @override
+  String get settingsTitle => 'Réglages';
+
+  @override
+  String get statSessionsWeek => 'Séances cette semaine';
+
+  @override
+  String get statVolumeWeek => 'Volume de la semaine';
+
+  @override
+  String get statStreak => 'Semaines actives d’affilée';
+
+  @override
+  String get homeLastRecords => 'Derniers records';
+
+  @override
+  String get homeEmptyMessage => 'Ou lance une séance libre tout de suite.';
+
+  @override
+  String get homeCreateProgram => 'Créer un programme';
+
+  @override
   String get exercise_bench_press => 'Développé couché';
 
   @override

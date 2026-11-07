@@ -11,6 +11,7 @@ import '../../helpers/mocks.dart';
 
 void main() {
   late MockExerciseRepository repository;
+  late MockSessionRepository sessions;
 
   final bench = exercise('bench', name: 'Développé couché');
   final squat = exercise('squat', name: 'Squat', muscleGroup: 'legs');
@@ -23,6 +24,9 @@ void main() {
 
   setUp(() {
     repository = MockExerciseRepository();
+    sessions = MockSessionRepository();
+    when(() => sessions.watchPerformedSets())
+        .thenAnswer((_) => Stream.value(const []));
     when(() => repository.watchAll())
         .thenAnswer((_) => Stream.value([squat, curl, bench]));
   });
@@ -117,10 +121,10 @@ void main() {
       build: () {
         when(() => repository.watchById('bench'))
             .thenAnswer((_) => Stream.fromIterable(<Exercise?>[bench, null]));
-        return ExerciseDetailCubit(repository, 'bench');
+        return ExerciseDetailCubit(repository, sessions, 'bench');
       },
       expect: () => [
-        ExerciseDetailLoaded(bench),
+        ExerciseDetailLoaded(exercise: bench),
         const ExerciseDetailNotFound(),
       ],
     );
@@ -140,7 +144,7 @@ void main() {
             trackingType: TrackingType.weightReps,
           ),
         ).thenAnswer((_) async {});
-        return ExerciseDetailCubit(repository, 'bench');
+        return ExerciseDetailCubit(repository, sessions, 'bench');
       },
       act: (cubit) async {
         await cubit.update(

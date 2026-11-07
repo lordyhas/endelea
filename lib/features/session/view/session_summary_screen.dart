@@ -9,7 +9,6 @@ import 'package:endelea/core/utils/units.dart';
 import 'package:endelea/core/widgets/buttons.dart';
 import 'package:endelea/core/widgets/cards.dart';
 import 'package:endelea/data/repositories/session_repository.dart';
-import 'package:endelea/domain/progress/personal_records.dart';
 import 'package:endelea/domain/progress/session_summary.dart';
 import 'package:endelea/features/session/bloc/session_bloc.dart';
 import 'package:endelea/features/session/bloc/session_summary_cubit.dart';
@@ -37,23 +36,6 @@ class SessionSummaryScreen extends StatelessWidget {
       child: const SessionSummaryView(),
     );
   }
-}
-
-extension DurationLabel on AppLocalizations {
-  /// `45 min`, `1 h 05 min`.
-  String durationText(Duration duration) {
-    final minutes = duration.inMinutes;
-    return minutes < 60
-        ? durationMinutes(minutes)
-        : durationHoursMinutes(minutes ~/ 60, minutes % 60);
-  }
-
-  String recordLabel(RecordType type) => switch (type) {
-    RecordType.maxWeight => recordMaxWeight,
-    RecordType.estimatedOneRepMax => recordOneRepMax,
-    RecordType.repsAtWeight => recordRepsAtWeight,
-    RecordType.sessionVolume => recordSessionVolume,
-  };
 }
 
 class SessionSummaryView extends StatefulWidget {
