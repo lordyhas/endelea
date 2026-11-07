@@ -1,6 +1,7 @@
 import 'package:endelea/core/l10n/l10n.dart';
 import 'package:endelea/core/utils/units.dart';
 import 'package:endelea/domain/models/exercise_enums.dart';
+import 'package:endelea/domain/progress/personal_records.dart';
 import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -57,4 +58,22 @@ extension AppFormatters on AppLocalizations {
   /// `18:30`.
   String time(DateTime date) =>
       DateFormat.Hm(localeName).format(date.toLocal());
+}
+
+/// Labels of durations and records.
+extension DurationLabel on AppLocalizations {
+  /// `45 min`, `1 h 05 min`.
+  String durationText(Duration duration) {
+    final minutes = duration.inMinutes;
+    return minutes < 60
+        ? durationMinutes(minutes)
+        : durationHoursMinutes(minutes ~/ 60, minutes % 60);
+  }
+
+  String recordLabel(RecordType type) => switch (type) {
+    RecordType.maxWeight => recordMaxWeight,
+    RecordType.estimatedOneRepMax => recordOneRepMax,
+    RecordType.repsAtWeight => recordRepsAtWeight,
+    RecordType.sessionVolume => recordSessionVolume,
+  };
 }

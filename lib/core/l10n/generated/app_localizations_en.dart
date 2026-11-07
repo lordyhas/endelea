@@ -652,6 +652,185 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get historyEmptyTitle => 'No workouts yet';
+
+  @override
+  String get historyEmptyMessage => 'Your finished workouts will show up here.';
+
+  @override
+  String get historyThisWeek => 'This week';
+
+  @override
+  String historyWeekOf(String date) {
+    return 'Week of $date';
+  }
+
+  @override
+  String recordsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count records',
+      one: '1 record',
+      zero: 'No records',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String setsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count sets',
+      one: '1 set',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sessionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count workouts',
+      one: '1 workout',
+      zero: 'No workouts',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get sessionDelete => 'Delete workout';
+
+  @override
+  String get sessionDeleteMessage =>
+      'This workout will be removed from your history.';
+
+  @override
+  String get editSet => 'Edit set';
+
+  @override
+  String get periodWeeks4 => '4 wk';
+
+  @override
+  String get periodMonths3 => '3 mo';
+
+  @override
+  String get periodYear => '1 yr';
+
+  @override
+  String get periodAll => 'All';
+
+  @override
+  String get statSessions => 'Workouts';
+
+  @override
+  String get statTotalVolume => 'Total volume';
+
+  @override
+  String get statRecords => 'Records';
+
+  @override
+  String get weeklyVolumeTitle => 'Weekly volume';
+
+  @override
+  String get topExercisesTitle => 'Most done exercises';
+
+  @override
+  String get progressEmptyTitle => 'No progress yet';
+
+  @override
+  String get progressEmptyMessage => 'Finish a workout to see your charts.';
+
+  @override
+  String get bodyWeightTitle => 'Body weight';
+
+  @override
+  String bodyWeightLatest(String weight) {
+    return 'Latest: $weight';
+  }
+
+  @override
+  String get bodyEmptyTitle => 'No measurements';
+
+  @override
+  String get bodyEmptyMessage =>
+      'Add your first weigh-in to follow your curve.';
+
+  @override
+  String get bodyAdd => 'Add a measurement';
+
+  @override
+  String get bodyFat => 'Body fat';
+
+  @override
+  String bodyFatShort(String value) {
+    return '$value % fat';
+  }
+
+  @override
+  String get bodyMeasurementDelete => 'Delete measurement';
+
+  @override
+  String get chartMaxWeight => 'Max weight';
+
+  @override
+  String get chartOneRepMax => 'Est. 1RM';
+
+  @override
+  String get chartVolume => 'Volume';
+
+  @override
+  String get chartReps => 'Max reps';
+
+  @override
+  String get exerciseRecords => 'Records';
+
+  @override
+  String get exerciseHistory => 'History';
+
+  @override
+  String get exerciseNoHistoryTitle => 'Not done yet';
+
+  @override
+  String get exerciseNoHistoryMessage =>
+      'Its records and chart will show up after your first workout.';
+
+  @override
+  String get recordMaxReps => 'Most reps';
+
+  @override
+  String get greetingMorning => 'Good morning';
+
+  @override
+  String get greetingAfternoon => 'Good afternoon';
+
+  @override
+  String get greetingEvening => 'Good evening';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get statSessionsWeek => 'Workouts this week';
+
+  @override
+  String get statVolumeWeek => 'Volume this week';
+
+  @override
+  String get statStreak => 'Active weeks in a row';
+
+  @override
+  String get homeLastRecords => 'Latest records';
+
+  @override
+  String get homeEmptyMessage => 'Or start a free workout right away.';
+
+  @override
+  String get homeCreateProgram => 'Create a program';
+
+  @override
   String get exercise_bench_press => 'Bench press';
 
   @override
