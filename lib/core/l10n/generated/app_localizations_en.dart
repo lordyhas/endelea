@@ -463,6 +463,195 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notFound => 'Not found';
 
   @override
+  String get sessionFree => 'Free workout';
+
+  @override
+  String get sessionNextTitle => 'Next workout';
+
+  @override
+  String get sessionChooseDay => 'Or pick a day';
+
+  @override
+  String get sessionNoProgramTitle => 'No active program';
+
+  @override
+  String get sessionNoProgramMessage =>
+      'Create a program, or start a free workout.';
+
+  @override
+  String get sessionStartFree => 'Start a free workout';
+
+  @override
+  String sessionStartDay(String day) {
+    return 'Start $day';
+  }
+
+  @override
+  String sessionExerciseOf(int index, int count) {
+    return 'Exercise $index of $count';
+  }
+
+  @override
+  String sessionTarget(String target) {
+    return 'target $target';
+  }
+
+  @override
+  String get setValidate => 'Complete set';
+
+  @override
+  String get restSkipAction => 'Skip rest';
+
+  @override
+  String get nextExercise => 'Next exercise';
+
+  @override
+  String get previousExercise => 'Previous exercise';
+
+  @override
+  String get finishSession => 'Finish workout';
+
+  @override
+  String get addSet => 'Add a set';
+
+  @override
+  String get removeSet => 'Delete set';
+
+  @override
+  String get markWarmup => 'Warm-up';
+
+  @override
+  String get sessionPause => 'Pause';
+
+  @override
+  String get sessionResume => 'Resume';
+
+  @override
+  String get sessionPaused => 'Paused';
+
+  @override
+  String get sessionDiscard => 'Discard workout';
+
+  @override
+  String get sessionDiscardMessage =>
+      'The workout and its sets will be deleted.';
+
+  @override
+  String get sessionDiscardConfirm => 'Discard';
+
+  @override
+  String get sessionFinishMessage => 'Sets not completed will not be saved.';
+
+  @override
+  String get sessionMinimize => 'Minimize';
+
+  @override
+  String get sessionMenu => 'Workout options';
+
+  @override
+  String get sessionExercises => 'Workout exercises';
+
+  @override
+  String get sessionEmptyTitle => 'Empty workout';
+
+  @override
+  String get sessionEmptyMessage => 'Add an exercise to begin.';
+
+  @override
+  String get exerciseNotes => 'Exercise notes';
+
+  @override
+  String get resumeSession => 'Resume workout';
+
+  @override
+  String get sessionInProgress => 'Workout in progress';
+
+  @override
+  String nextSetLabel(int index, String exercise) {
+    return 'Set $index · $exercise';
+  }
+
+  @override
+  String get exerciseDone => 'Exercise done';
+
+  @override
+  String get sessionComplete => 'Every set is done.';
+
+  @override
+  String get restOverTitle => 'Rest is over';
+
+  @override
+  String get restOverBody => 'Time for your next set.';
+
+  @override
+  String get restChannelName => 'End of rest';
+
+  @override
+  String get restChannelDescription => 'Rings at the end of each rest.';
+
+  @override
+  String get summaryTitle => 'Workout summary';
+
+  @override
+  String get summaryDuration => 'Duration';
+
+  @override
+  String get summaryVolume => 'Volume';
+
+  @override
+  String get summarySets => 'Sets';
+
+  @override
+  String get summaryRecords => 'Records';
+
+  @override
+  String get summaryNoRecords => 'No record this time. Keep going.';
+
+  @override
+  String get summaryVsPrevious => 'Compared with last time';
+
+  @override
+  String summaryVolumeDelta(String delta) {
+    return '$delta volume';
+  }
+
+  @override
+  String summaryDurationDelta(String delta) {
+    return '$delta duration';
+  }
+
+  @override
+  String get summaryFirstTime => 'First time for this workout.';
+
+  @override
+  String get summaryNote => 'Workout note';
+
+  @override
+  String get summaryDone => 'Done';
+
+  @override
+  String get recordMaxWeight => 'Heaviest weight';
+
+  @override
+  String get recordOneRepMax => 'Estimated 1RM';
+
+  @override
+  String get recordRepsAtWeight => 'Reps at this weight';
+
+  @override
+  String get recordSessionVolume => 'Workout volume';
+
+  @override
+  String durationMinutes(int minutes) {
+    return '$minutes min';
+  }
+
+  @override
+  String durationHoursMinutes(int hours, int minutes) {
+    return '$hours h $minutes min';
+  }
+
+  @override
   String get exercise_bench_press => 'Bench press';
 
   @override

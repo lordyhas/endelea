@@ -2,6 +2,7 @@ import 'package:endelea/core/l10n/formatters.dart';
 import 'package:endelea/core/l10n/l10n.dart';
 import 'package:endelea/core/router/app_router.dart';
 import 'package:endelea/core/theme/app_spacing.dart';
+import 'package:endelea/core/widgets/app_shell.dart';
 import 'package:endelea/core/widgets/buttons.dart';
 import 'package:endelea/core/widgets/cards.dart';
 import 'package:endelea/core/widgets/dialogs.dart';
@@ -157,6 +158,10 @@ class _ProgramItem extends StatelessWidget {
       lastSession: lastSession == null ? null : l10n.shortDate(lastSession),
       isActive: program.isActive,
       onTap: () => context.push(AppRoutes.program(program.id)),
+      onStart: program.isActive && summary.dayCount > 0
+          ? () =>
+                StatefulNavigationShell.of(context).goBranch(sessionBranchIndex)
+          : null,
       menu: PopupMenuButton<_ProgramAction>(
         tooltip: l10n.programMenu,
         icon: const Icon(PhosphorIconsRegular.dotsThreeVertical),

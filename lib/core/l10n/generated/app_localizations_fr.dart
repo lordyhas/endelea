@@ -463,6 +463,196 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notFound => 'Introuvable';
 
   @override
+  String get sessionFree => 'Séance libre';
+
+  @override
+  String get sessionNextTitle => 'Prochaine séance';
+
+  @override
+  String get sessionChooseDay => 'Ou choisis un jour';
+
+  @override
+  String get sessionNoProgramTitle => 'Aucun programme actif';
+
+  @override
+  String get sessionNoProgramMessage =>
+      'Crée un programme, ou lance une séance libre.';
+
+  @override
+  String get sessionStartFree => 'Démarrer une séance libre';
+
+  @override
+  String sessionStartDay(String day) {
+    return 'Démarrer $day';
+  }
+
+  @override
+  String sessionExerciseOf(int index, int count) {
+    return 'Exercice $index sur $count';
+  }
+
+  @override
+  String sessionTarget(String target) {
+    return 'cible $target';
+  }
+
+  @override
+  String get setValidate => 'Valider la série';
+
+  @override
+  String get restSkipAction => 'Passer le repos';
+
+  @override
+  String get nextExercise => 'Exercice suivant';
+
+  @override
+  String get previousExercise => 'Exercice précédent';
+
+  @override
+  String get finishSession => 'Terminer la séance';
+
+  @override
+  String get addSet => 'Ajouter une série';
+
+  @override
+  String get removeSet => 'Supprimer la série';
+
+  @override
+  String get markWarmup => 'Échauffement';
+
+  @override
+  String get sessionPause => 'Mettre en pause';
+
+  @override
+  String get sessionResume => 'Reprendre';
+
+  @override
+  String get sessionPaused => 'En pause';
+
+  @override
+  String get sessionDiscard => 'Abandonner la séance';
+
+  @override
+  String get sessionDiscardMessage =>
+      'La séance et ses séries seront supprimées.';
+
+  @override
+  String get sessionDiscardConfirm => 'Abandonner';
+
+  @override
+  String get sessionFinishMessage =>
+      'Les séries non validées ne seront pas enregistrées.';
+
+  @override
+  String get sessionMinimize => 'Réduire';
+
+  @override
+  String get sessionMenu => 'Options de la séance';
+
+  @override
+  String get sessionExercises => 'Exercices de la séance';
+
+  @override
+  String get sessionEmptyTitle => 'Séance vide';
+
+  @override
+  String get sessionEmptyMessage => 'Ajoute un exercice pour commencer.';
+
+  @override
+  String get exerciseNotes => 'Notes de l’exercice';
+
+  @override
+  String get resumeSession => 'Reprendre la séance';
+
+  @override
+  String get sessionInProgress => 'Séance en cours';
+
+  @override
+  String nextSetLabel(int index, String exercise) {
+    return 'Série $index · $exercise';
+  }
+
+  @override
+  String get exerciseDone => 'Exercice terminé';
+
+  @override
+  String get sessionComplete => 'Toutes les séries sont faites.';
+
+  @override
+  String get restOverTitle => 'Repos terminé';
+
+  @override
+  String get restOverBody => 'C’est reparti pour la série suivante.';
+
+  @override
+  String get restChannelName => 'Fin du repos';
+
+  @override
+  String get restChannelDescription => 'Sonne à la fin de chaque repos.';
+
+  @override
+  String get summaryTitle => 'Résumé de la séance';
+
+  @override
+  String get summaryDuration => 'Durée';
+
+  @override
+  String get summaryVolume => 'Volume';
+
+  @override
+  String get summarySets => 'Séries';
+
+  @override
+  String get summaryRecords => 'Records battus';
+
+  @override
+  String get summaryNoRecords => 'Pas de record cette fois. Continue.';
+
+  @override
+  String get summaryVsPrevious => 'Par rapport à la dernière fois';
+
+  @override
+  String summaryVolumeDelta(String delta) {
+    return '$delta de volume';
+  }
+
+  @override
+  String summaryDurationDelta(String delta) {
+    return '$delta de durée';
+  }
+
+  @override
+  String get summaryFirstTime => 'Première fois pour cette séance.';
+
+  @override
+  String get summaryNote => 'Note sur la séance';
+
+  @override
+  String get summaryDone => 'Terminer';
+
+  @override
+  String get recordMaxWeight => 'Charge max';
+
+  @override
+  String get recordOneRepMax => '1RM estimé';
+
+  @override
+  String get recordRepsAtWeight => 'Reps à cette charge';
+
+  @override
+  String get recordSessionVolume => 'Volume de la séance';
+
+  @override
+  String durationMinutes(int minutes) {
+    return '$minutes min';
+  }
+
+  @override
+  String durationHoursMinutes(int hours, int minutes) {
+    return '$hours h $minutes min';
+  }
+
+  @override
   String get exercise_bench_press => 'Développé couché';
 
   @override

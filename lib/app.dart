@@ -2,6 +2,7 @@ import 'package:endelea/bootstrap.dart';
 import 'package:endelea/core/l10n/l10n.dart';
 import 'package:endelea/core/router/app_router.dart';
 import 'package:endelea/core/theme/app_theme.dart';
+import 'package:endelea/features/session/view/session_effects_listener.dart';
 import 'package:endelea/features/settings/bloc/settings_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -37,14 +38,19 @@ class _EndeleaAppState extends State<EndeleaApp> {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,
-          themeMode: ThemeMode.dark,
-          locale: const Locale('fr'),
+          themeMode: state.settings.themeMode,
+          locale: Locale(state.settings.languageCode),
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: const [
             AppLocalizations.delegate,
             ...GlobalMaterialLocalizations.delegates,
           ],
           routerConfig: _router,
+          builder: (context, child) => SessionEffectsListener(
+            router: _router,
+            alerts: widget.dependencies.restAlerts,
+            child: child!,
+          ),
         ),
       ),
     );

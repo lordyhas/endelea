@@ -8,6 +8,7 @@ import 'package:endelea/features/programs/view/day_editor_screen.dart';
 import 'package:endelea/features/programs/view/program_editor_screen.dart';
 import 'package:endelea/features/programs/view/programs_screen.dart';
 import 'package:endelea/features/progress/view/progress_screen.dart';
+import 'package:endelea/features/session/view/session_summary_screen.dart';
 import 'package:endelea/features/session/view/session_tab_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -27,10 +28,13 @@ abstract final class AppRoutes {
   static String programDay(String programId, String dayId) =>
       '/programs/$programId/days/$dayId';
   static String exercise(String id) => '/exercises/$id';
+  static String sessionSummary(String id) => '/session/$id/summary';
 }
 
 GoRouter createRouter() {
+  final rootKey = GlobalKey<NavigatorState>();
   return GoRouter(
+    navigatorKey: rootKey,
     initialLocation: AppRoutes.home,
     routes: [
       StatefulShellRoute.indexedStack(
@@ -55,7 +59,19 @@ GoRouter createRouter() {
               ),
             ],
           ),
-          _branch(AppRoutes.session, const SessionTabScreen()),
+          _branch(
+            AppRoutes.session,
+            const SessionTabScreen(),
+            routes: [
+              GoRoute(
+                path: ':id/summary',
+                parentNavigatorKey: rootKey,
+                builder: (context, state) => SessionSummaryScreen(
+                  sessionId: state.pathParameters['id']!,
+                ),
+              ),
+            ],
+          ),
           _branch(AppRoutes.history, const HistoryScreen()),
           _branch(AppRoutes.progress, const ProgressScreen()),
         ],
