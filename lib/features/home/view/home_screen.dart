@@ -1,5 +1,7 @@
 import 'package:endelea/core/l10n/l10n.dart';
 import 'package:endelea/core/router/app_router.dart';
+import 'package:endelea/core/theme/app_spacing.dart';
+import 'package:endelea/features/home/view/resume_session_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -23,7 +25,10 @@ class HomeScreen extends StatelessWidget {
             ),
         ],
       ),
-      body: Center(child: Text(l10n.comingSoon)),
+      body: ListView(
+        padding: const EdgeInsets.all(AppSpacing.screen),
+        children: [const ResumeSessionCard(), Text(l10n.comingSoon)],
+      ),
     );
   }
 }

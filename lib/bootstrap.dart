@@ -6,7 +6,10 @@ import 'package:endelea/data/repositories/program_repository.dart';
 import 'package:endelea/data/repositories/session_repository.dart';
 import 'package:endelea/data/repositories/sync_meta_repository.dart';
 import 'package:endelea/data/repositories/write_stamp.dart';
+import 'package:endelea/features/session/bloc/session_bloc.dart';
+import 'package:endelea/features/session/data/session_effects.dart';
 import 'package:endelea/features/settings/bloc/settings_cubit.dart';
+import 'package:endelea/features/settings/data/app_settings.dart';
 import 'package:endelea/features/settings/data/settings_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
@@ -23,6 +26,8 @@ class AppDependencies {
     required this.sessions,
     required this.body,
     required this.settings,
+    required this.restAlerts,
+    required this.haptics,
   });
 
   final AppDatabase database;
@@ -34,11 +39,15 @@ class AppDependencies {
   final SessionRepository sessions;
   final BodyRepository body;
   final SettingsRepository settings;
+  final RestAlerts restAlerts;
+  final SessionHaptics? haptics;
 
   /// Opens the repositories on [database]: device id, built-in seed.
   static Future<AppDependencies> create({
     required AppDatabase database,
     Clock clock = const SystemClock(),
+    RestAlerts Function(AppSettings Function() settings)? restAlerts,
+    SessionHaptics Function(AppSettings Function() settings)? haptics,
   }) async {
     final syncMeta = SyncMetaRepository(database);
     final deviceId = await syncMeta.ensureDeviceId();
@@ -46,6 +55,7 @@ class AppDependencies {
     final exercises = ExerciseRepository(database, stamp);
     await exercises.seedBuiltIns();
     final settings = await SettingsRepository.open();
+    AppSettings current() => settings.load();
     return AppDependencies._(
       database: database,
       clock: clock,
@@ -56,6 +66,8 @@ class AppDependencies {
       sessions: SessionRepository(database, stamp),
       body: BodyRepository(database, stamp),
       settings: settings,
+      restAlerts: restAlerts?.call(current) ?? const SilentRestAlerts(),
+      haptics: haptics?.call(current),
     );
   }
 
@@ -72,7 +84,20 @@ class AppDependencies {
         RepositoryProvider.value(value: settings),
       ],
       child: MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => SettingsCubit(settings))],
+        providers: [
+          BlocProvider(create: (_) => SettingsCubit(settings)),
+          BlocProvider(
+            lazy: false,
+            create: (context) => SessionBloc(
+              sessions: sessions,
+              programs: programs,
+              clock: clock,
+              settings: () => context.read<SettingsCubit>().settings,
+              alerts: restAlerts,
+              haptics: haptics,
+            ),
+          ),
+        ],
         child: child,
       ),
     );
