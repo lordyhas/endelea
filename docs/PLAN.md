@@ -533,10 +533,10 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : bascule kg ↔ lb sans perte de précision ; export puis import sur une base vide → données identiques.
 
 ### Phase 7 — Synchro Google Drive
-- [ ] Interface `CloudSyncProvider`, `SyncCodec`, `SyncEngine` + tests avec faux provider.
-- [ ] `SyncBloc` (événements : `SyncRequested`, `SyncSignInRequested`, `SyncSignOutRequested` ; états : désactivée / à jour / en cours / erreur).
-- [ ] `GoogleDriveProvider` (`drive.appdata`).
-- [ ] Déclencheurs §9.4, `SyncStatusChip`, écran Réglages > Synchronisation.
+- [x] Interface `CloudSyncProvider`, `SyncCodec`, `SyncEngine` + tests avec faux provider.
+- [x] `SyncBloc` (événements : `SyncRequested`, `SyncSignInRequested`, `SyncSignOutRequested` ; états : désactivée / à jour / en cours / erreur).
+- [x] `GoogleDriveProvider` (`drive.appdata`). *(Code prêt ; test réel en attente des identifiants OAuth, voir §13. L'identifiant client Web se passe par `--dart-define=GOOGLE_SERVER_CLIENT_ID=…`.)*
+- [x] Déclencheurs §9.4, `SyncStatusChip`, écran Réglages > Synchronisation.
 - **Acceptation** : deux appareils (ou émulateurs) sur le même compte : une séance faite sur A apparaît sur B ; une suppression sur B disparaît de A ; modification concurrente → la plus récente gagne.
 
 ### Phase 8 — Finition et release
