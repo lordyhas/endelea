@@ -505,6 +505,22 @@
     }
   },
   "googleDrive": "Google Drive",
+  "syncConnect": "Connecter Google Drive",
+  "syncConnectHint": "Tes séances se synchronisent entre tes appareils, dans un dossier caché de ton Drive.",
+  "syncNow": "Synchroniser maintenant",
+  "syncDisconnect": "Se déconnecter",
+  "syncDisconnectMessage": "Les données restent sur ce téléphone et dans ton Drive. La synchronisation s’arrête.",
+  "syncLastSync": "Dernière synchro : {date}",
+  "@syncLastSync": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "syncNever": "Jamais synchronisé",
+  "syncSignInFailed": "Connexion impossible. Vérifie ta connexion et réessaie.",
+  "syncAccount": "Compte",
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",

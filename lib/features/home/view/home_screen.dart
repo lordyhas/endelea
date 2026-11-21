@@ -15,6 +15,8 @@ import 'package:endelea/features/home/bloc/home_cubit.dart';
 import 'package:endelea/features/home/view/resume_session_card.dart';
 import 'package:endelea/features/session/bloc/session_bloc.dart';
 import 'package:endelea/features/settings/bloc/settings_cubit.dart';
+import 'package:endelea/features/settings/bloc/sync_bloc.dart';
+import 'package:endelea/features/settings/view/sync_section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -81,17 +83,19 @@ class HomeView extends StatelessWidget {
   }
 }
 
-/// Sync state in the header; replaced by the real chip with the sync
-/// (phase 7).
+/// Sync state in the header; opens the settings.
 class HomeSyncChip extends StatelessWidget {
   const HomeSyncChip({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final status = context.select<SyncBloc, SyncStatus>(
+      (bloc) => syncStatusOf(bloc.state),
+    );
     return Padding(
       padding: const EdgeInsets.only(right: AppSpacing.xs),
       child: SyncStatusChip(
-        status: SyncStatus.disabled,
+        status: status,
         onTap: () => context.push(AppRoutes.settings),
       ),
     );

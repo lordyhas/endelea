@@ -1760,6 +1760,60 @@ abstract class AppLocalizations {
   /// **'Google Drive'**
   String get googleDrive;
 
+  /// No description provided for @syncConnect.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecter Google Drive'**
+  String get syncConnect;
+
+  /// No description provided for @syncConnectHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tes séances se synchronisent entre tes appareils, dans un dossier caché de ton Drive.'**
+  String get syncConnectHint;
+
+  /// No description provided for @syncNow.
+  ///
+  /// In fr, this message translates to:
+  /// **'Synchroniser maintenant'**
+  String get syncNow;
+
+  /// No description provided for @syncDisconnect.
+  ///
+  /// In fr, this message translates to:
+  /// **'Se déconnecter'**
+  String get syncDisconnect;
+
+  /// No description provided for @syncDisconnectMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les données restent sur ce téléphone et dans ton Drive. La synchronisation s’arrête.'**
+  String get syncDisconnectMessage;
+
+  /// No description provided for @syncLastSync.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernière synchro : {date}'**
+  String syncLastSync(String date);
+
+  /// No description provided for @syncNever.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jamais synchronisé'**
+  String get syncNever;
+
+  /// No description provided for @syncSignInFailed.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion impossible. Vérifie ta connexion et réessaie.'**
+  String get syncSignInFailed;
+
+  /// No description provided for @syncAccount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte'**
+  String get syncAccount;
+
   /// No description provided for @exercise_bench_press.
   ///
   /// In fr, this message translates to:
