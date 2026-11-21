@@ -46,4 +46,6 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    // FileProvider for the JSON export (already pulled in by the plugins).
+    implementation("androidx.core:core:1.19.0")
 }
