@@ -48,3 +48,9 @@ app.*.map.json
 .widget_preview/
 
 /.idea/
+
+# Release signing: never committed.
+keystore.properties
+*.jks
+*.keystore
+*.base64
