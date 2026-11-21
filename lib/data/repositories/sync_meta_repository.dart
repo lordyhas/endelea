@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:endelea/data/database.dart';
 import 'package:uuid/uuid.dart';
 
@@ -37,12 +39,31 @@ class SyncMetaRepository {
   }
 
   /// Returns this device's id, generating it on first launch.
-  Future<String> ensureDeviceId() async {
+  ///
+  /// [marker] is a file outside the system backup: when the database comes
+  /// from a backup restored on another phone, the marker is missing and the
+  /// device gets a new id, so two phones never share one.
+  Future<String> ensureDeviceId({File? marker}) async {
     final existing = await read(SyncMetaKeys.deviceId);
-    if (existing != null) return existing;
+    if (existing != null) {
+      if (marker == null || await _markerMatches(marker, existing)) {
+        return existing;
+      }
+      // Restored backup: everything must be pushed again under the new id.
+      await remove(SyncMetaKeys.lastPushAt);
+    }
     final id = const Uuid().v4();
     await write(SyncMetaKeys.deviceId, id);
+    await marker?.writeAsString(id);
     return id;
+  }
+
+  static Future<bool> _markerMatches(File marker, String id) async {
+    try {
+      return marker.existsSync() && (await marker.readAsString()) == id;
+    } on FileSystemException {
+      return false;
+    }
   }
 
   Future<DateTime?> readDate(String key) async {
