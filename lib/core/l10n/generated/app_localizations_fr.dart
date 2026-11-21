@@ -961,6 +961,38 @@ class AppLocalizationsFr extends AppLocalizations {
   String get googleDrive => 'Google Drive';
 
   @override
+  String get syncConnect => 'Connecter Google Drive';
+
+  @override
+  String get syncConnectHint =>
+      'Tes séances se synchronisent entre tes appareils, dans un dossier caché de ton Drive.';
+
+  @override
+  String get syncNow => 'Synchroniser maintenant';
+
+  @override
+  String get syncDisconnect => 'Se déconnecter';
+
+  @override
+  String get syncDisconnectMessage =>
+      'Les données restent sur ce téléphone et dans ton Drive. La synchronisation s’arrête.';
+
+  @override
+  String syncLastSync(String date) {
+    return 'Dernière synchro : $date';
+  }
+
+  @override
+  String get syncNever => 'Jamais synchronisé';
+
+  @override
+  String get syncSignInFailed =>
+      'Connexion impossible. Vérifie ta connexion et réessaie.';
+
+  @override
+  String get syncAccount => 'Compte';
+
+  @override
   String get exercise_bench_press => 'Développé couché';
 
   @override

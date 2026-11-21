@@ -6,6 +6,7 @@ import 'package:endelea/features/session/bloc/session_bloc.dart';
 import 'package:endelea/features/session/data/platform_session_effects.dart';
 import 'package:endelea/features/session/data/session_effects.dart';
 import 'package:endelea/features/settings/bloc/settings_cubit.dart';
+import 'package:endelea/features/settings/bloc/sync_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -54,6 +55,9 @@ class SessionEffectsListener extends StatelessWidget {
               (a is! SessionFinished && b is SessionFinished),
           listener: (context, state) {
             if (state is SessionFinished) {
+              context.read<SyncBloc>().add(
+                const SyncRequested(SyncReason.sessionFinished),
+              );
               unawaited(router.push(AppRoutes.sessionSummary(state.sessionId)));
             } else {
               router.go(AppRoutes.session);

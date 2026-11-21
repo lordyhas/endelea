@@ -4,6 +4,7 @@ import 'package:endelea/core/router/app_router.dart';
 import 'package:endelea/core/theme/app_theme.dart';
 import 'package:endelea/features/session/view/session_effects_listener.dart';
 import 'package:endelea/features/settings/bloc/settings_cubit.dart';
+import 'package:endelea/features/settings/view/sync_section.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -46,10 +47,12 @@ class _EndeleaAppState extends State<EndeleaApp> {
             ...GlobalMaterialLocalizations.delegates,
           ],
           routerConfig: _router,
-          builder: (context, child) => SessionEffectsListener(
-            router: _router,
-            alerts: widget.dependencies.restAlerts,
-            child: child!,
+          builder: (context, child) => SyncLifecycleListener(
+            child: SessionEffectsListener(
+              router: _router,
+              alerts: widget.dependencies.restAlerts,
+              child: child!,
+            ),
           ),
         ),
       ),

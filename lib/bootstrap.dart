@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:endelea/core/utils/clock.dart';
 import 'package:endelea/core/utils/files_bridge.dart';
 import 'package:endelea/data/database.dart';
@@ -12,8 +14,11 @@ import 'package:endelea/data/repositories/write_stamp.dart';
 import 'package:endelea/features/session/bloc/session_bloc.dart';
 import 'package:endelea/features/session/data/session_effects.dart';
 import 'package:endelea/features/settings/bloc/settings_cubit.dart';
+import 'package:endelea/features/settings/bloc/sync_bloc.dart';
 import 'package:endelea/features/settings/data/app_settings.dart';
 import 'package:endelea/features/settings/data/settings_repository.dart';
+import 'package:endelea/sync/cloud_sync_provider.dart';
+import 'package:endelea/sync/sync_engine.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -33,6 +38,8 @@ class AppDependencies {
     required this.backup,
     required this.restAlerts,
     required this.haptics,
+    required this.cloud,
+    required this.syncEngine,
   });
 
   final AppDatabase database;
@@ -48,6 +55,8 @@ class AppDependencies {
   final BackupRepository backup;
   final RestAlerts restAlerts;
   final SessionHaptics? haptics;
+  final CloudSyncProvider cloud;
+  final SyncEngine syncEngine;
 
   /// Opens the repositories on [database]: device id, built-in seed.
   static Future<AppDependencies> create({
@@ -55,9 +64,11 @@ class AppDependencies {
     Clock clock = const SystemClock(),
     RestAlerts Function(AppSettings Function() settings)? restAlerts,
     SessionHaptics Function(AppSettings Function() settings)? haptics,
+    CloudSyncProvider? cloud,
+    File? deviceMarker,
   }) async {
     final syncMeta = SyncMetaRepository(database);
-    final deviceId = await syncMeta.ensureDeviceId();
+    final deviceId = await syncMeta.ensureDeviceId(marker: deviceMarker);
     final stamp = WriteStamp(clock: clock, deviceId: deviceId);
     final exercises = ExerciseRepository(database, stamp);
     await exercises.seedBuiltIns();
@@ -78,6 +89,13 @@ class AppDependencies {
       backup: BackupRepository(database, rows),
       restAlerts: restAlerts?.call(current) ?? const SilentRestAlerts(),
       haptics: haptics?.call(current),
+      cloud: cloud ?? const NoCloudProvider(),
+      syncEngine: SyncEngine(
+        database: database,
+        rows: rows,
+        meta: syncMeta,
+        clock: clock,
+      ),
     );
   }
 
@@ -109,6 +127,17 @@ class AppDependencies {
               alerts: restAlerts,
               haptics: haptics,
             ),
+          ),
+          BlocProvider(
+            lazy: false,
+            create: (context) => SyncBloc(
+              provider: cloud,
+              engine: syncEngine,
+              meta: syncMeta,
+              clock: clock,
+              sessionActive: () =>
+                  context.read<SessionBloc>().state is SessionRunning,
+            )..add(const SyncStarted()),
           ),
         ],
         child: child,
