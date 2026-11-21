@@ -2,7 +2,7 @@ name: endelea
 description: "Gym workout tracker: programs, guided sessions and progress."
 publish_to: 'none'
 
-version: 0.6.0+6
+version: 1.0.0+7
 
 environment:
   sdk: ^3.13.5
