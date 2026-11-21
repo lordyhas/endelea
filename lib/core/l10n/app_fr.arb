@@ -6,9 +6,7 @@
   "navSession": "Séance",
   "navHistory": "Historique",
   "navProgress": "Progrès",
-  "comingSoon": "Bientôt ici",
   "cancel": "Annuler",
-  "confirm": "Confirmer",
   "delete": "Supprimer",
   "save": "Enregistrer",
   "ok": "OK",
@@ -66,7 +64,6 @@
   "unitRepetitions": "répétitions",
   "unitSeconds": "secondes",
   "unitMinutesShort": "min",
-  "enterValue": "Saisir une valeur",
   "programDays": "{count, plural, =0{Aucun jour} =1{1 jour} other{{count} jours}}",
   "@programDays": {
     "placeholders": {
@@ -117,7 +114,6 @@
   "programsEmptyMessage": "Un programme regroupe tes jours d’entraînement et leurs exercices.",
   "programNew": "Nouveau programme",
   "programName": "Nom du programme",
-  "programDescription": "Description",
   "programRename": "Renommer",
   "programDuplicate": "Dupliquer",
   "programActivate": "Activer",
@@ -139,7 +135,6 @@
     }
   },
   "programMenu": "Options du programme",
-  "programEdit": "Modifier le programme",
   "programDaysTitle": "Jours",
   "dayAdd": "Ajouter un jour",
   "dayName": "Nom du jour",
@@ -208,7 +203,6 @@
       }
     }
   },
-  "removeFromDay": "Retirer du jour",
   "exercisesTitle": "Exercices",
   "exerciseSearch": "Rechercher un exercice",
   "exerciseCreate": "Créer un exercice",
@@ -241,14 +235,6 @@
   "sessionNoProgramTitle": "Aucun programme actif",
   "sessionNoProgramMessage": "Crée un programme, ou lance une séance libre.",
   "sessionStartFree": "Démarrer une séance libre",
-  "sessionStartDay": "Démarrer {day}",
-  "@sessionStartDay": {
-    "placeholders": {
-      "day": {
-        "type": "String"
-      }
-    }
-  },
   "sessionExerciseOf": "Exercice {index} sur {count}",
   "@sessionExerciseOf": {
     "placeholders": {
@@ -376,14 +362,6 @@
       }
     }
   },
-  "setsCount": "{count, plural, =1{1 série} other{{count} séries}}",
-  "@setsCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sessionsCount": "{count, plural, =0{Aucune séance} =1{1 séance} other{{count} séances}}",
   "@sessionsCount": {
     "placeholders": {
@@ -496,14 +474,6 @@
   "privacyPolicy": "Politique de confidentialité",
   "privacyBody": "Endelea enregistre tes données uniquement sur ton téléphone. Il n’y a ni compte, ni serveur, ni publicité, ni suivi.\n\nSi tu actives la synchronisation, tes données sont copiées dans un dossier caché de ton propre Google Drive (« appDataFolder »), auquel seule l’application a accès. Endelea ne demande aucun autre accès à ton Drive et tu peux te déconnecter à tout moment.\n\nL’exportation JSON crée un fichier que tu partages toi-même.\n\nPour supprimer tes données : désinstalle l’application ; pour la copie Drive, retire l’accès d’Endelea dans les réglages de ton compte Google.",
   "appTagline": "Continue, avance sans abandonner.",
-  "secondsShort": "{seconds} s",
-  "@secondsShort": {
-    "placeholders": {
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
   "googleDrive": "Google Drive",
   "syncConnect": "Connecter Google Drive",
   "syncConnectHint": "Tes séances se synchronisent entre tes appareils, dans un dossier caché de ton Drive.",
@@ -520,7 +490,6 @@
   },
   "syncNever": "Jamais synchronisé",
   "syncSignInFailed": "Connexion impossible. Vérifie ta connexion et réessaie.",
-  "syncAccount": "Compte",
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",
