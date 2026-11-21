@@ -540,10 +540,10 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : deux appareils (ou émulateurs) sur le même compte : une séance faite sur A apparaît sur B ; une suppression sur B disparaît de A ; modification concurrente → la plus récente gagne.
 
 ### Phase 8 — Finition et release
-- [ ] Accessibilité §11, texte à 130 %.
-- [ ] Icône d'app et écran de démarrage (terre cuite sur fond `#141210`).
-- [ ] Revue des chaînes FR/EN.
-- [ ] Pipeline `android-release`.
+- [x] Accessibilité §11, texte à 130 %.
+- [x] Icône d'app et écran de démarrage (terre cuite sur fond `#141210`).
+- [x] Revue des chaînes FR/EN.
+- [x] Pipeline `android-release`.
 - **Acceptation** : build release signé, installé, parcours complet sans erreur.
 
 ### Après V1

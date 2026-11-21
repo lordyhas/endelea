@@ -96,6 +96,7 @@ class HomeSyncChip extends StatelessWidget {
       padding: const EdgeInsets.only(right: AppSpacing.xs),
       child: SyncStatusChip(
         status: status,
+        compact: true,
         onTap: () => context.push(AppRoutes.settings),
       ),
     );

@@ -134,23 +134,11 @@ abstract class AppLocalizations {
   /// **'Progrès'**
   String get navProgress;
 
-  /// No description provided for @comingSoon.
-  ///
-  /// In fr, this message translates to:
-  /// **'Bientôt ici'**
-  String get comingSoon;
-
   /// No description provided for @cancel.
   ///
   /// In fr, this message translates to:
   /// **'Annuler'**
   String get cancel;
-
-  /// No description provided for @confirm.
-  ///
-  /// In fr, this message translates to:
-  /// **'Confirmer'**
-  String get confirm;
 
   /// No description provided for @delete.
   ///
@@ -374,12 +362,6 @@ abstract class AppLocalizations {
   /// **'min'**
   String get unitMinutesShort;
 
-  /// No description provided for @enterValue.
-  ///
-  /// In fr, this message translates to:
-  /// **'Saisir une valeur'**
-  String get enterValue;
-
   /// No description provided for @programDays.
   ///
   /// In fr, this message translates to:
@@ -596,12 +578,6 @@ abstract class AppLocalizations {
   /// **'Nom du programme'**
   String get programName;
 
-  /// No description provided for @programDescription.
-  ///
-  /// In fr, this message translates to:
-  /// **'Description'**
-  String get programDescription;
-
   /// No description provided for @programRename.
   ///
   /// In fr, this message translates to:
@@ -643,12 +619,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Options du programme'**
   String get programMenu;
-
-  /// No description provided for @programEdit.
-  ///
-  /// In fr, this message translates to:
-  /// **'Modifier le programme'**
-  String get programEdit;
 
   /// No description provided for @programDaysTitle.
   ///
@@ -787,12 +757,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'repos {time}'**
   String restShort(String time);
-
-  /// No description provided for @removeFromDay.
-  ///
-  /// In fr, this message translates to:
-  /// **'Retirer du jour'**
-  String get removeFromDay;
 
   /// No description provided for @exercisesTitle.
   ///
@@ -943,12 +907,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Démarrer une séance libre'**
   String get sessionStartFree;
-
-  /// No description provided for @sessionStartDay.
-  ///
-  /// In fr, this message translates to:
-  /// **'Démarrer {day}'**
-  String sessionStartDay(String day);
 
   /// No description provided for @sessionExerciseOf.
   ///
@@ -1279,12 +1237,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'{count, plural, =0{Aucun record} =1{1 record} other{{count} records}}'**
   String recordsCount(int count);
-
-  /// No description provided for @setsCount.
-  ///
-  /// In fr, this message translates to:
-  /// **'{count, plural, =1{1 série} other{{count} séries}}'**
-  String setsCount(int count);
 
   /// No description provided for @sessionsCount.
   ///
@@ -1748,12 +1700,6 @@ abstract class AppLocalizations {
   /// **'Continue, avance sans abandonner.'**
   String get appTagline;
 
-  /// No description provided for @secondsShort.
-  ///
-  /// In fr, this message translates to:
-  /// **'{seconds} s'**
-  String secondsShort(int seconds);
-
   /// No description provided for @googleDrive.
   ///
   /// In fr, this message translates to:
@@ -1807,12 +1753,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Connexion impossible. Vérifie ta connexion et réessaie.'**
   String get syncSignInFailed;
-
-  /// No description provided for @syncAccount.
-  ///
-  /// In fr, this message translates to:
-  /// **'Compte'**
-  String get syncAccount;
 
   /// No description provided for @exercise_bench_press.
   ///

@@ -28,13 +28,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get navProgress => 'Progrès';
 
   @override
-  String get comingSoon => 'Bientôt ici';
-
-  @override
   String get cancel => 'Annuler';
-
-  @override
-  String get confirm => 'Confirmer';
 
   @override
   String get delete => 'Supprimer';
@@ -150,9 +144,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get unitMinutesShort => 'min';
-
-  @override
-  String get enterValue => 'Saisir une valeur';
 
   @override
   String programDays(int count) {
@@ -275,9 +266,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get programName => 'Nom du programme';
 
   @override
-  String get programDescription => 'Description';
-
-  @override
   String get programRename => 'Renommer';
 
   @override
@@ -301,9 +289,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get programMenu => 'Options du programme';
-
-  @override
-  String get programEdit => 'Modifier le programme';
 
   @override
   String get programDaysTitle => 'Jours';
@@ -400,9 +385,6 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get removeFromDay => 'Retirer du jour';
-
-  @override
   String get exercisesTitle => 'Exercices';
 
   @override
@@ -480,11 +462,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get sessionStartFree => 'Démarrer une séance libre';
-
-  @override
-  String sessionStartDay(String day) {
-    return 'Démarrer $day';
-  }
 
   @override
   String sessionExerciseOf(int index, int count) {
@@ -674,17 +651,6 @@ class AppLocalizationsFr extends AppLocalizations {
       other: '$count records',
       one: '1 record',
       zero: 'Aucun record',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String setsCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count séries',
-      one: '1 série',
     );
     return '$_temp0';
   }
@@ -953,11 +919,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appTagline => 'Continue, avance sans abandonner.';
 
   @override
-  String secondsShort(int seconds) {
-    return '$seconds s';
-  }
-
-  @override
   String get googleDrive => 'Google Drive';
 
   @override
@@ -988,9 +949,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get syncSignInFailed =>
       'Connexion impossible. Vérifie ta connexion et réessaie.';
-
-  @override
-  String get syncAccount => 'Compte';
 
   @override
   String get exercise_bench_press => 'Développé couché';
