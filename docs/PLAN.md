@@ -527,9 +527,9 @@ Chaque phase se termine par : `flutter analyze` propre, tests verts, commit. Ne 
 - **Acceptation** : avec 10 séances de test, les courbes et les records sont corrects (comparés à un calcul manuel dans les tests).
 
 ### Phase 6 — Réglages et export
-- [ ] Réglages §8.10 (hors synchro).
-- [ ] Export / import JSON.
-- [ ] Android Auto Backup configuré.
+- [x] Réglages §8.10 (hors synchro).
+- [x] Export / import JSON. *(Partage et sélection de fichier par un canal natif `endelea/files` — Android et iOS — pour ne pas ajouter `share_plus` / `file_picker`, absents du §2.)*
+- [x] Android Auto Backup configuré.
 - **Acceptation** : bascule kg ↔ lb sans perte de précision ; export puis import sur une base vide → données identiques.
 
 ### Phase 7 — Synchro Google Drive

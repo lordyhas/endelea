@@ -833,6 +833,134 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeCreateProgram => 'Créer un programme';
 
   @override
+  String get settingsUnits => 'Unités';
+
+  @override
+  String get settingsWeightUnit => 'Unité de poids';
+
+  @override
+  String get settingsWeightStep => 'Pas des boutons +/−';
+
+  @override
+  String get settingsDefaultRest => 'Repos par défaut';
+
+  @override
+  String get settingsProgression => 'Suggestion de progression';
+
+  @override
+  String get settingsProgressionHint =>
+      'Ajoute du poids quand toutes les séries ont atteint le haut de la fourchette.';
+
+  @override
+  String get settingsAppearance => 'Apparence';
+
+  @override
+  String get settingsTheme => 'Thème';
+
+  @override
+  String get themeSystem => 'Système';
+
+  @override
+  String get themeDark => 'Sombre';
+
+  @override
+  String get themeLight => 'Clair';
+
+  @override
+  String get settingsLanguage => 'Langue';
+
+  @override
+  String get languageFrench => 'Français';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get settingsWorkout => 'Séance';
+
+  @override
+  String get settingsKeepScreenOn => 'Garder l’écran allumé';
+
+  @override
+  String get settingsRestSound => 'Son de fin de repos';
+
+  @override
+  String get settingsRestVibration => 'Vibration de fin de repos';
+
+  @override
+  String get settingsSync => 'Synchronisation';
+
+  @override
+  String get settingsData => 'Données';
+
+  @override
+  String get exportJson => 'Exporter en JSON';
+
+  @override
+  String get exportJsonHint =>
+      'Une copie de toutes tes données, à garder où tu veux.';
+
+  @override
+  String get importJson => 'Importer un JSON';
+
+  @override
+  String get importJsonHint =>
+      'Fusionne une exportation : la version la plus récente de chaque élément gagne.';
+
+  @override
+  String get exportShareTitle => 'Exporter les données Endelea';
+
+  @override
+  String get exportDone => 'Exportation prête.';
+
+  @override
+  String importDone(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count éléments importés.',
+      one: '1 élément importé.',
+      zero: 'Rien de nouveau à importer.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get importInvalid => 'Ce fichier n’est pas une exportation Endelea.';
+
+  @override
+  String get transferFailed => 'Échec. Réessaie.';
+
+  @override
+  String get settingsAbout => 'À propos';
+
+  @override
+  String aboutVersion(String version) {
+    return 'Version $version';
+  }
+
+  @override
+  String get licenses => 'Licences';
+
+  @override
+  String get privacyPolicy => 'Politique de confidentialité';
+
+  @override
+  String get privacyBody =>
+      'Endelea enregistre tes données uniquement sur ton téléphone. Il n’y a ni compte, ni serveur, ni publicité, ni suivi.\n\nSi tu actives la synchronisation, tes données sont copiées dans un dossier caché de ton propre Google Drive (« appDataFolder »), auquel seule l’application a accès. Endelea ne demande aucun autre accès à ton Drive et tu peux te déconnecter à tout moment.\n\nL’exportation JSON crée un fichier que tu partages toi-même.\n\nPour supprimer tes données : désinstalle l’application ; pour la copie Drive, retire l’accès d’Endelea dans les réglages de ton compte Google.';
+
+  @override
+  String get appTagline => 'Continue, avance sans abandonner.';
+
+  @override
+  String secondsShort(int seconds) {
+    return '$seconds s';
+  }
+
+  @override
+  String get googleDrive => 'Google Drive';
+
+  @override
   String get exercise_bench_press => 'Développé couché';
 
   @override

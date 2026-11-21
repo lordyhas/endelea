@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android Auto Backup up to Android 11 (PLAN.md §9.7): the database and
+     the settings, never the cache. -->
+<full-backup-content>
+    <include domain="file" path="app_flutter/endelea.sqlite" />
+    <include domain="file" path="app_flutter/endelea.sqlite-wal" />
+    <include domain="sharedpref" path="." />
+</full-backup-content>
