@@ -1,3 +1,4 @@
+import 'package:endelea/core/theme/app_colors.dart';
 import 'package:endelea/features/session/data/session_effects.dart';
 import 'package:endelea/features/settings/data/app_settings.dart';
 import 'package:flutter/services.dart';
@@ -39,7 +40,7 @@ class LocalRestAlerts implements RestAlerts {
     _initialized = true;
     await _plugin.initialize(
       settings: const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings('@drawable/ic_stat_endelea'),
         iOS: DarwinInitializationSettings(
           requestAlertPermission: false,
           requestSoundPermission: false,
@@ -95,6 +96,8 @@ class LocalRestAlerts implements RestAlerts {
             importance: Importance.high,
             priority: Priority.high,
             category: AndroidNotificationCategory.alarm,
+            icon: '@drawable/ic_stat_endelea',
+            color: SavanePalette.seed,
             playSound: prefs.restSound,
             enableVibration: prefs.restVibration,
             visibility: NotificationVisibility.public,
