@@ -1538,6 +1538,228 @@ abstract class AppLocalizations {
   /// **'Créer un programme'**
   String get homeCreateProgram;
 
+  /// No description provided for @settingsUnits.
+  ///
+  /// In fr, this message translates to:
+  /// **'Unités'**
+  String get settingsUnits;
+
+  /// No description provided for @settingsWeightUnit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Unité de poids'**
+  String get settingsWeightUnit;
+
+  /// No description provided for @settingsWeightStep.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas des boutons +/−'**
+  String get settingsWeightStep;
+
+  /// No description provided for @settingsDefaultRest.
+  ///
+  /// In fr, this message translates to:
+  /// **'Repos par défaut'**
+  String get settingsDefaultRest;
+
+  /// No description provided for @settingsProgression.
+  ///
+  /// In fr, this message translates to:
+  /// **'Suggestion de progression'**
+  String get settingsProgression;
+
+  /// No description provided for @settingsProgressionHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoute du poids quand toutes les séries ont atteint le haut de la fourchette.'**
+  String get settingsProgressionHint;
+
+  /// No description provided for @settingsAppearance.
+  ///
+  /// In fr, this message translates to:
+  /// **'Apparence'**
+  String get settingsAppearance;
+
+  /// No description provided for @settingsTheme.
+  ///
+  /// In fr, this message translates to:
+  /// **'Thème'**
+  String get settingsTheme;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In fr, this message translates to:
+  /// **'Système'**
+  String get themeSystem;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sombre'**
+  String get themeDark;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clair'**
+  String get themeLight;
+
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Langue'**
+  String get settingsLanguage;
+
+  /// No description provided for @languageFrench.
+  ///
+  /// In fr, this message translates to:
+  /// **'Français'**
+  String get languageFrench;
+
+  /// No description provided for @languageEnglish.
+  ///
+  /// In fr, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
+
+  /// No description provided for @settingsWorkout.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séance'**
+  String get settingsWorkout;
+
+  /// No description provided for @settingsKeepScreenOn.
+  ///
+  /// In fr, this message translates to:
+  /// **'Garder l’écran allumé'**
+  String get settingsKeepScreenOn;
+
+  /// No description provided for @settingsRestSound.
+  ///
+  /// In fr, this message translates to:
+  /// **'Son de fin de repos'**
+  String get settingsRestSound;
+
+  /// No description provided for @settingsRestVibration.
+  ///
+  /// In fr, this message translates to:
+  /// **'Vibration de fin de repos'**
+  String get settingsRestVibration;
+
+  /// No description provided for @settingsSync.
+  ///
+  /// In fr, this message translates to:
+  /// **'Synchronisation'**
+  String get settingsSync;
+
+  /// No description provided for @settingsData.
+  ///
+  /// In fr, this message translates to:
+  /// **'Données'**
+  String get settingsData;
+
+  /// No description provided for @exportJson.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exporter en JSON'**
+  String get exportJson;
+
+  /// No description provided for @exportJsonHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Une copie de toutes tes données, à garder où tu veux.'**
+  String get exportJsonHint;
+
+  /// No description provided for @importJson.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer un JSON'**
+  String get importJson;
+
+  /// No description provided for @importJsonHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fusionne une exportation : la version la plus récente de chaque élément gagne.'**
+  String get importJsonHint;
+
+  /// No description provided for @exportShareTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exporter les données Endelea'**
+  String get exportShareTitle;
+
+  /// No description provided for @exportDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exportation prête.'**
+  String get exportDone;
+
+  /// No description provided for @importDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Rien de nouveau à importer.} =1{1 élément importé.} other{{count} éléments importés.}}'**
+  String importDone(int count);
+
+  /// No description provided for @importInvalid.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce fichier n’est pas une exportation Endelea.'**
+  String get importInvalid;
+
+  /// No description provided for @transferFailed.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec. Réessaie.'**
+  String get transferFailed;
+
+  /// No description provided for @settingsAbout.
+  ///
+  /// In fr, this message translates to:
+  /// **'À propos'**
+  String get settingsAbout;
+
+  /// No description provided for @aboutVersion.
+  ///
+  /// In fr, this message translates to:
+  /// **'Version {version}'**
+  String aboutVersion(String version);
+
+  /// No description provided for @licenses.
+  ///
+  /// In fr, this message translates to:
+  /// **'Licences'**
+  String get licenses;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In fr, this message translates to:
+  /// **'Politique de confidentialité'**
+  String get privacyPolicy;
+
+  /// No description provided for @privacyBody.
+  ///
+  /// In fr, this message translates to:
+  /// **'Endelea enregistre tes données uniquement sur ton téléphone. Il n’y a ni compte, ni serveur, ni publicité, ni suivi.\n\nSi tu actives la synchronisation, tes données sont copiées dans un dossier caché de ton propre Google Drive (« appDataFolder »), auquel seule l’application a accès. Endelea ne demande aucun autre accès à ton Drive et tu peux te déconnecter à tout moment.\n\nL’exportation JSON crée un fichier que tu partages toi-même.\n\nPour supprimer tes données : désinstalle l’application ; pour la copie Drive, retire l’accès d’Endelea dans les réglages de ton compte Google.'**
+  String get privacyBody;
+
+  /// No description provided for @appTagline.
+  ///
+  /// In fr, this message translates to:
+  /// **'Continue, avance sans abandonner.'**
+  String get appTagline;
+
+  /// No description provided for @secondsShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'{seconds} s'**
+  String secondsShort(int seconds);
+
+  /// No description provided for @googleDrive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Google Drive'**
+  String get googleDrive;
+
   /// No description provided for @exercise_bench_press.
   ///
   /// In fr, this message translates to:

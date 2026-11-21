@@ -447,6 +447,64 @@
   "homeLastRecords": "Derniers records",
   "homeEmptyMessage": "Ou lance une séance libre tout de suite.",
   "homeCreateProgram": "Créer un programme",
+  "settingsUnits": "Unités",
+  "settingsWeightUnit": "Unité de poids",
+  "settingsWeightStep": "Pas des boutons +/−",
+  "settingsDefaultRest": "Repos par défaut",
+  "settingsProgression": "Suggestion de progression",
+  "settingsProgressionHint": "Ajoute du poids quand toutes les séries ont atteint le haut de la fourchette.",
+  "settingsAppearance": "Apparence",
+  "settingsTheme": "Thème",
+  "themeSystem": "Système",
+  "themeDark": "Sombre",
+  "themeLight": "Clair",
+  "settingsLanguage": "Langue",
+  "languageFrench": "Français",
+  "languageEnglish": "English",
+  "settingsWorkout": "Séance",
+  "settingsKeepScreenOn": "Garder l’écran allumé",
+  "settingsRestSound": "Son de fin de repos",
+  "settingsRestVibration": "Vibration de fin de repos",
+  "settingsSync": "Synchronisation",
+  "settingsData": "Données",
+  "exportJson": "Exporter en JSON",
+  "exportJsonHint": "Une copie de toutes tes données, à garder où tu veux.",
+  "importJson": "Importer un JSON",
+  "importJsonHint": "Fusionne une exportation : la version la plus récente de chaque élément gagne.",
+  "exportShareTitle": "Exporter les données Endelea",
+  "exportDone": "Exportation prête.",
+  "importDone": "{count, plural, =0{Rien de nouveau à importer.} =1{1 élément importé.} other{{count} éléments importés.}}",
+  "@importDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importInvalid": "Ce fichier n’est pas une exportation Endelea.",
+  "transferFailed": "Échec. Réessaie.",
+  "settingsAbout": "À propos",
+  "aboutVersion": "Version {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "licenses": "Licences",
+  "privacyPolicy": "Politique de confidentialité",
+  "privacyBody": "Endelea enregistre tes données uniquement sur ton téléphone. Il n’y a ni compte, ni serveur, ni publicité, ni suivi.\n\nSi tu actives la synchronisation, tes données sont copiées dans un dossier caché de ton propre Google Drive (« appDataFolder »), auquel seule l’application a accès. Endelea ne demande aucun autre accès à ton Drive et tu peux te déconnecter à tout moment.\n\nL’exportation JSON crée un fichier que tu partages toi-même.\n\nPour supprimer tes données : désinstalle l’application ; pour la copie Drive, retire l’accès d’Endelea dans les réglages de ton compte Google.",
+  "appTagline": "Continue, avance sans abandonner.",
+  "secondsShort": "{seconds} s",
+  "@secondsShort": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "googleDrive": "Google Drive",
   "exercise_bench_press": "Développé couché",
   "exercise_incline_bench_press": "Développé incliné",
   "exercise_decline_bench_press": "Développé décliné",
