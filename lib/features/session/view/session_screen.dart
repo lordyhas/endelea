@@ -674,7 +674,11 @@ class _SetEditor extends StatelessWidget {
                 update(values.copyWith(durationSeconds: seconds)),
           ),
         const SizedBox(height: AppSpacing.xs),
-        Row(
+        // Wraps at large text sizes.
+        Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: AppSpacing.sm,
           children: [
             FilterChip(
               label: Text(l10n.markWarmup),
@@ -689,7 +693,6 @@ class _SetEditor extends StatelessWidget {
                 ),
               ),
             ),
-            const Spacer(),
             if (canRemove)
               TextButton.icon(
                 onPressed: () => bloc.add(SetRemoved(set.id)),

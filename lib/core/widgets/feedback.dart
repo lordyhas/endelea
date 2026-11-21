@@ -154,10 +154,18 @@ enum SyncStatus { disabled, upToDate, syncing, error }
 
 /// State of the cloud sync.
 class SyncStatusChip extends StatelessWidget {
-  const SyncStatusChip({required this.status, this.onTap, super.key});
+  const SyncStatusChip({
+    required this.status,
+    this.onTap,
+    this.compact = false,
+    super.key,
+  });
 
   final SyncStatus status;
   final VoidCallback? onTap;
+
+  /// Icon only (app bars); the label is still read by screen readers.
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -198,15 +206,23 @@ class SyncStatusChip extends StatelessWidget {
             onTap: onTap,
             borderRadius: BorderRadius.circular(AppRadius.sheet),
             child: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 36),
+              constraints: BoxConstraints(
+                minHeight: compact ? AppSizes.minTouch : 36,
+                minWidth: compact ? AppSizes.minTouch : 0,
+              ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                padding: EdgeInsets.symmetric(
+                  horizontal: compact ? AppSpacing.sm : AppSpacing.md,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(icon, size: AppSizes.iconDense, color: color),
-                    const SizedBox(width: AppSpacing.xs),
-                    Text(label, style: theme.textTheme.labelMedium),
+                    if (!compact) ...[
+                      const SizedBox(width: AppSpacing.xs),
+                      Text(label, style: theme.textTheme.labelMedium),
+                    ],
                   ],
                 ),
               ),
