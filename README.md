@@ -7,8 +7,9 @@
 
 *Endelea* : "keep going, move forward without giving up".
 
-A gym workout tracker for Android, built with Flutter. iOS is planned: the iOS
-project is in the repository but isn't released or tested yet.
+A gym workout tracker for Android: plan your programs, follow your sessions set
+by set with a rest timer, and watch your progress, even without a connection.
+An iPhone version is planned.
 
 - **Programs**: days, exercises and targets (sets, rep range, weight, rest).
 - **Exercise library**: 76 built-in exercises by muscle group and equipment,
