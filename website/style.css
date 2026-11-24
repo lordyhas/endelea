@@ -1,0 +1,152 @@
+:root {
+  --bg: #faf7f4;
+  --surface: #ffffff;
+  --surface-high: #f3eee9;
+  --outline: #d8cfc6;
+  --text: #1f1a16;
+  --text-muted: #6b6158;
+  --primary: #c4532a;
+  --on-primary: #ffffff;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141210;
+    --surface: #1c1815;
+    --surface-high: #221d19;
+    --outline: #3a332e;
+    --text: #f3eee8;
+    --text-muted: #a89e94;
+    --primary: #e2683c;
+    --on-primary: #1a0d06;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+a {
+  color: var(--primary);
+}
+
+header.site {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+header.site img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+header.site .name {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav.lang {
+  margin-left: auto;
+  font-size: 15px;
+}
+
+.hero {
+  text-align: center;
+  padding: 24px 0 40px;
+}
+
+.hero img {
+  width: 120px;
+  height: 120px;
+  border-radius: 28px;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 16px 0 8px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 48px 0 12px;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 28px 0 8px;
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 19px;
+  margin: 0 0 28px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--on-primary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 14px;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.features li {
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+
+.features strong {
+  display: block;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+section.lang-block + section.lang-block {
+  border-top: 1px solid var(--outline);
+  margin-top: 56px;
+  padding-top: 8px;
+}
+
+footer {
+  border-top: 1px solid var(--outline);
+  margin-top: 56px;
+  padding-top: 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
