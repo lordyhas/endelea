@@ -5,5 +5,8 @@
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./website"
-  }
+  },
+  // Branches other than main deploy with `wrangler preview`, which needs this
+  // block (it can stay empty: the settings above apply to previews too).
+  "previews": {}
 }
