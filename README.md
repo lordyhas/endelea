@@ -90,19 +90,42 @@ keyPassword=…
 ## Project layout
 
 ```
-lib/
-  core/       theme, router, l10n, shared widgets, utils
-  data/       Drift schema, repositories (the only writers), seed
-  domain/     pure logic: session rules, progress calculations
-  sync/       cloud provider, codec, sync engine
-  features/   one folder per screen area (bloc/ + view/)
-test/         unit, bloc and widget tests (mirrors lib/)
-third_party/  phosphor_flutter, patched for the current Flutter
-tool/         launcher icon and splash generator (Python)
-app_logo/     source app icons
-docs/         design plan, store assets
-website/      static site (privacy policy), served by Cloudflare Workers
-              (wrangler.jsonc)
+endelea/
+├── lib/
+│   ├── main.dart                   # Entry point: database, sync, notifications
+│   ├── app.dart                    # Root widget: theme, router, languages
+│   ├── core/
+│   │   ├── l10n/                   # French and English strings (ARB files)
+│   │   ├── router/                 # Navigation (go_router)
+│   │   ├── theme/                  # Colors, typography, spacing
+│   │   ├── utils/                  # Clock, dates, units (kg / lb)
+│   │   └── widgets/                # Shared widgets: buttons, cards, rest timer
+│   ├── data/
+│   │   ├── database.dart           # Drift (SQLite) schema
+│   │   ├── repositories/           # The only writers: programs, sessions...
+│   │   └── seed/                   # The 76 built-in exercises
+│   ├── domain/
+│   │   ├── models/                 # Programs, sessions, exercise types
+│   │   ├── progress/               # Estimated 1RM, records, volume, stats
+│   │   └── session/                # Session rules and planning
+│   ├── sync/                       # Google Drive sync engine
+│   └── features/                   # One folder per screen area (bloc/ + view/)
+│       ├── home/                   # Home, resume an interrupted session
+│       ├── programs/               # Program and day editors, targets
+│       ├── exercises/              # Exercise library and details
+│       ├── session/                # Guided session, rest timer, summary
+│       ├── history/                # Past sessions
+│       ├── progress/               # Charts and personal records
+│       ├── body/                   # Body weight
+│       └── settings/               # Settings, sync, export / import
+├── test/                           # Unit, bloc and widget tests (mirrors lib/)
+├── android/  ios/                  # Platform projects
+├── assets/fonts/                   # Inter font
+├── third_party/phosphor_flutter/   # Icons, patched for the current Flutter
+├── tool/make_icons.py              # Launcher icon and splash generator
+├── app_logo/                       # Source app icons
+├── docs/                           # Design plan, store assets
+└── website/                        # Website and privacy policy (Cloudflare)
 ```
 
 ## License
