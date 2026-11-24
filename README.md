@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/lordyhas/endelea/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lordyhas/endelea/actions/workflows/ci.yml)
 [![Latest release](https://img.shields.io/github/v/release/lordyhas/endelea)](https://github.com/lordyhas/endelea/releases/latest)
+[![License: AGPL-3.0](https://img.shields.io/github/license/lordyhas/endelea)](LICENSE)
 ![Android 7.0+](https://img.shields.io/badge/Android-7.0%2B%20(API%2024)-3DDC84)
 
 *Endelea* : "keep going, move forward without giving up".
@@ -105,5 +106,9 @@ website/      static site (privacy policy), served by Cloudflare Workers
 
 ## License
 
-Fonts: Inter (SIL Open Font License, `assets/fonts/OFL.txt`). Icons: Phosphor
+Endelea is licensed under the [GNU Affero General Public License v3.0](LICENSE).
+You can use, change and share it, but any version you distribute or run as a
+network service must be released under the same license, with its source code.
+
+Third-party assets keep their own licenses. Fonts: Inter (SIL Open Font License, `assets/fonts/OFL.txt`). Icons: Phosphor
 (MIT, `third_party/phosphor_flutter/LICENSE`).
