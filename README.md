@@ -1,6 +1,6 @@
 # Endelea
 
-*Endelea* (Swahili): "keep going, move forward without giving up".
+*Endelea* : "keep going, move forward without giving up".
 
 A gym workout tracker for Android and iOS, built with Flutter:
 
