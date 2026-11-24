@@ -1,13 +1,23 @@
 # Endelea
 
+[![CI](https://github.com/lordyhas/endelea/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lordyhas/endelea/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/lordyhas/endelea)](https://github.com/lordyhas/endelea/releases/latest)
+[![License: AGPL-3.0](https://img.shields.io/github/license/lordyhas/endelea)](LICENSE)
+![Android 7.0+](https://img.shields.io/badge/Android-7.0%2B%20(API%2024)-3DDC84)
+
 *Endelea* : "keep going, move forward without giving up".
 
-A gym workout tracker for Android and iOS, built with Flutter:
+A gym workout tracker for Android, built with Flutter. iOS is planned: the iOS
+project is in the repository but isn't released or tested yet.
 
 - **Programs**: days, exercises and targets (sets, rep range, weight, rest).
+- **Exercise library**: 76 built-in exercises by muscle group and equipment,
+  plus your own.
 - **Guided sessions**: exercise by exercise, set by set, one tap to complete a
   set, automatic rest timer that survives the app going to the background or
-  being closed, with a notification at the end.
+  being closed, with a notification at the end. An interrupted session can be
+  resumed from the home screen.
+- **History**: every finished session with its sets.
 - **Progress**: personal records, estimated 1RM, weekly volume, curves per
   exercise, body weight.
 - **Offline-first**: everything lives in a local SQLite database. Optional sync
@@ -17,11 +27,19 @@ A gym workout tracker for Android and iOS, built with Flutter:
 
 The design plan is in [`docs/PLAN.md`](docs/PLAN.md).
 
+## Download
+
+Get the latest APK from the
+[Releases page](https://github.com/lordyhas/endelea/releases/latest) and
+install it on an Android 7.0 (API 24) or newer device. You may need to allow
+installing apps from your browser or file manager.
+
 ## Build
 
-Requirements: Flutter 3.47 (stable), Android SDK with API 37.
+Requirements: Flutter 3.47 (stable), Android SDK with API 37. The commands are
+the same on Linux, macOS and Windows.
 
-```bash
+```sh
 flutter pub get
 dart run build_runner build --delete-conflicting-outputs   # Drift code
 flutter gen-l10n                                            # strings
@@ -35,7 +53,7 @@ checks that they are up to date.
 
 ### Google Drive sync
 
-Sync needs a Google Cloud project (see [`docs/PLAN.md`](docs/PLAN.md) §13):
+Sync is set up for Android only for now. It needs a Google Cloud project (see [`docs/PLAN.md`](docs/PLAN.md) §13):
 
 1. Enable the Google Drive API.
 2. Configure the OAuth consent screen with the `drive.appdata` scope only.
@@ -44,11 +62,12 @@ Sync needs a Google Cloud project (see [`docs/PLAN.md`](docs/PLAN.md) §13):
    (`keytool -list -v -keystore <keystore>`).
 4. Create a **Web** OAuth client and pass its id at build time:
 
-```bash
+```sh
 flutter run --dart-define=GOOGLE_SERVER_CLIENT_ID=<web-client-id>
 ```
 
-In CI, set it as the repository variable `GOOGLE_SERVER_CLIENT_ID`.
+For release builds, set it as the repository variable `GOOGLE_SERVER_CLIENT_ID`
+(read by the release workflow).
 
 ## Release
 
@@ -76,11 +95,20 @@ lib/
   domain/     pure logic: session rules, progress calculations
   sync/       cloud provider, codec, sync engine
   features/   one folder per screen area (bloc/ + view/)
+test/         unit, bloc and widget tests (mirrors lib/)
 third_party/  phosphor_flutter, patched for the current Flutter
-tool/         icon generator
+tool/         launcher icon and splash generator (Python)
+app_logo/     source app icons
+docs/         design plan, store assets
+website/      static site (privacy policy), served by Cloudflare Workers
+              (wrangler.jsonc)
 ```
 
 ## License
 
-Fonts: Inter (SIL Open Font License, `assets/fonts/OFL.txt`). Icons: Phosphor
+Endelea is licensed under the [GNU Affero General Public License v3.0](LICENSE).
+You can use, change and share it, but any version you distribute or run as a
+network service must be released under the same license, with its source code.
+
+Third-party assets keep their own licenses. Fonts: Inter (SIL Open Font License, `assets/fonts/OFL.txt`). Icons: Phosphor
 (MIT, `third_party/phosphor_flutter/LICENSE`).
