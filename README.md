@@ -7,9 +7,8 @@
 
 *Endelea* : "keep going, move forward without giving up".
 
-A gym workout tracker for Android: plan your programs, follow your sessions set
+A gym workout tracker for Android and iOS: plan your programs, follow your sessions set
 by set with a rest timer, and watch your progress, even without a connection.
-An iPhone version is planned.
 
 - **Programs**: days, exercises and targets (sets, rep range, weight, rest).
 - **Exercise library**: 76 built-in exercises by muscle group and equipment,
